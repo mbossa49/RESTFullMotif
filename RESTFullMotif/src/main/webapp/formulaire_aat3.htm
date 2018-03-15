@@ -1,0 +1,1440 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+
+<head>
+    <title>Espace Pro</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	
+	<!--FEUILLES DE STYLES-->
+	<!--css communes-->
+	<link  href="styles/_actions.css" rel="stylesheet" type="text/css" media="screen"/>
+	<link  href="styles/_article.css" rel="stylesheet" type="text/css" media="screen"/>
+	<link  href="styles/_boutons.css" rel="stylesheet" type="text/css" media="screen"/>
+	<link  href="styles/_bulles.css" rel="stylesheet" type="text/css" media="screen"/>
+	<link  href="styles/_cadres.css" rel="stylesheet" type="text/css" media="screen"/>
+	<link  href="styles/_concertation.css" rel="stylesheet" type="text/css" media="screen"/>
+	<link  href="styles/_corpsDePage.css" rel="stylesheet" type="text/css" media="screen"/>	
+	<link  href="styles/_entete.css" rel="stylesheet" type="text/css" media="screen"/>
+	<link  href="styles/_entete_rubrique.css" rel="stylesheet" type="text/css" media="screen"/>
+	<link  href="styles/_etapes.css" rel="stylesheet" type="text/css" media="screen"/>
+<!-- 	<link  href="styles/_fenetres.css" rel="stylesheet" type="text/css" media="screen"/> -->
+	<link  href="styles/_fichiersExternes.css" rel="stylesheet" type="text/css" media="screen"/>
+	<link  href="styles/_formulaires.css" rel="stylesheet" type="text/css" media="screen"/>
+	<link  href="styles/_general.css" rel="stylesheet" type="text/css" media="screen"/>	
+	<link  href="styles/_graphes.css" rel="stylesheet" type="text/css" media="screen"/>	
+	<link  href="styles/_legendes.css" rel="stylesheet" type="text/css" media="screen"/>	
+    <link  href="styles/_menus.css" rel="stylesheet" type="text/css" media="screen"/>
+	<link  href="styles/_messages.css" rel="stylesheet" type="text/css" media="screen"/>
+	<link  href="styles/_piedsDePage.css" rel="stylesheet" type="text/css" media="screen"/>
+	<link  href="styles/_popIn.css" rel="stylesheet" type="text/css" media="screen"/>
+	<link  href="styles/_popUp.css" rel="stylesheet" type="text/css" media="screen"/>
+	<link  href="styles/_tableaux.css" rel="stylesheet" type="text/css" media="screen"/>
+	
+	<!--css spécifiques-->
+	<link  href="styles/accueil.css" rel="stylesheet" type="text/css" media="screen"/>
+	<link  href="styles/basic-jquery-slider.css" rel="stylesheet" type="text/css" media="screen"/>
+	<link  href="styles/connexion.css" rel="stylesheet" type="text/css" media="screen"/>
+	<link  href="styles/serveurIndispo.css" rel="stylesheet" type="text/css" media="screen"/>
+	<link  href="styles/infosPatients.css" rel="stylesheet" type="text/css" media="screen"/>
+	<link  href="styles/aat.css" rel="stylesheet" type="text/css" media="screen"/>
+	<link  href="styles/jquery-ui.css" rel="stylesheet" type="text/css" media="screen"/>
+	<link  href="styles/tooltipster.css" rel="stylesheet" type="text/css"  />
+	
+	<!--JAVASCRIPTS-->
+	<script type="text/javascript" src="js/menus.js"></script>
+	<script type="text/javascript" src="js/menuContextuel.js"></script>
+	<script type="text/javascript" src="js/menuIndicateurs.js"></script>
+	<script type="text/javascript" src="js/menuIndicateurs_orgCab.js"></script>
+	<script type="text/javascript" src="js/plierDeplier.js"></script>
+	<script type="text/javascript" src="js/plierDeplierEchange.js"></script>
+	<script type="text/javascript" src="js/blocDepliant.js"></script>
+	<script type="text/javascript" src="js/graphes_afficherCacher.js"></script>	
+	<script type="text/javascript" src="js/openPopup.js"></script>
+
+	<script type="text/javascript" src="js/jquery-1.11.2.js"></script>
+	<script type="text/javascript" src="js/jquery-ui.js"></script>
+	<script type="text/javascript" src="js/jquery.scrollTo.min.js"></script>
+	<script type="text/javascript" src="js/jquery.accentFolding.js"></script>
+	<script type="text/javascript" src="js/jquery.localScroll.min.js"></script>
+
+	<script type="text/javascript" src="js/smoothscroll.js"></script>
+	<script type="text/javascript" src="js/tablesort.js"></script>
+	<script type="text/javascript" src="js/basic-jquery-slider.js"></script>
+	<script type="text/javascript" src="js/placeholder.js"></script>
+	<script type="text/javascript" src="js/select-placeholder.js"></script>
+	<script type="text/javascript" src="js/highcharts.js"></script>	
+	<script type="text/javascript" src="js/datetimepicker_css.js"></script>	
+	<script type="text/javascript" src="js/PIE.js"></script>
+	<script type="text/javascript" src="js/popIn.js"></script>
+	<script type="text/javascript" src="js/jquery.tooltipster.js"></script>
+	<script type="text/javascript">	
+	
+		var codeLibelle = null;		
+		var motifSelectionne = "";
+		var tempsComplet = true;
+		var grossessePhatologie = false;
+		var focusMotif = "";
+		var focusMotifCode = "";
+		var listeTypeEmploi;
+		var typeEmploiSelectionne;
+		var typePathologieSelectionne;
+		var typeComplementSelectionne;
+		
+		<!-- Gestion de l'autocomplétion -->
+		$(function(){ 
+			// Infobulles	
+			$('#leger').tooltipster({
+                content: $("<span style='width:200px'><p>Charge ponctuelle < 10 kg</p><p>Charge répétée < 5kg</p></span>"),            
+				position:'top'
+			});
+			$('#modere').tooltipster({
+                content: $("<p>Charge ponctuelle < 25 kg</p><p>Charge répétée < 10kg</p></span>"),            
+				position:'top'
+			});
+			$('#lourd').tooltipster({
+                content: $("<p>Charge > 25kg</p></span>"),            
+				position:'top'
+			});
+			
+			$("#pdf").attr("href", "");
+			$("#message_ocre").hide();
+			document.getElementById("message_ocre").style.display="none";
+			document.getElementById("listeCategorie").style.display="none";
+			document.getElementById("divFicheDurees").style.display="none";
+			document.getElementById("tableauDurees").style.display="none";
+			document.getElementById('resultat').style.display="none";
+			document.getElementById('dureeArret').value="";
+			document.getElementById('debutArret').value= new Date().ddmmyyyy();
+			document.getElementById('dateSortie').value= new Date().ddmmyyyy();
+			
+			/*
+			* Gestion de la touche entrée
+			*/
+			$("#champMotif").keypress(function(e) {
+				if(e.keyCode == 13)
+				{
+				   e.preventDefault();
+				   validationSaisie();
+				   $(this).autocomplete('close');
+				}
+			});
+			
+			/*
+			* Gestion de la touche TAB
+			*/
+			$("#champMotif").keydown(function(e) {
+				var code = (e || window.event).keyCode;
+				if(code == 9)
+				{
+// 					e.preventDefault();
+// 					validationSaisie();
+// 					$(this).autocomplete('close');					
+				}
+			});
+			
+			$.ui.autocomplete.prototype._renderItem = function (ul, item) {
+				item.propDuree = item.value;
+				item.propDuree = item.propDuree.replace(new RegExp("(?![^&;]+;)(?!<[^<>]*)(" + $.ui.autocomplete.escapeRegex(this.term) + ")(?![^<>]*>)(?![^&;]+;)", "gi"), "<strong>$1</strong>");
+				return $("<li></li>")
+					.data("item.autocomplete", item)
+					.append("<a>" + item.propDuree + "</a>")
+					.appendTo(ul);
+			};			
+			
+			$('#champMotif').autocomplete({
+	
+				source: function(requete, reponse){ // les deux arguments représentent les données nécessaires au plugin
+					$.ajax({
+						type: 'GET',
+						url: '/RESTFullMotif/rest/motif/motif/'+$('#champMotif').val(),
+						dataType : 'json',
+			            success: function(data) {
+			                reponse($.map(data, function(objet){
+			                    return objet;
+			                }));
+			            },
+			            error: function() {
+				              alert('La requête n\'a pas abouti'); 
+						}
+			        });
+			    },
+			    
+			    focus: function( event, ui) {
+			    	focusMotif = ui.item.value;
+			    	focusMotifCode = ui.item.label;
+			    },
+			    
+				minLength: 3,
+				delay : 300,
+			    select : function(event,ui){
+			    	if(event.keyCode != 9){
+			    		motifSelectionne = document.getElementById('champMotif').value;
+				    	if(ui.item.value.length > 0){
+							motifSelectionne = ui.item.value;
+							codeLibelle = ui.item.label;
+							ui.item.value = "";
+				    	}
+				    	validationSaisie();
+			    	}
+			    },
+				<!-- gestion du no resultat -->
+				response : function(event,ui){					
+					var resultSize = ui.content.length;
+					if(resultSize == 0){
+						motifSelectionne = "";
+					}
+				} 
+			});
+		});	
+		
+		
+		function validationSaisie(){
+			
+			/** Gestion du bouton TAB*/
+// 			if (focusMotif === document.getElementById('champMotif').value
+// 					&& motifSelectionne=="") // Saisie libre motif connu.
+// 			{
+// 				motifSelectionne = focusMotif;
+// 				codeLibelle = focusMotifCode;
+// 			}
+				
+				if(motifSelectionne==""){
+					if (document.getElementById('champMotif').value.length < 3) {
+						$("#motifSelectionne").html("Veuillez saisir au moins 3 caractères");
+						$("#motifSelectionne").show();
+						
+					} else {
+						$("#motifSelectionne").html(document.getElementById('champMotif').value);
+						//gestion saisi libre
+						gererSaisieLibre();
+						document.getElementById("categorie").focus();
+		// 				Event.observe(obj,'change', choisirCategorie());
+						fireEvent(document.getElementById("categorie"),'click');
+					}
+					activerZonePeriodeArret();
+				}else{					
+					
+					$("#champTexteLong").html('');
+					$("#motifSelectionne").html(motifSelectionne);
+					document.getElementById("champTexteLong").focus();
+					//TODO Patch maquette Bouton
+					if (motifSelectionne == "Fracture de la cheville" ) {
+						afficherTableauDynamique();
+					}else {
+						document.getElementById("divFicheDurees").style.display="none";
+						document.getElementById("tableauDurees").style.display="none";
+					}
+					activerZonePeriodeArret();
+				}
+				// 1 - Reset du champ de saisi
+				document.getElementById('champMotif').value="";
+				document.getElementById('champMotif').title="";
+				inputPlaceholder(document.getElementById('champMotif'));
+		
+				//	remplacement champ de sasi par le label.
+				$("#champSaisie").hide();
+				$("#idListeMotif").hide();
+				$("#apres").show();
+				document.getElementById('resultat').style.display="inline-block";
+		}
+		
+		function activerZonePeriodeArret() {
+			document.getElementById("resultatDuree").setAttribute("class", "resultatDuree");
+			document.getElementById("debutArret").disabled=false;
+			document.getElementById("finArret").disabled=false;
+			document.getElementById("dureeArret").disabled=false;
+		}
+		
+		function desactiverZonePeriodeArret() {
+			document.getElementById("resultatDuree").setAttribute("class", "resultatDuree inactif");
+			document.getElementById("debutArret").disabled=true;
+			document.getElementById("finArret").disabled=true;
+			document.getElementById("dureeArret").disabled=true;
+		}
+		
+		function afficherSaisieCompl() {
+			//On cache le crayon
+			document.getElementById("crayonCompl").style.display="none";
+			// On affiche la zone de saisie complement d'information
+			document.getElementById("saisiComplInfo").style.display="inline-block";
+			document.getElementById("champTexteLong").style.display="block";
+		}
+		
+		function fireEvent(element,event){
+		    if (document.createEventObject){
+		    	// dispatch for IE
+		   		var evt = document.createEventObject();
+		    	return element.fireEvent('on'+event,evt)
+		    }
+		    else{
+		    	// dispatch for firefox + others
+		    	var evt = document.createEvent("HTMLEvents");
+		    	evt.initEvent(event, true, true ); // event type,bubbling,cancelable
+		    	return !element.dispatchEvent(evt);
+		    }
+		}
+		
+		/**
+		* Remplacement du tableau de durée HTML par les listes.
+		*/
+		function afficherTableauDynamique() {
+			if (tempsComplet && !grossessePhatologie) {
+				listeTypeEmploi = null;
+				$.ajax({
+					type: 'GET',
+					url: '/RESTFullMotif/rest/motif/listeTypeEmploi/'+codeLibelle,
+					dataType : 'json',
+		            success: function(data) {
+		            	if (data && data.length > 0) {
+		            		document.getElementById("divFicheDurees").style.display="block";
+			            	$("#tableauDurees").show();
+			            	$("#pdf").attr("href", "/RESTFullMotif/rest/motif/pdf/"+codeLibelle);
+			            	listeTypeEmploi = data;
+			            	afficherDureeParDefaut();
+						}
+		            	
+		            },
+		            error: function(e) {
+			              alert('La requête n\'a pas abouti ' + e.status); 
+					}
+		        });
+			}
+		}
+		
+	   /**
+		* Afficher 	la durée par défaut
+		*/ 
+		function afficherDureeParDefaut(){
+			initBoutonDuree();
+			typeEmploiSelectionne = listeTypeEmploi[0];
+			var listeComplement = typeEmploiSelectionne.listeComplementViews;
+			if (listeComplement && listeComplement.length > 0){
+				typeComplementSelectionne = listeComplement[0];
+				//TODO la suite pour les cas généraux;
+			}
+			typePathologieSelectionne = typeEmploiSelectionne.listePathologie[0];
+			$("#dureeArret").val(typePathologieSelectionne.duree);
+			calculerDateFin(typePathologieSelectionne.duree);
+			
+		}
+		
+	    function initBoutonDuree() {
+	    	
+	    	$( "#listeEmploi li" ).each(function( i ) {
+				if (0 == i) {
+					$(this).attr('selected', true);
+				}else{
+					$(this).attr('selected', false);
+				}
+			 });
+			 
+			//Déselectionne toutes les phatologie
+			$( "#listePatho li" ).each(function( i ) {
+				if (0 == i) {
+					$(this).attr('selected', true);
+				}else {
+					$(this).attr('selected', false);
+				}
+			})
+			document.getElementById("duree0").innerHTML="10 jours";
+			document.getElementById("duree1").innerHTML="14 jours";
+			document.getElementById("duree2").innerHTML="28 jours";
+			document.getElementById("duree3").innerHTML="28 jours";			
+		}
+	   
+		function choisirEmploi(indexEmploi) {
+			typeEmploiSelectionne = listeTypeEmploi[indexEmploi];
+			$( "#listeEmploi li" ).each(function( i ) {
+				if (indexEmploi == i) {
+					$(this).attr('selected', true);
+				}else{
+					$(this).attr('selected', false);
+				}
+			 });
+			 
+			//Déselectionne toutes les phatologie
+			$( "#listePatho li" ).each(function( i ) {
+				$(this).attr('selected',false)
+			})
+			document.getElementById("dureeArret").value="";
+			document.getElementById("finArret").value="";
+			
+			//Afficher les durées liées au type emploi selectionné
+			var listePathologie = typeEmploiSelectionne.listePathologie;
+			for(i=0; i<listePathologie.length;i++){
+				 pathologie = listePathologie[i];
+				 document.getElementById("duree"+i).innerHTML=pathologie.duree + " jours";
+			}
+		}
+		
+		function choisirPathologie2(indexPathologie) {
+			var listePathologie = typeEmploiSelectionne.listePathologie;
+			typePathologieSelectionne = listePathologie[indexPathologie];
+			$( "#listePatho li" ).each(function( i ) {
+				if (indexPathologie == i) {
+					$(this).attr('selected',true);
+				}else{
+					$(this).attr('selected',false);
+				}
+			})
+			$("#dureeArret").val(typePathologieSelectionne.duree);
+			calculerDateFin(typePathologieSelectionne.duree);
+		}
+		
+	   /**
+	   	*
+		*/
+		function initialiserTabDuree(listeTypeEmploi) {
+			//ré-init du tableau.
+			var tableDuree = document.getElementById("tabDynamique");
+			tableDuree.innerHTML = null;
+			// construire la ligne type emploi.
+			var taille = listeTypeEmploi.length;
+			
+			var trTypeEmploi = document.createElement('TR');
+			var td = document.createElement('TD');
+			td.appendChild(document.createTextNode("Type d'emploi :"));
+			trTypeEmploi.appendChild(td);
+			
+			for(i=0; i< taille; i++){
+				
+				var td2 = document.createElement('TD');
+				var boutonTypeEmploi = document.createElement("BUTTON");
+				td2.innerHTML =
+						'<button onClick="'+'afficherLignePathologie('
+        				+ i 
+        				+')" type="button" value="' 
+        				+ i 
+        				+ '" style="text-align: center; background-color: blue; color: white; border: none;">'
+        				+ listeTypeEmploi[i].libelle 
+        				+'</button>';
+// 				boutonTypeEmploi.type="button";
+// 				boutonTypeEmploi.style = "text-align: center; background-color: blue; color: white; border: none;";
+// 				boutonTypeEmploi.onClick="afficherLignePathologie(" + i + ")";
+				
+//         		tableTr+='<td><button onClick="'+'afficherLignePathologie('
+//         				+ i 
+//         				+')" type="button" value="' 
+//         				+ i 
+//         				+ '" style="text-align: center; background-color: blue; color: white; border: none;">'
+//         				+ listeTypeEmploi[i].libelle 
+//         				+'</button></td>';
+// 				td2.appendChild(boutonTypeEmploi);
+				trTypeEmploi.appendChild(td2);
+        	}
+			tableDuree.appendChild(trTypeEmploi);
+	    }
+	   
+	    function afficherLignePathologie(typeEmploi) {
+	    	var tableDuree = document.getElementById("tabDynamique");
+	    	initialiserTabDuree(listeTypeEmploi);
+	    	typeEmploiSelectionne = listeTypeEmploi[typeEmploi];
+	    	var tabDynamique = document.getElementById("tabDynamique");
+	    	var listePathologie = typeEmploiSelectionne.listePathologie;
+			var rowCount = tabDynamique.rows.length;
+	    	
+			if (rowCount > 1) {
+				alert("delete from 2 to the end");
+				// Afficher la suite
+			}else {
+				// Afficher la suite.
+			}
+			
+			var trPathologie = document.createElement('TR');
+			var td = document.createElement('TD');
+			td.appendChild(document.createTextNode("Type traitement :"));
+			trPathologie.appendChild(td);
+			
+	    	var taille = listePathologie.length;
+			for(i=0; i< taille; i++){				
+				var td2 = document.createElement('TD');
+				var boutonTypeEmploi = document.createElement("BUTTON");
+				td2.innerHTML =
+						'<button onClick="'+'afficherDuree('
+        				+ i 
+        				+')" type="button" value="' 
+        				+ i 
+        				+ '" style="text-align: center; background-color: blue; color: white; border: none;">'
+        				+ listePathologie[i].libelle 
+        				+'</button>';
+// 				td2.innerHTML =
+// 						'<a onClick="'+'afficherDuree('+ i +')" value="' + i 
+//         				+ '" class="bouton">'
+//         				+ listePathologie[i].libelle 
+//         				+'</a>';
+        		trPathologie.appendChild(td2);
+        	}
+			tableDuree.appendChild(trPathologie);
+		}
+	   
+	    function afficherDuree(indexPatho){
+	    	var pathologies = typeEmploiSelectionne.listePathologie;
+	    	typePathologieSelectionne = pathologies[indexPatho];
+	    	$("#dureeArret").val(typePathologieSelectionne.duree);
+	    	calculerDateFin(typePathologieSelectionne.duree)
+	    }
+	    
+		/**
+		* Remplacement du tableau de durée HTML par les listes.
+		*/
+		function afficherListeTypeEmploi() {
+			if (tempsComplet && !grossessePhatologie) {
+				listeTypeEmploi = null;
+				$.ajax({
+					type: 'GET',
+					url: '/RESTFullMotif/rest/motif/listeTypeEmploi/'+codeLibelle,
+					dataType : 'json',
+		            success: function(data) {
+		            	if (data && data.length > 0) {
+		            		document.getElementById("divFicheDurees").style.display="block";
+			            	$("#tableauDurees").show();
+			            	$("#blocTypeEmploi").show();
+			            	$("#pdf").attr("href", "/RESTFullMotif/rest/motif/pdf/"+codeLibelle);
+			            	listeTypeEmploi = data;
+			            	// ré-init les listes
+			            	var select = $("#typeEmploi");
+			            	$('option', select).remove();
+			            	var select2 = $("#typeComplement");
+			            	$('option', select2).remove();
+			            	var select3 = $("#typePathologie");
+			            	$('option', select3).remove();
+			            	
+			            	//construire la
+			            	var taille = data.length;
+			            	$('#typeEmploi').append($('<option>',
+		           			     {
+		           			        value: -1,
+		           			        text : "-- Choisir Emploi --" 
+		           			}));
+			            	for(i=0; i< taille; i++){
+			            		$('#typeEmploi').append($('<option>',
+			            			     {
+			            			        value: i,
+			            			        text : data[i].libelle 
+			            		}));
+			            	}
+			            	setDureeDefaut();
+						}
+		            	
+		            },
+		            error: function(e) {
+			              alert('La requête n\'a pas abouti ' + e.status); 
+					}
+		        });
+			}
+		}
+		
+		
+		function setDureeDefaut() {
+
+			if (listeTypeEmploi.length > 0) {
+				
+				typeEmploiSelectionne = listeTypeEmploi[0];
+				var listeComplement = typeEmploiSelectionne.listeComplementViews;
+				var listePathologie = typeEmploiSelectionne.listePathologie;
+				
+				//Sélection du type emploi par défaut typeEmploi
+				//alert(document.getElementById("typeEmploi").selectedIndex);
+				document.getElementById("typeEmploi").style.display="block";
+				document.getElementById("typeEmploi").selectedIndex=1;
+				
+				if(listeComplement && listeComplement.length > 0){
+					//Sélection du complément d'information par défaut.
+					typeComplementSelectionne = listeComplement[0];
+					construireListeComplement(listeComplement);
+					document.getElementById("blocTypeComplement").style.display="block";
+					document.getElementById("typeComplement").selectedIndex=1;
+					choisirComplement(0);
+					document.getElementById("blocTypePathologie").style.display="block";
+					document.getElementById("typePathologie").selectedIndex=1;
+					choisirPathologie(0);
+				} else if (listePathologie && listePathologie.length > 0) {
+					typePathologieSelectionne = listePathologie[0];
+					construireListePathologie(listePathologie);
+					document.getElementById("blocTypePathologie").style.display="block";
+					document.getElementById("typePathologie").selectedIndex=1;
+					choisirPathologie(0);
+				}
+			}
+		}
+		
+		function choisirTypeEmploi(typeEmp) {
+			
+			typeEmploiSelectionne = listeTypeEmploi[typeEmp];
+			$('#blocTypeComplement').hide();
+			$("#blocTypePathologie").hide();
+			
+			if (!(typeEmp == "-1")) {
+				
+	        	//construire la liste des complément ou des pathologies 
+	        	var listeComplement = listeTypeEmploi[typeEmp].listeComplementViews;
+				var listePathologie = listeTypeEmploi[typeEmp].listePathologie;
+	        	
+	        	if (listeComplement) {
+	        		construireListeComplement(listeComplement);
+				} else if (listePathologie) {
+					construireListePathologie(listePathologie);
+					$("#blocTypePathologie").show();
+				}
+	        	
+			}
+		}
+		
+		function choisirComplement(typeCompl) {
+			if (!(typeCompl == "-1")) {
+				typeComplementSelectionne = typeEmploiSelectionne.listeComplementViews[typeCompl];
+				var listePathologie = typeComplementSelectionne.pathologies;
+				construireListePathologie(listePathologie);
+				$("#blocTypePathologie").show();
+			}
+		}
+		
+		/*
+		* Le choix la phatoglie
+		*/
+		function choisirPathologie (typePatho) {			
+			if (!(typePatho == "-1")) {
+				var pathologie;
+				if (typeComplementSelectionne) {
+					pathologie = typeComplementSelectionne.pathologies[typePatho];					
+				} else {
+					pathologie = typeEmploiSelectionne.listePathologie[typePatho];
+				}
+				$("#dureeArret").val(pathologie.duree);
+				calculerDateFin(pathologie.duree);
+			}
+		}
+		
+		function construireListeComplement(listeComplement) {
+			// réinitialisation de la liste
+    		var select = $("#typeComplement");
+        	$('option', select).remove();
+        	
+    		var taille = listeComplement.length;
+    		$('#typeComplement').append($('<option>',
+      			     {
+      			        value: -1,
+      			        text : "-- Choisir complément --" 
+      			}));
+        	for(i=0; i< taille; i++){
+        		$('#typeComplement').append($('<option>',
+        			     {
+        			        value: i,
+        			        text : listeComplement[i].libelle 
+        		}));
+        	}
+        	$('#blocTypeComplement').show();
+		}
+		
+		function construireListePathologie(listePathologie) {
+			// réinitialisation de la liste
+			var select = $("#typePathologie");
+	    	$('option', select).remove();
+			
+	    	var taille = listePathologie.length;
+			$('#typePathologie').append($('<option>',
+	  			     {
+	  			        value: -1,
+	  			        text : "-- Choisir pathologie --" 
+	  		}));
+			
+	    	for(i=0; i< taille; i++){
+	    		$('#typePathologie').append($('<option>',
+	    			     {
+	    			        value: i,
+	    			        text : listePathologie[i].libelle 
+	    		}));
+	    	}
+		}
+		
+		function onClicktableauDuree(radio){
+			document.getElementById('dureeArret').value=radio.value;
+			calculerDateFin(radio.value);
+		}
+	   
+	   /**
+		*
+		*/
+		Date.prototype.mmddyyyy = function() {
+			   var yyyy = this.getFullYear();
+			   var mm = this.getMonth() < 9 ? "0" + (this.getMonth() + 1) : (this.getMonth() + 1); 
+			   var dd  = this.getDate() < 10 ? "0" + this.getDate() : this.getDate();
+			   return "".concat(mm).concat("/").concat(dd).concat("/").concat(yyyy);
+		};
+		
+		/**
+		*
+		*/
+		Date.prototype.ddmmyyyy = function() {
+			   var yyyy = this.getFullYear();
+			   var mm = this.getMonth() < 9 ? "0" + (this.getMonth() + 1) : (this.getMonth() + 1); 
+			   var dd  = this.getDate() < 10 ? "0" + this.getDate() : this.getDate();
+			   return "".concat(dd).concat("/").concat(mm).concat("/").concat(yyyy);
+		};
+				
+		<!-- gestion de la saisie libre -->
+		function gererSaisieLibre(){
+			// On cache le tableau des durées
+			document.getElementById("divFicheDurees").style.display="none";
+			document.getElementById("tableauDurees").style.display="none";
+			// On enleve la durée à vide
+			document.getElementById('dureeArret').value="";
+			document.getElementById('finArret').value="";
+			
+			//affichage du block catégorie
+			$("#message_ocre").show();
+			document.getElementById('categorie').selectedIndex = 0;
+			document.getElementById('listeCategorie').style.display="block";
+			
+			//
+			$("#motifSelectionne").html(document.getElementById('champMotif').value);
+			$("#champTexteLong").html(document.getElementById('champMotif').value);
+		}
+		
+		
+		<!-- gestion du choix d'une catégorie ou CIM10  -->
+		function choisirCategorie(){
+			var categorie = document.getElementById('categorie').value;
+		}
+				
+		
+		<!--Ajouter des jours à une date -->
+		function calculerDateFin(duree){
+			var dateFin = new Date();
+			dateFin.setDate(dateFin.getDate()+parseInt(duree));
+			var day = dateFin.getDate();
+			var month = dateFin.getMonth() + 1;
+			var year = dateFin.getFullYear();
+			// format du jour.
+			if(day<10){ 
+				day = '0'+ day;
+			}
+			//format du mois.
+			if(month<10){ 
+				month = '0'+ month;
+			}
+			document.getElementById('finArret').value= day + "/" + month+"/"+year;
+			return dateFin;
+		}
+				
+		<!-- Actions avec le bouton Reset du champ -->		
+		function reInitChamp() {
+			motifSelectionne = "";
+			codeLibelle = null;
+			document.getElementById("listeCategorie").style.display="none";
+			document.getElementById("divFicheDurees").style.display="none";
+			document.getElementById("tableauDurees").style.display="none";
+			document.getElementById("message_ocre").style.display="none";
+			document.getElementById('resultat').style.display="none";
+			document.getElementById("saisiComplInfo").style.display="none";
+			document.getElementById("crayonCompl").style.display="inline-block";
+			document.getElementById('dureeArret').value="";
+			document.getElementById('finArret').value="";
+			
+			$("#motifSelectionne").html('');
+			$("#champTexteLong").val('');
+			document.getElementById('champMotif').value="";
+			document.getElementById('champMotif').title="";
+			afficherZoneSaisieMotif();
+			initEltOrdreMedical();
+			
+			if (navigator.userAgent.indexOf('MSIE') != -1){
+				inputPlaceholder(document.getElementById('champMotif'));
+				document.getElementById('champMotif').style.color='#888'
+			}
+			
+			// affichage du champ de saisie
+			$("#champSaisie").show();
+			$("#apres").hide();
+			$("#motifSelectionne").show();
+			$("#idListeMotif").show();
+			desactiverZonePeriodeArret();
+		}
+		
+		<!-- Action sur le lien "Liste des motifs" -->
+		function afficheListeMotifs(){
+			$.ajax({
+				type: 'GET',
+				url: '/RESTFullMotif/rest/motif/liste/',
+				dataType : 'json',
+	            success: function(data) {
+	            	document.getElementById('blocMotifs').innerHTML = "";
+	            	document.getElementById('alphabet').innerHTML = "";
+	            	createPopIn(data);
+	            },
+	            error: function() {
+		              alert('La requête n\'a pas abouti'); 
+				}
+	        });
+			
+			document.getElementById("popIn_listeMotifs").style.display="block";			
+		}
+		
+		<!-- Action sur le bouton croix de la popIn -->
+		function cacheListeMotifs(){ 
+			document.getElementById("popIn_listeMotifs").style.display="none";
+		}			
+		
+		<!-- Paramétrages du scrolling dans la liste des motifs -->
+		jQuery(function( $ ){ 
+			$.localScroll.defaults.axis = 'y';
+			$.localScroll({
+				target:'#blocMotifs',
+				queue:true,
+				duration:1200,
+				hash:true
+			});
+		});			
+		
+		<!-- Actions sur la sélection d'un motif dans la liste -->
+		function selectionMotif(valeur){ 
+			var motif = valeur.textContent;
+			var maxLength = 49;
+			if(motif.length > maxLength){
+				document.getElementById('champMotif').title=motif;
+				if (navigator.userAgent.indexOf('MSIE') != -1){					
+					motif=motif.substr(0,maxLength);				
+					motif=motif + " ..."
+				}
+			}
+			motifSelectionne=motif;
+			codeLibelle = valeur.id;
+			validationSaisie();
+	//			document.getElementById('champMotif').value=motif;
+	//			document.getElementById('champMotif').style.color='#000'
+			cacheListeMotifs();
+			document.getElementById("listeCategorie").style.display="none";
+		}
+	
+	   	/**
+		* Choix de la nature de l'arrêt.
+		*/
+		function choisirNatureArret(natureArret) {
+			if (natureArret.value == "complet") {
+				tempsComplet = true;
+				document.getElementById("radioGrossesse").style.display="block";
+				document.getElementById("titreDuree").innerHTML = "durée de l'arrêt" +
+				'<span id="divFicheDurees" class="ficheDurees" style="display: none;"><p class="PDF"><a id="pdf" target="_blank" href="" title="Ouvrir la fiche des durées indicatives">Fiche détaillée des durées indicatives</a></p></span>';
+				
+				document.getElementById("titreMotif").innerHTML = "Motif de l'arrêt de travail"+'<span class="obligatoire"></span>:</label>';
+				if (codeLibelle != null) {
+					//TODO Patch maquette bouton
+					if (motifSelectionne == "Fracture de la cheville" ) {
+						document.getElementById("divFicheDurees").style.display="block";
+						document.getElementById("tableauDurees").style.display="block";	
+					}
+				}
+				document.getElementById("blocModalitePartiel").style.display="none";
+				document.getElementById("blocModaliteComplet").style.display="block";
+				reInitChamp();
+			} else {
+				tempsComplet = false;
+				grossessePhatologie = false;
+				document.getElementById("radioGrossesse").style.display="none";
+				document.getElementById("titreDuree").innerHTML = "durée de la reprise à temps partiel" +
+				'<span id="divFicheDurees" class="ficheDurees" style="display: none;"><p class="PDF"><a id="pdf" target="_blank" href="" title="Ouvrir la fiche des durées indicatives">Fiche détaillée des durées indicatives</a></p></span>';
+				
+				document.getElementById("titreMotif").innerHTML = "Motif de la reprise"+'<span class="obligatoire"></span>:</label>';
+				document.getElementById("divFicheDurees").style.display="none";
+				document.getElementById("tableauDurees").style.display="none";
+				document.getElementById("blocModalitePartiel").style.display="block";
+				document.getElementById("blocModaliteComplet").style.display="none";
+				reInitChamp();
+			}
+		}
+
+		   /*
+	   	* FIX pour l'evenement onchange sur IE8
+	   	*/
+		function radioClick()
+		{
+		 	if (navigator.userAgent.indexOf('MSIE') != -1){
+				this.blur();  
+		 		this.focus();  
+			}  
+		}	
+		   
+	   /**
+	   	* Choix de l'element d'ordre médical.
+	   	*/
+	    function choisirElementOrdreMedical(choix) {
+		  
+	    	if(choix.value=="3"){
+	    		grossessePhatologie = true;
+	    		cacherZoneSaisieMotif();
+	    	}else {
+	    		grossessePhatologie = false;
+	    		afficherZoneSaisieMotif();
+			}
+
+	    	if(grossessePhatologie){
+	    		cacherZoneSaisieMotif();
+	    		//Cacher la zone durée indicative.
+	    		document.getElementById("divFicheDurees").style.display="none";
+	    		document.getElementById("tableauDurees").style.display="none";
+	    		
+	    	}else {
+	    		afficherZoneSaisieMotif();
+	    		//Afficher la zone durée indicative Si possible.
+	    		if (codeLibelle != null && tempsComplet) {
+	    			//TODO patchmaquette bouton
+	    			if (motifSelectionne == "Fracture de la cheville" ) {
+	    				document.getElementById("divFicheDurees").style.display="block";
+	    				document.getElementById("tableauDurees").style.display="block";
+	    			}					
+				}
+			}
+		}
+
+	    
+	    /**
+	     * Cacher la zone de saisie du motif.
+	     */
+	    function cacherZoneSaisieMotif() {	    	
+	    	document.getElementById("divSaisieMotif").style.display="none";
+		}
+	    
+	    /**
+	     * Cacher la zone de saisie du motif.
+	     */
+	    function afficherZoneSaisieMotif() {
+	    	document.getElementById("divSaisieMotif").style.display="block";
+// 	    	initZoneComplementInfo();
+		}
+	    
+	    function initEltOrdreMedical() {
+	    	document.getElementById("radioHorsL324").checked=true;
+		}
+	    
+	    function initZoneComplementInfo() {	    	
+	    	document.getElementById("crayonCompl").style.display="inline-block";
+	    	document.getElementById("saisiComplInfo").style.display="none";
+	    	document.getElementById("champTexteLong").value="";
+		}
+	
+	</script>
+	<style type="text/css">
+	
+		.periodeArret{
+			padding: 6px 16px 10px;
+			background-color: #efefef;
+			border-radius:6px;
+			-moz-border-radius:6px;
+			-webkit-border-radius:6px;
+		}
+		
+		.champDuree {
+			 margin-top : -2px;
+			 float :right;
+ 		   	 height: 22px;
+ 		   	 padding: 5px 10px 2px;
+		   	 border-radius: 6px;
+		   	 -moz-border-radius: 6px;
+		   	 -webkit-border-radius: 6px;
+ 		   	 behavior: url(PIE.htc);
+		   	 background: #DFE8F4;
+   	 	}
+	   	
+	   	.boutonDuree { 
+	   	display: inline-block;
+	    /* height: 24px; */
+	    margin: 0;
+	    padding: 0 8px 0 0;
+	    text-decoration: none !important;
+	    color: white;
+	    font-family: Verdana, Arial, Helvetica, sans-serif;
+	    font-size: 1em;
+	    font-weight: bold;
+	    cursor: default;
+	    width: auto !important;
+	    min-width: 50px;
+	 }
+	</style>
+</head>
+
+
+<body id="top" name="top">
+
+<!--PAGE-->
+<div id="page">
+	<!--ZONE ACTIONS-->
+	<div id="actions">    	
+        <div id="derniereConnexion">Dernière connexion : <b>02/05/2015 - 10:00</b></div>
+        <div id="btDeconnexion"><a class="btDeconnexion" href="#"><span>Déconnexion</span></a></div>
+    </div>
+
+	<!--ENTETE-->
+	<div id="header">
+		<h1>Mon Espace Pro</h1>
+        <div id="profession"><div class="zoneTexte">Médecin</div></div>
+        <div id="identification">
+        	<form action="" method="get">
+                <p><b>Dr Pierre DUPONT</b></p>
+                <p>Cabinet, num PS</p>
+                <p>120, avenue Gambetta</p>
+                <p>75000 PARIS</p>
+			</form>
+        </div>
+	</div>
+	<!--FIN ENTETE-->
+    
+    
+    <!--MENUS-->
+	<div id="menus">
+		<h1>Menus</h1>
+       	<ul id="menu" class="menu">
+        	<li class="actif"><a href="#" class="retAccueil"></a></li>			
+			<li><a href="#" class="sousMenus">Services patient</a>
+				<!--[if lt IE 7]><iframe></iframe><![endif]-->	
+				<ul>
+					<li><a href="#">Avis d’arrêt de travail</a></li>
+					<li><a href="#">ALD / protocole de soins du patient</a></li>
+					<li><a href="#">Certificats médicaux ATMP</a></li>
+					<li><a href="#">Demande d’accord préalable</a></li>
+					<li><a href="#">Suivi patient</a></li>
+					<li><a href="#">Historique des remboursements</a></li>
+					<li><a href="#">Compteur d’actes de masso-kinésithérapie</a></li>
+				</ul>
+			</li>
+            <li><a href="#" class="sousMenus">Activités</a>
+				<!--[if lt IE 7]><iframe></iframe><![endif]-->	
+				<ul>
+                	<li class="soustitre">Paiements</li>
+					<li><a href="#">Tiers Payant : Recherche par date de paiements</a></li>
+					<li><a href="#">Tiers Payant : Recherche par date d'actes</a></li>
+					<li><a href="#">Relevés mensuels de paiements</a></li>
+					<li><a href="#">Rémunération spécifique médecin traitant ALD</a></li>
+					<li><a href="#">Aides à la télétransmission</a></li>
+					<li><a href="#">Gardes et astreintes</a></li>
+					<li><a href="#">Indus</a></li>
+					<li><a href="#">Relevé d'honoraires</a></li>	
+					
+                	<li class="soustitre">Pratiques</li>
+					<li><a href="#">Le CAPI</a></li>
+					<li><a href="#">Patientèle médecin traitant</a></li>
+					<li><a href="#">Relevé individuel d'activité et de prescriptions</a></li>
+					<li><a href="#">Déclarer un décès à l'INSERM</a></li>
+					<li><a href="#">Netgarde : Gestion des gardes et astreintes</a></li>
+				</ul>		
+			</li>
+			<li><a href="#" class="sousMenus">Gestion du compte</a>
+				<!--[if lt IE 7]><iframe></iframe><![endif]-->	
+				<ul>
+					<li><a href="#">Code d'accès</a></li>
+					<li><a href="#">Question clé</a></li>
+					<li><a href="#">Adresse électronique</a></li>
+					<li><a href="#">Informations personnelles</a></li>
+					<li><a href="#">Service info paiements</a></li>
+				</ul>
+			</li>
+			<li><a href="#" class="sousMenus">Commandes</a>
+				<!--[if lt IE 7]><iframe></iframe><![endif]-->	
+				<ul>
+					<li><a href="#">Commander des imprimés</a></li>
+					<li><a href="#">Historique des commandes</a></li>
+					<li><a href="#">Formulaires en ligne</a></li>
+					<li><a href="#">Tests de diagnostic rapide angine</a></li>
+				</ul>
+			</li>
+			<li><a href="#" class="sousMenus">Boîte à info</a>
+				<!--[if lt IE 7]><iframe></iframe><![endif]-->	
+				<ul>
+					<li><a href="#">Nomenclature des actes CCAM</a></li>
+					<li><a href="#">Référentiels HAS</a></li>					
+					<li><a href="#">ameli.fr</a></li>
+				</ul>
+			</li>
+			<li><a href="#" class="sousMenus">Échanges</a>
+				<!--[if lt IE 7]><iframe></iframe><![endif]-->	
+				<ul>
+					<li><a href="#">Trouver un interlocuteur</a></li>
+					<li><a href="#">Contacter l'Assurance Maladie par courriel</a></li>					
+					<li><a href="#">Support technique</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	<!--MENUS-->
+	
+    
+    <!--CORPS DE PAGE-->
+	<div id="corpsDePage">
+		
+    	<!--colonne de gauche-->
+		<div id="colonneGauche">
+			<h2>Avis d'arrêt de travail en 5 clics</h2>
+            <div class="lignePointille"></div>           
+            <!--cadres-->	
+					
+			<div class="titreBlanc">
+                <div class="titreBlancBordGauche"></div>
+                <div class="titreBlancFond"><h3>Création d'un avis d'arrêt de travail</h3></div>
+                <div class="titreBlancBordDroit"></div>
+            </div>			
+			<div class="cadreXL">               
+                <div class="cadreAngleHD">
+                    <div class="cadreAngleBG">
+                    	<div class="cadreAngleBD">                  
+                    		<div class="zoneContenus">
+                                <!--CONTENUS CADRE-->
+								<form action="" method="">												
+									<h4>Nature de l'arrêt</h4>
+									<label for="btradio">Prescription d’un arrêt :</label>
+									<input type="radio" name="btradio" value="complet" onclick="radioClick()" onchange="choisirNatureArret(this);" CHECKED >temps complet</input>&nbsp;&nbsp;									
+									<input type="radio" name="btradio" value="partiel" onclick="radioClick()" onchange="choisirNatureArret(this);">temps partiel</input>
+									
+									<h4>éléments d'ordre médical</h4>										
+									<div class="item_reverse" style="display: inline-block;" >
+										<input type="radio" name="btradio2" value="1" id="radioHorsL324" onclick="radioClick()" onchange="choisirElementOrdreMedical(this);" CHECKED >Hors affection L324-1 et R613-69</input>&nbsp;									
+										<input type="radio" name="btradio2" value="2" id="radioL324" onclick="radioClick()" onchange="choisirElementOrdreMedical(this);">Affection L324-1 et R613-69</input>&nbsp;&nbsp;
+										<div id="radioGrossesse" style="float: right;">
+											<input type="radio" name="btradio2" value="3" onclick="radioClick()" onchange="choisirElementOrdreMedical(this);">Grossesse pathologique</input>								
+										</div>
+									</div>
+									<br/><br/>
+									<div class="blocGris">
+										<div class="eom">
+											<p class="bold">Saisissez le motif ou recherchez dans la liste :</p>
+											<img class="btAide" src="images/aide.gif" alt="Bouton Aide">
+										</div>
+										<div id="divSaisieMotif">
+											<label id="titreMotif" for="" class="champ alignDroit lg30">Motif de l'arrêt de travail<span class="obligatoire"></span>:</label>
+																						
+											<div id="champSaisie" class="champSaisie inlineBlock">												
+												<input id="champMotif" type="text" name="" size="40" value="" title="" class="" placeholder="Ex. : grippe, fracture, grossesse"/>
+												<script type="text/javascript" src="js/placeholder.js"></script>
+												<script type="text/javascript">
+													window.onload = function(){
+														inputPlaceholder( document.getElementById('champMotif') )
+													};
+												</script>
+												<div class="actionsSaisie">
+													<span id="btAnnulerSaisie" class="btValiderSaisie" onclick="validationSaisie()"></span>
+												</div>
+											</div>
+											<span id="idListeMotif" class="lienListeMotifs">&nbsp;>&nbsp;<a href="#" title="" onclick="afficheListeMotifs()">Liste des motifs</a></span>
+											<div id="apres" class="apresSaisi inlineBlock">
+													<span id="motifSelectionne" style="font-weight: bold;"></span><span id="resultat" class="btnAnnulerSaisie" onclick="reInitChamp();"></span>
+													<p id ="message_ocre" class="message_ocre">Le motif saisi est inconnu, veuillez choisir dans la liste ci-dessous </p>
+											</div>
+																						
+											<div id="listeCategorie" style="display:none">
+												<label class="champ alignDroit lg30">Motif<span class="obligatoire"></span>:</label>
+												<select id="categorie" class="cChamp lg50" onchange="choisirCategorie();">
+													<option value="0" label="Choisir dans la liste">Choisir dans la liste
+													</option>
+													<option value="Maladies du système ostéo-articulaire, des muscles et du tissu conjonctif" label="">Maladies du système ostéo-articulaire, des muscles et du tissu conjonctif
+													</option>
+													<option value="Troubles mentaux et du comportement" label="">Troubles mentaux et du comportement
+													</option>
+													<option value="Lésions traumatiques" label="Lésions traumatiques">Lésions traumatiques
+													</option>
+													<option value="Tumeurs" label="Tumeurs">Tumeurs
+													</option>
+													<option value="Maladies de l'appareil circulatoire" label="">Maladies de l'appareil circulatoire
+													</option>
+													<option value="Maladies infectieuses et parasitaires" label="">Maladies infectieuses et parasitaires
+													</option>
+													<option value="Maladies du système nerveux" label="">Maladies du système nerveux
+													</option>
+													<option value="Maladies de l'appareil digestif" label="">Maladies de l'appareil digestif
+													</option>
+													<option value="Maladies de l'appareil respiratoire" label="">Maladies de l'appareil respiratoire
+													</option>
+													<option value="Autres maladies" label="">Autres maladies
+													</option>
+												</select>
+											</div>
+										</div>
+										<div>
+											<label for="" class="champ alignDroit lg30">Complément d'information<span>&nbsp;</span>:</label>
+											<div id="crayonCompl" class="item_blocDepliable" style="display: inline-block;">
+												<img class="lienPicto" onclick="afficherSaisieCompl();" src="images/picto_modifier_plus.png" id="" alt="" />
+											</div>
+											<div id="saisiComplInfo" class="champLong lg69" style="display: none;">
+												<textarea id="champTexteLong" class="champTexteLong" name="" value="" rows="2"></textarea>
+												<div class="nbCaracteres">0/100 caractères</div>
+											</div>
+										</div>
+									</div>
+										<h4 id="titreDuree">Durée de l'arrêt
+											<span id="divFicheDurees" class="ficheDurees" style="display: none;">
+												<p class="PDF">
+													<a id="pdf" target="_blank" href="" title="Ouvrir la fiche des durées indicatives">Fiche détaillée des durées indicatives</a>
+												</p>
+											</span>									
+										</h4>
+										<div id="tableauDurees" class="profilPatient">
+<!-- 											<div id="blocTypeEmploi" style="display: none;"> -->
+<!-- 													<label for="" class="champ alignDroit lg30">Emploi :</label> -->
+<!-- 													<select id="typeEmploi" class="champ cTaille140" onchange="choisirTypeEmploi(this.value);"> -->
+<!-- 													</select> -->
+<!-- 											</div> -->
+<!-- 											<div id="blocTypeComplement" style="display: none;"> -->
+<!-- 												<label for="" class="champ alignDroit lg30">Type Complément :</label> -->
+<!-- 												<select id="typeComplement" class="champ cTaille140" onchange="choisirComplement(this.value);"></select>												 -->
+<!-- 											</div> -->
+<!-- 											<div id="blocTypePathologie" style="display: none;">											 -->
+<!-- 												<label for="" class="champ alignDroit lg30">Type Pathologie :</label> -->
+<!-- 												<select id="typePathologie" class="champ lg60" onchange="choisirPathologie(this.value);">											 -->
+<!-- 												</select> -->
+<!-- 											</div> -->
+										<div id="liste1" class="listes">
+											<label for="liste1" class="inlineBlock lg20 txtalignDroit">Type d'emploi :</label>
+											<ul id="listeEmploi" class="inlineBlock lg79">
+												<li style="width:25%" selected title="Pas de charge" onclick="choisirEmploi(0);"><div class="valeur"><span>Travail sédentaire</span></div></li>
+												<li style="width:25%" id="leger" onclick="choisirEmploi(1);"><div class="valeur"><span>Travail physique léger</span></div></li>
+												<li style="width:25%" id="modere" onclick="choisirEmploi(2);"><div class="valeur"><span>Travail physique modéré</span></div></li>
+												<li style="width:25%" id="lourd" onclick="choisirEmploi(3);"><div class="valeur"><span>Travail physique lourd</span></div></li>											
+											</ul>
+										</div>
+										<div id="liste2" class="listes">
+											<label for="liste2" class="inlineBlock lg20 txtalignDroit">Type de traitement :</label>
+											<ul id="listePatho" class="inlineBlock lg79">
+												<li style="width:25%" selected  onclick="choisirPathologie2(0);"><div class="valeur"><span>Uni Malléolaire</span></div><div id="duree0" class="nbJours">10 jours</div></li>
+												<li style="width:25%" onclick="choisirPathologie2(1);"><div class="valeur"><span>Bi Malléolaire</span></div><div id="duree1" class="nbJours">14 jours</div></li>
+												<li style="width:25%" onclick="choisirPathologie2(2);"><div class="valeur"><span>Traitement chirurgical</span></div><div id="duree2" class="nbJours">28 jours</div></li>
+												<li style="width:25%" onclick="choisirPathologie2(3);"><div class="valeur"><span>Tri Malléolaire</span></div><div id="duree3" class="nbJours">28 jours</div></li>												
+											</ul>
+										</div>
+										</div>
+									<div id="resultatDuree" class="resultatDuree inactif">
+										<div class="datesArret lg71">
+											<span>
+												<label for="">A partir du <span class="obligatoire"></span>:</label>
+												<input id="debutArret" type="text" class="champ" name="" value="14/06/2016" size="10" style="" disabled/>
+												<img src="images/calendrier.gif" alt="Bouton calendrier" class="calend"/>
+											</span>
+											<span class="jusquau">	
+												<label for="">Jusqu'au (inclus)<span class="obligatoire"></span>:</label>
+												<input id="finArret" type="text" class="champ" name="" value="" size="8" style="" disabled/>
+												<img src="images/calendrier.gif" alt="Bouton calendrier" class="calend"/>
+											</span>
+										</div>
+										<div class="dureeArret lg25">
+											<label for="">Durée</label>
+											<input id="dureeArret" type="text" class="champ" name="" value="" size="3" style="width: 30px;" onchange ="calculerDateFin(this.value);" disabled/>
+											<p>jour(s)</p>
+										</div>
+									</div>	
+									<br/>
+									<div id="blocModaliteComplet">
+										<h4>Modalités de l'arrêt</h4>
+										<div class="item_blocDepliable">
+											<label>Avis d'arrêt de travail initial</label>
+											<img class="lienPicto" onclick="" src="images/picto_modifier_plus.png" id="" alt="" />												
+										</div>
+										<div class="item_blocDepliable">
+											<label>Adresse de visite habituelle</label>
+											<img class="lienPicto" onclick="" src="images/picto_modifier_plus.png" id="" alt="" />												
+										</div>
+										<div class="item_blocDepliable">
+											<label>Assuré(e) sans précision sur l'employeur</label>
+											<img class="lienPicto" onclick="" src="images/picto_modifier_plus.png" id="" alt="" />												
+										</div>
+										<div class="item_reverse">
+											<label>Sorties autorisées avec restriction d'horaire à partir du <span class="obligatoire"></span></label>
+											<input type="text" id="dateSortie" class="champ" name="" value="14/06/2016" size="10" style=""/>
+											<img src="images/calendrier.gif" alt="Bouton calendrier" class="calend"/>
+											<img class="lienPicto" src="images/picto_reverse.png" alt="Bouton d'options alternative" id="" onclick="" />	
+											<img class="btAide" src="images/aide.gif" alt="Bouton Aide">
+										</div>
+										<br />
+										<div class="item_reverse">
+											<label>L'arrêt ne fait pas suite à un accident causé par un tiers</label>										
+											<img class="lienPicto" src="images/picto_reverse.png" alt="Bouton d'options alternative" id="" onclick="" />
+										</div>
+										<div class="item_reverse">
+											<label>L'arrêt ne fait pas suite à une cure thermale</label>										
+											<img class="lienPicto" src="images/picto_reverse.png" alt="Bouton d'options alternative" id="" onclick="" />
+										</div>
+										<div class="item_reverse">
+											<label>L'arrêt n'est pas en rapport avec l'affection pour laquelle l'assuré est pensionné de guerre</label>										
+											<img class="lienPicto" src="images/picto_reverse.png" alt="Bouton d'options alternative" id="" onclick="" />
+										</div>
+										<div class="item_reverse">
+											<label>L'arrêt n'est pas suivi d'une reprise à temps partiel thérapeutique</label>										
+											<img class="lienPicto" src="images/picto_reverse.png" alt="Bouton d'options alternative" id="" onclick="" />
+										</div>
+									</div>
+									<div id="blocModalitePartiel" style="display: none;">
+										<h4>Modalités de la reprise à temps partiel</h4>
+										<div class="item_blocDepliable">
+											<label>Reprise de travail à temps partiel thérapeutique initiale</label>
+											<img class="lienPicto" onclick="" src="images/picto_modifier_plus.png" id="" alt="" />												
+										</div>
+										<div class="item_blocDepliable">
+											<label>Adresse de visite habituelle</label>
+											<img class="lienPicto" onclick="" src="images/picto_modifier_plus.png" id="" alt="" />												
+										</div>
+										<div class="item_blocDepliable">
+											<label>Assuré(e) sans précision sur l'employeur</label>
+											<img class="lienPicto" onclick="" src="images/picto_modifier_plus.png" id="" alt="" />												
+										</div>
+										<div class="item_reverse">
+											<label>La reprise ne fait pas suite à un accident causé par un tiers</label>										
+											<img class="lienPicto" src="images/picto_reverse.png" alt="Bouton d'options alternative" id="" onclick="" />
+										</div>
+										<div class="item_reverse">
+											<label>La reprise ne fait pas suite à une cure thermale</label>										
+											<img class="lienPicto" src="images/picto_reverse.png" alt="Bouton d'options alternative" id="" onclick="" />
+										</div>
+										<div class="item_reverse">
+											<label>La reprise n'est pas en rapport avec l'affection pour laquelle l'assuré est pensionné de guerre</label>										
+											<img class="lienPicto" src="images/picto_reverse.png" alt="Bouton d'options alternative" id="" onclick="" />
+										</div>
+									</div>
+									<br />
+									<p class="mentionObligatoire">* Champ(s) obligatoire(s)</p>
+									<div class="separateurGroupeElements636"></div>	
+									<div class="conditions">
+										<input type="checkbox" class="" name="btradio" value="" id="btradio" />
+										<label for="btradio" class="">
+											Mon patient accepte que je transmette le présent avis d'arrêt de travail pour son compte et est informé des <a href="" title="">textes applicables</a>.<br />J'accepte les <a href="" title="">conditions de la transmission</a> et j'ai pris connaissance des <a href="" title="">textes applicables</a>.
+										</label>
+									</div>
+									
+									<div class="groupeBoutons">
+										<div class="alignGauche">
+											<a class="bouton" href="#"><span>Abandonner</span></a>
+										</div>
+										<div class="alignDroite">
+											<a class="bouton" href="#"><span>Imprimer sans transmettre</span></a>
+											<a class="boutonInaccessible" href="#"><span>Transmettre</span></a>
+										</div>											
+									</div>
+								</form>
+							</div>
+						</div>
+                    </div>
+				</div>
+				<div class="fond_popIn" id="popIn_listeMotifs" style="display:none;">
+					<div class="popIn">
+						<div class="popIn_entete">
+							<h2>Espace pro</h2>
+							<img src="images/windowClose.gif" alt="Bouton fermer la fenêtre" onClick="cacheListeMotifs()"/>
+						</div>
+						<div class="popIn_contenu">
+							<div class="titreBlanc">
+								<div class="titreBlancBordGauche"></div>
+								<div class="titreBlancFond"><h3>Liste des motifs</h3></div>
+								<div class="titreBlancBordDroit"></div>
+							</div>
+							<div class="cadreFenetre">               
+								<div class="cadreAngleHD">
+									<div class="cadreAngleBG">
+										<div class="cadreAngleBD">                  
+											<div class="zoneContenus">
+												<p><b>Recherchez un motif par choix alphabétique :</b></p>
+												<ul id="alphabet" class="alphabet">
+												</ul>
+												<div class="separateurGroupeElements560"></div>
+												<div id="blocMotifs" class="blocMotifs">
+													
+												</div>
+												<div class="clearFloat"></div>  
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+            </div>
+			
+		</div>
+        <!--fin colonne de gauche-->        
+        <!--colonne de droite-->
+		<div id="colonneDroite">
+        	<div class="titreBleu">
+                <div class="titreBleuBordGauche"></div>
+                <div class="titreBleuFond"><h3>Identification Patient</h3></div>
+                <div class="titreBleuBordDroit"></div>
+            </div>
+			<div class="cadreDroite">               
+                <div class="cadreAngleHD">
+                    <div class="cadreAngleBG">
+                    	<div class="cadreAngleBD">                  
+                    		<div class="zoneContenus">
+                                <!--CONTENUS CADRE-->
+                                <form action="" method="">								
+									<div id="donneesPatient">	
+										<div><label for="nom" class="resultat" >Nom :</label><span id="nom" class="resultat majuscule">Dupont</span></div>
+										<div><label for="prenom" class="resultat" >Prénom :</label><span id="prenom" class="resultat ">Marie</span></div>
+										<div><label for="nir" class="resultat" >NIR :</label><span id="nir" class="resultat ">2510775110015 - 17</span></div>
+										<div><label for="dateNaissance" class="resultat" >Né(e) le :</label><span id="dateNaissance" class="resultat ">18/07/1942</span></div>
+										<div><label for="rang" class="resultat" >Rang :</label><span id="rang" class="resultat ">1</span></div>
+										<div><label for="regime" class="resultat" >Régime :</label><span id="regime" class="resultat ">Régime Général</span></div>
+										<div><label for="caisse" class="resultat" >Caisse de rattachement :</label><span id="caisse" class="resultat ">CPAM Paris</span></div>
+									</div>
+									<br />
+									<div id="droits">
+										<div><label for="centreGestion" class="resultat" >Centre de gestion :</label><span id="centreGestion" class="resultat majuscule">0000</span></div>
+										<div><label for="dateDroit" class="resultat" >Droit à la date du jour :</label><span id="dateDroit" class="resultat ">*</span></div>
+										<div><label for="exoneration" class="resultat" >Exonération :</label><span id="exoneration" class="resultat majuscule">*</span></div>
+										<div><label for="acs" class="resultat" >ACS :</label><span id="acs" class="resultat ">*</span></div>
+										<div><label for="cmuc" class="resultat" >CMUC :</label><span id="cmuc" class="resultat ">*</span></div>
+										<div><label for="ame" class="resultat" >AME :</label><span id="ame" class="resultat ">*</span></div>
+										<div><label for="mt" class="resultat" >MT :</label><span id="mt" class="resultat ">NON</span></div>
+										<div class="message_bleu">* Information non disponible pour ce régime ou ce patient.</div>
+									</div>									
+									<br />
+									<p><a href="#" title="" alt="">Insérer la carte vitale d'un autre patient</a> ou <a href="#" title="" alt="">Saisir le NIR d'un autre patient</a></p>
+																	
+									   
+									<div id="groupeBoutons" class="groupeBoutons">
+										<div class="alignDroite">
+											<a href="#" title="#"><img src="images/imprimer.gif" alt="bouton impression"/></a>
+											<a href="#" title="#"><img src="images/aide.gif" alt="bouton aide"/></a>
+										</div>
+									</div>
+								</form>
+                    		</div>
+							<div class="clearFloat"></div> 
+						</div>
+                    </div>
+				</div>
+            </div>
+            
+            <!--Gestion des float-->
+            <div class="clearFloat"></div>  
+			
+			
+        </div>
+		
+		
+			
+			
+        <!--fin colonne de droite-->
+		
+		
+        	
+	</div>
+	<!--FIN CORPS DE PAGE-->
+
+
+	<!--PIEDS DE PAGE-->
+	<div id="footer">
+		<h2>Les liens pratiques</h2>
+		<div id="liensGauches">
+			<ul>
+				<li><a href="#" title="numéro de version" accesskey="7">n° version</a></li>
+				<li><a href="#" title="informations légales" accesskey="3">informations légales</a></li>
+				<li class="vosTelechargements"><a href="#" title="vos téléchargements" accesskey="4">vos téléchargements</a></li>
+			</ul>
+		</div>
+		<div id="prerequis">
+			<a href="" title=""><img src="images/get_adobe_reader.png" alt="Bouton Acrobar Reader" /></a>
+			<a href="" title=""><img src="images/get_adobe_flash_player.png" alt="Bouton Flash Player" /></a>
+			<a href="" title="">Pré-requis</a>
+		</div>
+	</div>
+	<!--FIN PIEDS DE PAGE-->
+</div>
+<!--FIN PAGE-->
+
+</body>
+
+</html>

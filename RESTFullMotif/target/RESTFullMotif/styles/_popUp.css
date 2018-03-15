@@ -1,0 +1,28 @@
+
+html.popUp{background:#dddddc}
+html.popUp body{margin:0;padding:0}
+
+.popUp #page{
+	margin:0;
+	padding:20px;
+	min-height:100px;
+	overflow:hidden;
+	width:100%;
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+}
+.popUp #corpsDePage{
+	margin:0;
+	padding:0;
+	min-height:100px;
+	overflow:hidden;
+	width:inherit
+}
+
+.popUp .cadre{
+	margin:0;
+	padding:0;
+	min-height:100px;
+	width:inherit
+}

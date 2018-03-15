@@ -1,0 +1,152 @@
+
+.entete_rubrique{
+	width:636px;	
+	margin:0 0 30px 0;
+	padding:0;
+	height:auto !important;
+	height:135px;
+	min-height:135px;
+}
+
+.chapeau{
+	display:block;
+	padding:0;
+	background-color:#F3F3F2;
+}
+.chapeau.gauche{width:250px;margin:0 15px 30px 0;float:left;}
+.chapeau.large{width:100%;margin:0 30px 15px 0;}
+.chapeau img{
+	float:left;
+	max-width:230px;
+	width:auto;
+	margin:3px 10px 5px 0;
+}
+.chapeau p{
+	color: #555555;
+	margin:0 0 10px;
+	font-weight:bold;
+}
+.chapeau .message_bleu,.chapeau .message_ocre{
+	display:table-cell;
+	height:30px !important;
+}
+
+.signets{
+	float:left;
+	display:block;
+	width:370px;
+	margin:0 0 30px 0;
+	background-color:#F5F5F5;
+}
+.signets ul{
+	margin:0;
+	padding:0;
+	background:transparent;
+	width:350px;
+}
+.signets li{
+	list-style-type: none;
+	background:url(../images/flecheBleuePetite.gif) no-repeat;
+	margin:0 0 5px 0;
+	padding:0 0 0 15px;
+	height:auto !important;
+	height:16px;
+	min-height:16px;
+	line-height:1.2em;
+}
+
+.menuContextuel{
+	float:left;
+	display:block;
+	width:370px;
+	margin:0 0 30px 0;
+	padding:0;
+	background-color:#F5F5F5;
+}
+.menuContextuel .zoneContenus{
+	margin:0;
+	padding:12px 0;
+	font-size:1em;
+	height:auto !important;
+	height:50px;
+	min-height:50px;
+	background-color:transparent;
+}
+.menuContextuel ul{
+	margin:0;
+	padding:0;
+	background:transparent;
+	border-bottom:1px solid white;
+}
+.menuContextuel ul ul{
+	margin:0;
+	padding:0 0 3px 20px;
+	background:transparent;
+	width:335px;
+	border:none !important;
+}
+.menuContextuel h4{
+	margin:0;
+	padding:5px 10px;
+	background:transparent;
+	line-height:1em;
+	font-size:1em;
+	color:#4B4948;
+	border-top:5px solid #DBDCDD;
+}
+.menuContextuel li{
+	list-style-type: none;	
+	border-top:1px solid white;
+	margin:0;
+	padding:0;
+	height:auto !important;
+	height:16px;
+	min-height:16px;
+}
+.menuContextuel li a{
+	display:block;	
+	height:16px;
+	margin:0;
+	padding:3px 10px 0 10px;
+	line-height:1em;
+}
+.menuContextuel li a:hover{
+	text-decoration:none;
+	background-color:#ECEDEE;
+}
+.menuContextuel li span{
+	float:right;
+	margin:-15px 5px 0 0;
+	width:30px;
+	height:16px;
+	background:transparent;
+}
+.menuContextuel li span img.btPlusMoins{
+	float:right;
+	margin:0 0 0 0;
+}
+.menuContextuel li span img.alerte{
+	float:left;
+	margin:1px 0 0 0;
+	padding:0;
+}
+.menuContextuel li li{
+	list-style-type: none;
+	margin:0;
+	padding:0;
+	border:none !important;
+}
+.menuContextuel li li a{
+	display:block;
+	height:16px;
+	margin:0;
+	padding:0 0 3px 10px;
+	line-height:1.3em;
+	background:url(../images/flecheBleuePetite.gif) no-repeat;
+}
+.menuContextuel li li a:hover{
+	text-decoration:none;
+	background:url(../images/flecheBleuePetite.gif) no-repeat;
+	background-color:#F5F5F5;
+}
+

@@ -1,0 +1,56 @@
+<table class="cTableauTriable" style="width:100%; margin-top:0; border-spacing : 0; border-collapse:inherit">
+	<colgroup>
+		<col width="25%"></col>
+		<col width="25%"></col>
+		<col width="25%"></col>
+		<col width="25%"></col>
+	</colgroup>
+	<tr>
+		<th class="cCentre hauteur75 cSansMarge" colspan="2" rowspan="2">Type d'emploi</th>
+		<th class="cCentre hauteur30 cSansMarge" colspan="2">Dur&eacute;e indicative</th>		
+	</tr>
+	<tr>
+		<th class="cCentre hauteur45 cSansMarge">C&oelig;lioscopie</th>		
+		<th class="cCentre hauteur45 cSansMarge">Chirurgie<br/>&agrave; ciel ouvert</th>	
+	</tr>
+	<tr class="alt">
+		<td colspan="2" class="cCentre">Travail s&eacute;dentaire</td>
+		<td class="cCentre" rowspan="2">
+			<input type="radio" style="background: transparent;" name="radioDuree" value="7" onClick="onClicktableauDuree(this)"/>
+			<label for="duree1">7 jours</label>
+		</td>	
+		<td class="cCentre" rowspan="2">
+			<input type="radio" style="background: transparent;" name="radioDuree" value="28" onClick="onClicktableauDuree(this)"/>
+			<label for="duree1">28 jours</label>
+		</td>			
+	</tr>
+	<tr>
+		<td class="cCentre">Travail physique l&eacute;ger</td>
+		<td class="cCentre">Charge ponctuelle &lt; 10 kg<br/>ou charge r&eacute;p&eacute;t&eacute;e &lt; 5kg</td>
+	</tr>
+	<tr class="alt">
+		<td class="cCentre">Travail physique mod&eacute;r&eacute;</td>
+		<td class="cCentre">Charge ponctuelle &lt; 20 kg<br/>ou charge r&eacute;p&eacute;t&eacute;e &lt; 10kg</td>
+		<td class="cCentre">
+			<input type="radio" style="background: transparent;" name="radioDuree" value="14" onClick="onClicktableauDuree(this)"/>
+			<label for="duree5">14 jours</label> 
+		</td>		
+		<td class="cCentre">
+			<input type="radio" style="background: transparent;" name="radioDuree" value="35" onClick="onClicktableauDuree(this)"/>
+			<label for="duree5">35 jours</label> 
+		</td>	
+	</tr>
+	<tr>
+		<td class="cCentre sansMarge">Travail physique lourd</td>
+		<td class="cCentre sansMarge">Charge &lt; 25kg</td>
+		<td class="cCentre">
+			<input type="radio" style="background: transparent;" name="radioDuree" value="21" onClick="onClicktableauDuree(this)"/>
+			<label for="duree7">21 jours</label> 
+		</td>
+		<td class="cCentre">
+			<input type="radio" style="background: transparent;" name="radioDuree" value="42" onClick="onClicktableauDuree(this)"/>
+			<label for="duree7">42 jours</label> 
+		</td>
+	</tr>
+</table>
+

@@ -1,0 +1,34 @@
+/*Légendes*/
+.groupeLegendes{
+	position:relative;
+	min-height:30px;
+	background:#fff;
+	border-radius:6px;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	behavior:url(PIE.htc);
+	padding:10px 10px 5px 10px;
+}
+
+.legende{
+	clear:both;
+	margin:0 0 5px;
+	padding:0;
+	line-height:16px;
+}
+.legende span{
+	display:inline-block;
+	vertical-align:middle;
+	width:16px;
+	height:16px;
+	margin:0 5px 0 0 !important
+}
+.legende span.valeur1{background:#d4a700}
+.legende span.valeur2{background:#00a6c4}
+.legende span.valeur3{background:#008ba4}
+.legende p{
+	display:inline-block;
+	vertical-align:top;
+	margin:2px 0 0 !important;
+	width:90%
+}

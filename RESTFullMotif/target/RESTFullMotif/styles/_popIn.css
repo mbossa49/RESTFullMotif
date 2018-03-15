@@ -1,0 +1,104 @@
+/*POP'IN*/
+.fond_popIn{
+	position:absolute;
+	top:0;
+	left:0;
+	overflow:hidden;
+	z-index:100;
+	width:100%;
+	height:100%;	
+	display:block;	
+	-webkit-border-radius:0 8px 8px 8px;
+	-moz-border-radius:0 8px 8px 8px;
+	-khtml-border-radius:0 8px 8px 8px;
+	-o-border-radius:0 8px 8px 8px;
+	border-radius:0 8px 8px 8px;
+	-pie-background: rgba(0,0,0,0.3);
+	background:rgba(0,0,0,0.3);	
+	behavior:url(PIE.htc);
+}
+/*POP'IN pour cadre principal*/
+.popIn{
+	background:#DDDDDC;
+	position:relative;
+	top:20px;
+	margin:0 auto;
+	padding:0;
+	z-index:110;
+	min-height:50px;
+	overflow:hidden;
+}
+.popIn .popIn_entete{
+	position:relative;
+	top:0;
+	left:0;
+	height:24px;
+	width:auto;
+	margin:0;
+	padding:0;
+	background:url(../images/barreFenetre_fond.png) repeat-x;/*v2.4*/
+	z-index:100;
+}
+.popIn .popIn_entete h2{
+	overflow:auto;
+	margin:0 0 0 5px;
+	font-size:1em;
+	font-weight:bold;
+	color:#666;/*v2.4*/
+	line-height:22px;/*v2.4*/
+}
+.popIn_entete img{
+	position:absolute;
+	top:0;
+	right:0;
+	background:transparent;
+	width:20px;
+	height:20px;
+	margin:2px;
+	cursor:pointer;
+}
+.popIn_entete a{
+	margin:0;
+	padding:0;
+}
+.popIn .popIn_contenu{
+	width:auto;
+	background:transparent;
+	margin:20px;
+	z-index:100;
+	font-size:1em;
+	color:#555555;
+}
+.popIn .popIn_contenu .cadre .zoneContenus{min-height:30px !important;padding:10px !important}
+.popIn .popIn_contenu h3,.popIn .popIn_contenu p{	
+	overflow:auto;
+}
+/*POP'IN pour cadre droite*/
+.cadreDroite .popIn{
+	width:180px;
+	position:relative;
+	top:20px;
+	margin:0 12px;
+	padding:10px;
+	background:#fff;
+	z-index:100;	
+	vertical-align:middle;
+	display:inline-block;
+	font-size:1em;
+	line-height:1em;
+	word-wrap: break-word;
+	-webkit-hyphens: auto;
+	-moz-hyphens: auto;
+	-ms-hyphens: auto;
+	-o-hyphens: auto;
+	hyphens: auto;
+	-webkit-border-radius:8px;
+	-moz-border-radius:8px;
+	-khtml-border-radius:8px;
+	-o-border-radius:8px;
+	border-radius:8px;
+	behavior:url(PIE.htc);
+	text-align:center;
+}
+.cadreDroite .popIn div{text-align:left;}
+

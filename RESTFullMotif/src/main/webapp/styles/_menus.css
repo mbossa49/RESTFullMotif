@@ -1,0 +1,211 @@
+/* MENUS */
+#menus{
+	width:950px;
+	margin:0;
+	padding:0;
+	background:url(../images/menus_fond.png) repeat-x;
+	font-size:0.9em;
+	z-index:15;
+	height:20px;
+	white-space:nowrap;
+	?white-space:normal !important;
+}
+
+#menus h1{
+	position:absolute;
+	top:-300px;
+}
+
+/* MENU  NIVEAU 1*/
+#menus ul.menu {
+	margin:0;
+	padding:0;
+	list-style:none;
+	height:20px;
+	overflow:hidden;
+}
+
+#menus ul.menu li {
+	float:left;
+	display:inline;
+	margin:0 2px 0 0;
+	padding:0;
+	background:url(../images/menu_fondItemInactif.png) repeat-x;
+}
+#menus ul.menu li a{
+	display:block;
+	color:black;
+	text-decoration:none;
+	line-height:19px;
+	padding:5px 7px 0 7px;
+	margin:0;
+}
+#menus ul.menu li a.sousMenus{
+	background:url(../images/menu_flecheInactive.png) no-repeat right;
+	padding:0 14px 0 5px;
+	margin:0 3px 0 2px;
+}
+#menus ul.menu li a.nonActif{
+	padding:0 7px !important;
+	background:none;
+	color:#fff;
+}
+
+/* SOUS-MENU NIVEAU  2 */
+#menus ul.menu ul {
+	position:absolute;
+	display:none;
+	margin:0px 0 0 -1px;
+	padding:0 0 2px 0;
+	list-style:none;
+	border:solid 0.1em #ddd;
+	background-color:white;
+	z-index:15;
+	overflow:hidden;
+	box-shadow: 3px 1px 5px #B9B9B8;
+}
+#menus ul.menu ul li {
+	display:block;
+	clear:left;
+	margin:0;
+	padding:0;
+	color:black;
+	background:#fff;
+	width:100%;
+}
+#menus ul.menu ul li a{
+	display:block;
+	margin:0;
+	padding:4px 7px;
+	font-size:1em;
+	font-weight:normal;
+	line-height:1.1em;
+	color:#122F5F !important;
+	text-decoration:none;
+	background:#fff;
+	width:100%;
+}
+#menus ul.menu ul li.soustitre{
+	display:block;
+	font-size:1em;
+	font-weight:bold;
+	line-height:1.1em;
+	padding:7px 0 2px 7px !important;
+	margin:0 !important;
+	color:black !important;
+	clear:both;
+	background:none;
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;
+}
+
+/*Iframe pour IE6 - pour affichage au-dessus des form Select*/
+#menus iframe{
+	position:absolute;
+	display:none;
+	border:none;
+	margin:5px 0 0 -1px;
+	padding:0 0 2px 0;
+	filter:mask();
+	z-index:10;
+	width:202px;
+}
+
+/*GESTION FLOATS*/
+#menus ul.menu{
+	clear:left;
+}
+
+/*SURVOLS*/
+/*survol menu  niveau 1*/
+#menus ul.menu li:hover,
+#menus ul.menu li.sfhover{
+	background:url(../images/menu_fondItemActif.png) repeat-x;
+	/*cursor:pointer;*/
+}
+#menus ul.menu li:hover a,
+#menus ul.menu li.sfhover a{
+	display:block;
+	color:white;
+	text-decoration:none;
+	background-color:none;
+}
+#menus ul.menu li:hover a.sousMenus,
+#menus ul.menu li.sfhover a.sousMenus{
+	background:url(../images/menu_flecheActive.png) no-repeat right !important;
+	background-color:none;
+}
+
+#menus ul.menu li:hover a.nonActif,
+#menus ul.menu li.sfhover a.nonActif{
+	background:url(../images/menu_fondItemInactif.png) repeat-x;
+	color:white;
+	cursor:default;
+	padding:0 7px !important;
+}
+
+/*survol sous-menu niveau 2*/
+#menus ul.menu ul li:hover a,
+#menus ul.menu ul li.sfhover a{
+	display:block;
+	width:100%;
+	color:#071325 !important;
+	text-decoration:none;	
+	background-color:#eee;
+	z-index:99;
+}
+
+/*affichage ou non des sous-menus*/
+#menus ul.menu li:hover ul,
+#menus ul.menu li.sfhover ul,
+#menus ul.menu li:hover ul li:hover ul,
+#menus ul.menu li.sfhover ul li.sfhover ul,
+#menus ul.menu li.sfhover iframe{
+	display:block;
+}
+#menus ul.menu li:hover ul ul,
+#menus ul.menu li.sfhover ul ul,
+#menus ul.menu li:hover ul li:hover ul ul,
+#menus ul.menu li.sfhover ul li.sfhover ul ul{
+	display:none;
+}
+
+/*MENU ACTIF*/
+#menus ul.menu li.actif{
+	background:url(../images/menu_fondItemActif.png) repeat-x;
+}
+#menus ul.menu li.actif a{
+	color:white;
+}
+#menus ul.menu li.actif a.sousMenus{
+	background:url(../images/menu_flecheActive.png) no-repeat right !important;
+	color:white;
+}
+
+/*RETOUR ACCUEIL*/
+#menus ul.menu li.retAccueil{
+	float:left;
+	display:inline;
+	margin:0 2px 0 0;
+	padding:0;
+}
+#menus ul.menu li a.retAccueil {
+	display:block;
+	text-decoration:none;
+	background:url(../images/menuAccueil_fondItemInactif.png) no-repeat;
+	margin:0;
+	padding:0;
+	width:30px;
+	height:20px;	
+}
+#menus ul.menu li:hover a.retAccueil{
+	background:url(../images/menuAccueil_fondItemActif.png) no-repeat;
+	cursor:pointer;
+}
+#menus ul.menu li.actif a.retAccueil {
+	background:url(../images/menuAccueil_fondItemActif.png) no-repeat;
+	width:30px;
+	height:20px;
+	margin:0;
+	padding:0;
+}

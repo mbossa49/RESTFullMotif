@@ -1,0 +1,75 @@
+/*CORPS DE PAGE*/
+#corpsDePage {
+	width:890px;
+	padding:30px 30px 0 30px;
+	margin:0;
+	background-color:transparent;
+	height:auto !important;
+	height:450px;
+	min-height:450px;
+	font-size:0.9em !important;
+	z-index:0;
+}
+
+#colonneGauche {
+	float:left;
+	width:636px;
+	padding:0;
+	margin:0 30px 0 0;
+	background-color:transparent;
+	height:auto !important;
+	height:300px;
+	min-height:300px;
+}
+#colonneGauche #cadreDoubleColonnes {
+	display:block;
+	width:636px;	
+	margin:0;
+	padding:0;
+	height:auto !important;
+	height:110px;
+	min-height:110px;
+}
+#colonneGauche .sousColonne {
+	float:left;
+	width:303px;
+	padding:0;
+	margin:0;
+	background-color:transparent;
+	height:auto !important;
+	height:100px;
+	min-height:100px;
+}
+#colonneGauche .marge {
+	float:left;
+	width:30px;
+	padding:0;
+	margin:0;
+	background-color:transparent;
+	height:auto !important;
+	height:100px;
+	min-height:100px;
+}
+#colonneDroite {
+	float:left;
+	width:224px;
+	padding:0;
+	margin:0 0 30px 0;
+	background-color:transparent;
+	height:auto !important;
+	height:100px;
+	min-height:100px;
+}
+#corpsDePageIndispo {
+	width:890px;
+	padding:30px 30px 0 30px;
+	margin:0;
+	background-color:white;
+	height:auto !important;
+	height:250px;
+	min-height:250px;
+	font-size:0.9em !important;
+	z-index:0;
+}
+
+/*FIN CORPS DE PAGE*/

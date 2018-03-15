@@ -1,0 +1,795 @@
+/*Formulaires*/
+form{
+	padding:0;
+	margin:0;
+	border:none;
+	color:#555;
+	height:auto !important;
+	height:30px;
+	min-height:30px;	
+	background-color:transparent;
+	z-index:0;
+}
+form p{
+	line-height:1.3em;
+	margin:0 0 5px;
+}
+form div{
+	clear:both;
+	display:block;
+	margin:0 0 1px;
+	padding:0;
+}
+form div.groupeElements{
+	clear:both;
+	padding:0 0 25px 0;
+	margin:0;
+	height:auto !important;
+	height:10px;
+	min-height:10px;
+}
+
+
+/*éléments de formulaires*/
+label{
+	font-size:1em;
+	line-height:1.3em;
+}
+input{
+	border:none;
+	padding:0;
+}
+
+/*positionnements*/
+.floatLeft{float:left}
+.floatRight{float:right}
+.alignDroit{
+	text-align:right;
+	float:left;	
+}
+.alignGauche{
+	text-align:left;
+	float:left;	
+}
+.inlineBlock{display:inline-block}
+.txtalignDroit{
+	text-align:right;	
+}
+
+/*éléments obligatoires*/
+form span.obligatoire {
+	display:inline-block;
+	width:10px;
+	height:10px;
+	margin:0 0 0 3px !important;
+	background:url(../images/asterisque.gif) no-repeat top right;
+	padding:0;
+}
+form .mentionObligatoire {
+	color:#BB0F00 !important;
+	font-weight:normal !important;
+	font-size:1em !important;
+	line-height:1.1em !important;
+	clear:both !important;
+	margin:0 0 10px 0 !important;
+}
+
+/*Gestion des erreurs*/
+form p.erreur {
+	color:#BB0F00 !important;
+	font-weight:normal !important;
+	font-size:1em !important;
+	line-height:1.15em !important;
+	clear:both;
+	position:relative;
+	top:0;
+	height:auto !important;
+	height:20px;
+	min-height:20px;
+	margin:0 0 5px!important;
+	padding:2px 0 0 22px;
+	background:url(../images/erreur.gif) no-repeat;
+}
+input[type=text].erreur, div.erreur{
+	border:1px solid #BB0F00 !important;
+	margin:0 3px 0 0 !important;
+}
+div.indication{
+	margin:-8px 0 10px 0;
+	padding:0 0 0 5px;
+	font-size:.85em;
+	color:#999 !important;
+}
+
+/*champs importants*/
+form .champImportant{
+	display:table-cell;
+	margin:0;
+	padding:5px 10px 3px;
+	height:22px;
+	overflow:hidden;
+	border-radius:6px;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	position:relative;
+	behavior:url(PIE.htc);
+	background: #DFE8F4;
+}
+form .champImportant label{
+	float:left;
+	font-size:1.2em !important;
+	font-weight:bold !important;
+	line-height:21px;
+	margin:0 5px 0 0 !important;
+}
+form .champImportant input{
+	float:left;
+	font-size:1.2em !important;
+	font-weight:bold;
+	margin:0;
+	padding:2px;
+}
+form .champImportant p{
+	float:left;
+	margin:0;
+	padding:3px 0 0 5px;
+}
+form .champImportant span.resultat{
+	display:inline-block;
+	font-size:1.4em;
+	line-height:1.3em;
+	font-weight:bold;
+	padding:0 0 5px 0;
+	margin:0;
+	color:#333;
+}
+/*Mise en valeur de choix par boutons radios*/
+.choixImportants {
+	display:inline-block;
+	vertical-align:top;
+	height:20px;
+	margin:0 5px 0 0;
+	padding:3px;
+	background-color:#DDDDDC;
+	text-align:left;
+	border-radius:5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	position: relative;
+	behavior:url(PIE.htc)
+}
+.choixImportants:hover,.choixImportants.select{
+	cursor:pointer;
+	color:white;	
+	background: #21b2cd;
+	background: -moz-linear-gradient(top,  #21b2cd 0%, #0f798c 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#21b2cd), color-stop(100%,#0f798c)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #21b2cd 0%,#0f798c 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #21b2cd 0%,#0f798c 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #21b2cd 0%,#0f798c 100%); /* IE10+ */
+	background: linear-gradient(top,  #21b2cd 0%,#21b2cd 100%); /* W3C */
+	-pie-background: url(images/fondBtRadioImportant.gif) repeat-x;/*IE<10*/
+	behavior:url(PIE.htc)
+}
+label.libellechoixImportants{
+	display:inline-block;
+	margin:0 3px 0 0;
+	font-size:1em;
+	line-height:24px;
+}
+.choixImportants label,.choixImportantsSelect label{	
+	display:inline-block;
+	vertical-align:top;
+	font-size:1em;
+	line-height:18px !important;
+	padding:0 5px 0 0 !important;
+}
+.choixImportants label:hover  {
+	cursor:pointer;
+}
+form .choixImportants input{
+	float:left;
+	margin:3px;
+	padding:0;
+	width:13px;
+	height:14px;
+}
+
+/*boutons radios et cases à cocher*/
+input[type=radio].horizontal,input[type=checkbox].horizontal{
+	margin:0 1px 0 2px;
+	margin:1px 1px 0 2px\9;/*hack < ie9*/
+}
+input[type=radio].horizontal ~ input[type=radio].horizontal,input[type=checkbox].horizontal ~ input[type=checkbox].horizontal{
+	margin:0 1px 0 1px !important;
+	margin:1px 1px 0 1px\9 !important;/*hack < ie9*/
+}
+@media screen and (-webkit-min-device-pixel-ratio:0) {/*hack chrome*/
+    input[type=radio].horizontal,input[type=checkbox].horizontal{
+		margin:1px 1px 0 2px;
+	}
+	input[type=radio].horizontal ~ input[type=radio].horizontal,input[type=checkbox].horizontal ~ input[type=checkbox].horizontal{
+		margin:1px 1px 0 1px !important;
+	}
+}
+input[type=radio].vertical,input[type=checkbox].vertical{
+	float:left;
+	margin:0 5px 0 0;
+	margin:1px 5px 0 0\9;/*hack < ie9*/
+}
+@media screen and (-webkit-min-device-pixel-ratio:0) {/*hack chrome*/
+    input[type=radio].vertical,input[type=checkbox].vertical{
+		float:left;
+		margin:0 5px 0 0;
+	}
+}
+label.radio{
+	display:inline-block;
+	vertical-align:top;
+	margin:0 8px 0 0 !important;
+	padding:0 !important;
+	height:14px;
+	line-height:14px;
+}
+label.radioV{
+	display:block;
+	margin:0 8px 5px 0 !important;
+	padding:0 !important;
+	line-height:14px;
+}
+label.cases{
+	display:inline-block;
+	vertical-align:top;
+	margin:0px 10px 0 2px !important;
+	padding:0 !important;
+	min-height:14px;
+	line-height:14px;
+	max-width:95%;
+}
+label.casesV{
+	display:block;
+	margin:0 10px 5px 15px !important;
+	padding:0 !important;
+	line-height:14px;
+}
+p.listeCasesRadios{
+	margin:0 0 5px 0 !important;
+	color:#555 !important
+}
+/*Bloc lié à des boutons radios*/
+.blocBtRadio{
+	padding:0 5px 0 0;
+	margin:0;
+}
+.blocBtRadio ul{
+	padding:0;
+	margin:0;
+	list-style:none;
+}
+.blocBtRadio ul li{
+	margin:5px 0;
+}
+.blocBtRadio ul li label{
+	position:relative;
+	top:-1px
+}
+body:first-of-type .blocBtRadio ul li label{top:0}/*chrome*/
+.blocBtRadio ul li.select{
+	display:block;	
+	width:auto;
+	height:auto !important;
+	height:30px;
+	min-height:30px;
+}
+.blocBtRadio ul li.select > label{
+	font-weight:bold;
+}
+.sousblocBtRadio,.blocBtRadio ul.decalle{padding:0 0 0 15px;}
+.sousBloc{
+	margin:2px 0 7px 15px;
+	padding:5px 10px;
+	background:#f2f2f2;
+}
+.sousBlocBlanc{
+	margin:2px 0 7px 15px;
+	padding:5px 10px;
+	background:#fff;
+}
+
+
+/*liste déroulante*/
+label.liste{margin:3px 3px 0 0 !important;}
+select{
+	font-family: Verdana, Arial, Helvetica, sans-serif;	
+	font-size:1em !important;
+	padding:0 0 2px;
+	height:20px;
+	margin:0 2px 8px 0;
+	color:#333;
+	border:1px solid #B8B8B8;
+}
+option{
+	padding:2px 5px 2px 5px;
+	cursor:pointer;
+}
+option[selected]{
+	display:none;
+}
+select.inlineBlock{margin:0;top:0 !important;margin:0;top:1px\9 !important}
+select[disabled]{
+	-webkit-appearance:none;
+	-moz-appearance:none;
+	appearance:none;
+	color:#ccc !important;
+	border:1px solid #ddd;
+	background:url(../images/flecheSelect.png) no-repeat right center;
+	background-color:#eee;
+}
+
+/*champs textes*/
+input[type=text],textarea.champTexteLong{
+	font-family:Arial, Helvetica, sans-serif !important;
+	font-size:1.1em !important;
+	line-height:15px;
+	padding:0px 2px 2px;
+	color:#000;
+ 	border:1px solid #B8B8B8 !important;
+}
+input[type=text]{
+	position:relative;
+	margin:0 3px 8px 0;
+	height:16px;
+}
+* html input[type=text]{
+	line-height:16px;
+}
+textarea.champTexteLong{
+	margin:0 1px 0 0;
+	width:100%;
+	padding:2px !important;
+	resize:none;
+	box-sizing:border-box;
+}
+.champLong{display:inline-block}
+.nbCaracteres{
+	display:block;
+	width:100%;
+	font-family:Arial, Helvetica, sans-serif !important;
+	text-align:right;
+}
+.champSousLibelle{
+	clear:both;
+	display:block;
+	margin:0 0 4px 0 !important;
+	padding:0 !important;
+}
+label.champ{
+	margin:2px 3px 2px 0 !important;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:1em;
+}
+.champSaisie{
+ 	border:1px solid #B8B8B8 !important;
+	background:white;
+	margin:0 3px 8px 0;
+	height:18px;
+	overflow:hidden;
+}
+.champSaisie.erreur{
+	border:1px solid #BB0F00 !important;
+	margin:0 3px 0 0 !important;
+}
+.champSaisie input[type=text]{
+	float:left;
+	border:none !important;
+	background:none !important;
+	margin:0;
+}
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+	.champSaisie input[type=text]{
+		line-height:19px;
+	}
+}
+.champSaisie .actionsSaisie{
+	display:inline-block;
+	text-align:right;
+	height:19px;
+	margin:-1px -1px 0 0;
+}
+span.btAnnulerSaisie{
+	display:inline-block;
+	position:relative;
+	top:0;
+	left:3px;
+	width:12px;
+	height:20px;
+	margin:0 3px 0 0;
+	background:url(../images/bt_annulerSaisie.png) no-repeat center right;
+	cursor:pointer;
+}
+span.btValiderSaisie{	
+	display:block;
+	width:20px;
+	height:20px;
+	margin:0;
+	background:url(../images/bt_validerSaisie.png) no-repeat;
+	cursor:pointer;
+}
+
+/*valeur monétaire*/
+span.valeurMonetaire{
+	display:inline-block;
+	vertical-align:middle;
+	height:16px;
+	font-family:Arial, Helvetica, sans-serif !important;
+	font-style:italic;
+	font-size:1.1em;
+	padding:0;
+	margin:2px 0 0 -3px !important;
+}
+/*champs adresse postale*/
+.adressePostale{margin:3px 0 0;}
+.adressePostale span.libelle{
+	float:left;
+	text-align:right;
+	margin:2px 3px 2px 0 !important;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:1em;
+	color:#555 !important;
+}
+.adressePostale input[type=text]{
+	margin:0 0 5px !important;
+	padding:2px;
+	height:20px;
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	behavior:url(PIE.htc);
+}
+.adressePostale input.adresse{display:block;width:100%}
+.adressePostale input.cp{display:inline-block;width:18%;}
+.adressePostale input.ville{display:inline-block;float:right;width:80%;text-transform:uppercase}
+.adressePostale input.complements{clear:float;display:block;width:100%}
+
+input::-webkit-input-placeholder{color:#888}
+input:-ms-input-placeholder{color:#888}
+input:-moz-placeholder{color:#888}
+input:focus:-moz-placeholder{color:#aaa}
+input:focus::-webkit-input-placeholder{color:#aaa}
+.input_placeholder{color:#888}
+
+/*pièces jointes*/
+input[type=file]{
+	position:relative;
+	text-align:right;
+	-moz-opacity:0;
+	filter:alpha(opacity:0);
+	opacity:0;
+	z-index:2;	
+	margin:0;
+}
+.input_file {
+	position:relative;
+	padding:0;
+	margin:0 0 0 -2px
+}
+.faux_inputFile {
+	clear:left;
+	position:absolute;	
+	top:0;
+	margin:0 0 3px 0;
+	padding:0;
+	z-index:1;
+	width:inherit;;
+}
+.faux_inputFile  .imageParcourir{
+	clear:left;	
+	margin:-2px 0 0 0;
+	display:block;
+	height:24px;	
+	background:url(../images/btTelecharger.gif) no-repeat;
+}
+.filevisible{
+	display:block;	
+	border:0 !important;
+	max-width:100%;
+	box-sizing:border-box;
+	margin:0;
+	padding:0 0 0 2px;
+	height:18px;
+	font-family:Arial, Helvetica, sans-serif !important;
+	position:relative;
+}
+.filevisible img{
+	position:absolute;
+	top:0;
+	margin:0 0 0 3px !important;
+	width:16px;
+	height:16px;
+}
+.listeFichiers{
+	clear:left;
+	display:block;	
+	border:0 !important;
+	max-width:100%;
+	box-sizing:border-box;
+	margin:2px 0 0 2px !important;
+	padding:0;
+	padding:8px 0 0 0\9;/*hack < ie9*/
+}
+.listeFichiers p{margin:0 !important}
+.btSupFile{
+	display:inline-block;
+	position:relative;
+	top:5px;
+	width:20px;
+	height:20px;
+	margin:0 0 0 5px;
+	background:url(../images/bt_supprimer.png) no-repeat;
+}
+/*bouton à droite d'un champ*/
+.droiteChamp{
+	position:relative;
+	top:1px;
+}
+
+/*plié/déplié sur item avec message d'erreur*//*item réversible*/
+.item_blocDepliable,.item_reverse  {
+    margin:0;
+	position:relative;
+}
+.item_blocDepliable label,.item_reverse label{
+	display:inline-block;
+	vertical-align:top;
+	height:22px;
+    margin:0;
+	padding:2px 0 0;
+}
+.item_blocDepliable img.lienPicto,.item_reverse img.lienPicto {
+    display:inline-block;
+	vertical-align:top;
+    cursor:pointer;
+}
+
+.item_blocDepliable p.erreur {
+	display:inline-block;
+	vertical-align:top;
+	height:auto !important;
+	height:22px;
+	min-height:22px;
+	margin:-1px 0 0 0 !important;
+	padding:2px 0 0 22px;
+	color:#BB0F00 !important;
+	font-weight:normal !important;
+	font-size:1em !important;
+	line-height:1.15em !important;
+	background:url(../images/erreur.gif) no-repeat;
+	white-space:normal;
+}
+
+img.btAide{
+	display:inline-block;
+	vertical-align:top;
+	width:19px;
+	height:19px;
+    cursor:pointer;
+}
+
+
+
+/*affichage résultats*/
+label.resultat{
+	margin:0 3px 3px 0;
+	padding:0;
+}
+span.resultat{
+	display:inline-block;
+	font-size:1em;
+	line-height:1.2em;
+	font-weight:bold;
+	padding:0 0 3px;
+	margin:2px 0 0;
+	word-wrap: break-word;
+	-webkit-hyphens: auto;
+	-moz-hyphens: auto;
+	-ms-hyphens: auto;
+	-o-hyphens: auto;
+	hyphens: auto;
+}
+label.resultat.alignDroit,label.resultat.floatLeft{padding-top:1px}
+@media screen and (-webkit-min-device-pixel-ratio:0) { label.resultat.alignDroit,label.resultat.floatLeft{padding-top:2px;} }
+
+/*positionnement d'éléments de formulaire en pseudo tableaux*/
+.pseudotable{
+	display:table;
+	width:100%;
+	margin:0 0 10px 0;
+	color:#555;
+}
+.pseudotable .row{
+	display:table-row;
+	font-weight:normal;
+	margin:0 0 5px 0;
+}
+.pseudotable .cell{
+	display:table-cell;
+	font-weight:normal;
+	margin:0;
+}
+.pseudotable .row > .libelles{
+	display:table-cell;
+	padding:2px 5px 3px 3px;
+	font-weight:normal;
+	text-align:right;
+	color:#333 !important;
+	vertical-align:middle;
+}
+.pseudotable .row > .libellesG{
+	display:table-cell;
+	padding:2px 3px 3px 0;
+	font-weight:normal;
+	text-align:left;
+	color:#333 !important;
+	vertical-align:middle;
+}
+.pseudotable .row > .objetsFormulaires,.pseudotable .row > .valeurs{
+	display:table-cell;
+	text-align:left;
+	color:#333 !important;
+	vertical-align:middle;
+}
+
+.pseudotable .row > .valeurs{
+	font-weight:bold;
+}
+.objetsFormulaires select{position:relative;top:3px;}
+.objetsFormulaires label.liste{position:relative;top:4px;}
+.objetsFormulaires input[type="text"]{margin:0 3px 0 0;}
+.objetsFormulaires input.horizontal[type="radio"]{margin:0 1px 0 0 !important;}
+.objetsFormulaires a.date{display:inline-block;position:relative;}
+.objetsFormulaires a.date img{position:absolute;top:-14px;left:2px;}
+.objetsFormulaires a.date img{position:absolute;top:-14px;left:0px\9;}
+.objetsFormulaires a.btAide{display:inline-block;position:relative;}
+.objetsFormulaires a.btAide img{position:absolute;left:0px;}
+.objetsFormulaires a.btAide img{position:absolute;top:-14px;left:0px\9;}
+
+.pseudotable .row > label,.pseudotable .cell > label{font-weight:normal !important;}
+
+
+/*longueurs éléments*/
+.lg1{width:1%}
+.lg2{width:2%}
+.lg3{width:3%}
+.lg4{width:4%}
+.lg5{width:5%}
+.lg6{width:6%}
+.lg7{width:7%}
+.lg8{width:8%}
+.lg9{width:9%}
+.lg10{width:10%}
+.lg11{width:11%}
+.lg12{width:12%}
+.lg13{width:13%}
+.lg14{width:14%}
+.lg15{width:15%}
+.lg16{width:16%}
+.lg17{width:17%}
+.lg18{width:18%}
+.lg19{width:19%}
+.lg20{width:20%}
+.lg21{width:21%}
+.lg22{width:22%}
+.lg23{width:23%}
+.lg24{width:24%}
+.lg25{width:25%}
+.lg26{width:26%}
+.lg27{width:27%}
+.lg28{width:28%}
+.lg29{width:29%}
+.lg30{width:30%}
+.lg31{width:31%}
+.lg32{width:32%}
+.lg33{width:33%}
+.lg34{width:34%}
+.lg35{width:35%}
+.lg36{width:36%}
+.lg37{width:37%}
+.lg38{width:38%}
+.lg39{width:39%}
+.lg40{width:40%}
+.lg41{width:41%}
+.lg42{width:42%}
+.lg43{width:43%}
+.lg44{width:44%}
+.lg45{width:45%}
+.lg46{width:46%}
+.lg47{width:47%}
+.lg48{width:48%}
+.lg49{width:49%}
+.lg50{width:50%}
+.lg51{width:51%}
+.lg52{width:52%}
+.lg53{width:53%}
+.lg54{width:54%}
+.lg55{width:55%}
+.lg56{width:56%}
+.lg57{width:57%}
+.lg58{width:58%}
+.lg59{width:59%}
+.lg60{width:60%}
+.lg61{width:61%}
+.lg62{width:62%}
+.lg63{width:63%}
+.lg64{width:64%}
+.lg65{width:65%}
+.lg66{width:66%}
+.lg67{width:67%}
+.lg68{width:68%}
+.lg69{width:69%}
+.lg70{width:70%}
+.lg71{width:71%}
+.lg72{width:72%}
+.lg73{width:73%}
+.lg74{width:74%}
+.lg75{width:75%}
+.lg76{width:76%}
+.lg77{width:77%}
+.lg78{width:78%}
+.lg79{width:79%}
+.lg80{width:80%}
+.lg81{width:81%}
+.lg82{width:82%}
+.lg83{width:83%}
+.lg84{width:84%}
+.lg85{width:85%}
+.lg86{width:86%}
+.lg87{width:87%}
+.lg88{width:88%}
+.lg89{width:89%}
+.lg90{width:90%}
+.lg91{width:91%}
+.lg92{width:92%}
+.lg93{width:93%}
+.lg94{width:94%}
+.lg95{width:95%}
+.lg96{width:96%}
+.lg97{width:97%}
+.lg98{width:98%}
+.lg99{width:99%}
+.lg100{width:100%}
+
+/*textes de conditions à cocher pour activer la validation de la page*/
+.conditions{
+	display:inline-block;
+	margin:0 0 5px;
+}
+.conditions input{
+	display:inline-block;
+	vertical-align:middle;
+}
+.conditions label{
+	display:inline-block;
+	vertical-align:middle;
+	width:95%;
+	border-left:1px solid #555;
+	padding:0 0 0 5px;
+}
+
+.apresSaisi {
+	margin-top: 0%;
+}
+
+.btnAnnulerSaisie{
+	display:inline-block;
+	position:relative;
+	top:0;
+	left:3px;
+	width:12px;
+	height:12px;
+	background:url(../images/bt_annulerSaisie.png) no-repeat center right;
+	cursor:pointer;
+}
+
+
+
+

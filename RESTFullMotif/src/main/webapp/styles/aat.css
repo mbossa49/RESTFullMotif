@@ -1,0 +1,241 @@
+/*AAT*/
+.eom{margin:0 0 12px;}
+.eom img{
+	position:absolute;
+	right:5px;
+	top:5px;
+}
+
+.lienListeMotifs{
+	display:inline-block;
+	vertical-align:top;
+	margin:3px 0 0;
+}
+.motifSaisi .resultat{
+	vertical-align:middle;
+	margin:2px 3px 7px 0;
+	height:15px;
+}
+
+.motifSaisi span.btAnnulerSaisie{
+	display:inline-block;
+	height:15px;
+}
+
+span.ficheDurees{float:right;width:240px;text-transform:none;}
+.profilPatient{margin:5px 0 15px;}
+.profilPatient .listes{width:100%;margin:10px 0 0;}
+.profilPatient .listes ul{
+	vertical-align:top;
+	padding:0;
+	margin:0;	
+	font-size:0;
+}
+.profilPatient .listes li {
+	display:inline-block;	
+	vertical-align:top;
+	margin:0;
+}
+.profilPatient .listes label{line-height:38px}
+.profilPatient .listes label span{display:inline-block;vertical-align:middle;line-height:1.2em;}
+.profilPatient .listes li div{
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	border:2px solid #fff;
+}
+.profilPatient .listes li .valeur{
+	display:block;
+	height:40px;
+	line-height:36px;
+	border-radius:6px;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	behavior:url(PIE.htc);
+	background: #efefef;
+	padding:0 7px;
+	text-align:center;
+	font-size:12px;
+}
+.profilPatient .listes li .valeur span{
+	display:inline-block;
+	vertical-align:middle;
+	line-height:1.2em;
+	color:#000;
+}
+.profilPatient .listes li[selected] .valeur,.profilPatient .listes li .valeur:hover{background: #5789cf;cursor:pointer}
+.profilPatient .listes li[selected] .valeur span,.profilPatient .listes li .valeur:hover span{color:#fff;cursor:pointer}
+.profilPatient .listes li .nbJours{
+	display:block;
+	line-height:11px;
+	text-align:center;
+	font-size:10px;
+	color:#8a8a8a;
+}
+.resultatDuree{
+	width:100%;
+	height:40px;
+}
+.datesArret{
+	display:inline-block;
+	vertical-align:top;
+	margin:0 1.5% 0 0;
+	padding:5px 0 3px 3px;
+	height:30px;
+	overflow:hidden;
+	border-radius:5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	position:relative;
+	behavior:url(PIE.htc);
+	background: #efefef;
+}
+.datesArret span{
+	display:inline-block;
+	vertical-align:top;
+	padding:5px 5px 0;
+}
+.datesArret span.jusquau{padding:5px 0 0 5px}
+.dureeArret{
+	display:inline-block;
+	vertical-align:top;
+	margin:0;
+	padding:5px 3px;
+	font-size:1em !important;
+	text-align:center;	
+	overflow:hidden;
+	border-radius:5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	position:relative;
+	behavior:url(PIE.htc);
+	background: #5789cf;
+}
+.dureeArret label{
+	display:inline-block;
+	vertical-align:middle;
+	font-size:1.2em !important;
+	font-weight:bold !important;
+	line-height:21px;
+	margin:0 3px !important;
+	color:#fff;
+}
+.dureeArret input{
+	display:inline-block;
+	vertical-align:middle;
+	font-size:1.2em !important;
+	font-weight:bold;
+	margin:0;
+	padding:2px;
+	border:0 !important;
+}
+.dureeArret p{
+	display:inline-block;
+	vertical-align:middle;
+	margin:0;
+	padding:6px 0 0;
+	color:#fff;
+}
+.resultatDuree.inactif label,.resultatDuree.inactif p{color:#a5a5a5;}
+.resultatDuree.inactif span.obligatoire{display:none}
+.resultatDuree.inactif span.obligatoire{display:none}
+.resultatDuree.inactif input{background:#fff;border:1px solid #fff !important}
+.resultatDuree.inactif .dureeArret{background:#efefef !important;}
+
+/*fenetre popIn --  Liste des motifs*/
+#popIn_listeMotifs .popIn{
+	width:600px;
+	height:475px;
+}
+ul.alphabet{
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	width:100%;
+	margin:0;
+	padding:0 20px;
+	cursor:default;
+	text-align:center;
+	font-size:0;
+}
+ul.alphabet li,ul.alphabet li.inactive{
+	display:inline-block;
+	list-style:none;	
+	height:24px;
+	width:24px;
+	margin:0 4px 8px 4px;
+	padding:0;
+	text-align:center;
+	border:none;
+	background:#eee;
+	border-radius:12px;
+	behavior:url(PIE.htc);
+}
+ul.alphabet li{
+	color:#0C419A;
+	font-family:arial;
+	font-size:17px;
+	font-weight:bold;
+	text-transform:uppercase;
+	line-height:25px;
+}
+@-moz-document url-prefix(){ul.alphabet li{line-height:24px;}}
+ul.alphabet li:hover{
+	background:#0C419A;	
+	cursor:pointer;
+}
+ul.alphabet li:hover a{display:block;color:#fff;text-decoration:none}
+ul.alphabet li.inactive{
+	color:#bbb;
+}
+ul.alphabet li.inactive:hover{
+	background:#eee;
+	cursor:default;
+}
+#popIn_listeMotifs .blocMotifs{width:100%;height:260px;overflow:auto;margin:0 0 5px 0}
+.lettre{position:relative;clear:both;width:520px;}
+.lettreSelectionnee{
+	float:left;
+	width:30px;
+	height:30px;
+	font-size:2em;
+	line-height:30px;
+	line-height:28px\9;
+	background:#bbb;
+	color:#fff;
+	margin:0;
+	padding:0;
+	padding:0 1px 0 0\9;
+	text-align:center;
+	border-radius:15px;
+	behavior:url(PIE.htc);
+}
+@-moz-document url-prefix(){.lettreSelectionnee{line-height:27px;}}
+ul.listeMotifs{
+	float:left;
+	width:480px;	
+	list-style:none;
+	padding:0;
+	margin:1px 0 30px 5px;
+	border-top:1px dotted #ddd;
+}
+ul.listeMotifs li{
+	display:block;
+	padding:6px 0 6px 3px;
+	margin:0;
+	line-height:1.2em;
+	border-bottom:1px dotted #ddd;
+	color:#000;
+	font-size:1.05em
+}
+ul.listeMotifs li:hover{
+	background:#ebf3ff;
+	cursor:pointer;
+}
+ul.listeMotifs li b{color:#333}
+input#champMotif{
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+}
+.basBloc{height:inherit}

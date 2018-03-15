@@ -1,0 +1,71 @@
+/* ENTETE */
+#header {
+	display:block;	
+	width:950px;
+	height:90px;
+	margin:0;
+	padding:0;
+	background:url(../images/entete_fond.jpg) no-repeat;
+}
+#header h1{
+	position:absolute;
+	top:-300px;
+}
+#header #decouvrez{
+	position:relative;	
+	top:28px;
+	left:690px;
+	width:240px;
+	height:40px;
+	cursor:pointer;
+	background:transparent;
+}
+#header #decouvrez img{
+	float: left;
+}
+
+#header #profession {
+	float:left;
+	position:relative;	
+	top:0;
+	left:490px;
+	width:150px;
+	height:70px;
+	background:url(../images/entete_profession_bordG.png) no-repeat top left;
+}
+#header #profession .zoneTexte{
+	position:relative;	
+	top:44px;
+	left:5px;
+	width:145px;
+	height:26px;
+	text-align:left;
+	color:white;
+	text-transform:uppercase;	font-size:0.8em !important;
+}
+
+#header #identification {
+	float:left;
+	position:relative;	
+	top:10px;
+	left:545px;
+	width:240px;
+	height:70px;
+	background:transparent;
+}
+
+#header #identification form {
+	font-size:0.8em !important;
+}
+#header #identification form p{
+	line-height:1.1em;
+	margin:0;
+	color:white !important;	
+}
+#header #identification select {
+	font-family:Arial, Helvetica, sans-serif;
+	border:0;
+	margin:4px 0 0 -1px;
+	overflow:hidden;
+}
+/* FIN ENTETE */

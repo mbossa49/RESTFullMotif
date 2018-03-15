@@ -1,0 +1,71 @@
+p.PDF,p.DOC,p.XLS,p.PPT,p.CSV{
+	padding:2px 0 5px 20px;
+	margin:0 0 5px 0 !important;
+}
+.PDF a,.DOC a,.XLS a,.PPT a{
+	line-height:1em;
+}
+.PDF{
+	background:url(../images/file-pdf.gif) no-repeat 0 -1px;
+}
+.DOC{
+	background:url(../images/file-doc.gif) no-repeat 0 -1px;
+}
+.XLS{
+	background:url(../images/file-xls.gif) no-repeat 0 -1px;
+}
+.CSV{
+	background:url(../images/file-csv.gif) no-repeat 0 -1px;
+}
+.PPT{
+	background:url(../images/file-ppt.gif) no-repeat 0 -1px;
+}
+
+/*dans une ligne de tableau*/
+td .PDF,td .DOC,td .XLS,td .PPT,td .CSV{
+	padding:2px 0 5px 20px;
+	cursor:pointer;
+}
+td.textes .PDF,td.textes .DOC,td.textes .XLS,td.textes .PPT,td.textes .CSV{margin:-3px 10px 0 0 !important}
+td.chiffres .PDF,td.chiffres .DOC,td.chiffres .XLS,td.chiffres .PPT,td.chiffres .CSV{margin:-3px 0 0 10px !important}
+
+/*colonne de droite*/
+#colonneDroite .PDFi{
+	background:url(../images/icone_pdf.png) no-repeat;
+	line-height:30px;
+	margin:0 0 10px 0;
+}
+#colonneDroite .savoirPlusi{
+	background:url(../images/icone_savoirPlus.png) no-repeat ;
+	min-height:30px;
+	margin:0 0 10px 0;
+}
+#colonneDroite .PDFi a,
+#colonneDroite .savoirPlusi a{
+	display:inline-block;
+	vertical-align:middle;
+	padding:0 0 0 35px !important;
+	font-size:0.9em;
+	line-height:1.15em;
+}
+
+.titreBlanc p.PDF{
+	float:right;
+	font-size: 1.1em;
+	margin:0 10px 2px 0 !important;
+}
+
+#colonneGauche .lienHautdePage{
+	position:relative;
+	background-color:#f1f1f1;
+	height:24px;
+	display:inline-block;
+	-webkit-border-radius:10px;
+	-moz-border-radius:10px;
+	-khtml-border-radius:10px;
+	-o-border-radius:10px;
+	border-radius:10px;
+	behavior:url(PIE.htc);
+	margin:0 0 15px;
+	padding:5px 15px 0 10px;
+}

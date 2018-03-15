@@ -1,0 +1,142 @@
+/* CONNEXION */
+#headerConnexion {
+	display:block;	
+	width:950px;
+	height:90px;
+	margin:0;
+	padding:0;
+	background:url(../images/entete_page_connexion.jpg) no-repeat;
+}
+#headerConnexion h1{
+	position:absolute;
+	top:-300px;
+}
+
+#sousColonneG{
+	float:left;	
+	width:172px;
+	height:auto !important;
+	height:400px;
+	min-height:400px;
+	margin:0;
+	padding:0;
+	background-color:transparent;
+}
+#sousColonneD{
+	float:left;	
+	width:464px;
+	height:auto !important;
+	height:400px;
+	min-height:400px;
+	margin:0;
+	padding:0;
+	background-color:transparent;
+}
+
+#sousColonneG img{
+	margin:20px 0 0 0;
+}
+
+#cadreConnexion, #cadreConnexion2{
+	display:block;
+	width:464px;
+	margin:0 0 20px;
+	padding:0;
+	background-color:white;
+}
+#cadreConnexion{
+	background:url(../images/fond_cadreConnexion.png) repeat-y 230px 0;
+	background-color:white;
+}
+
+#cadreConnexion form{
+	float:left !important;
+	width:210px !important;
+	background-color:transparent;
+	margin:0;
+	padding:0;
+}
+#cadreConnexion #marge{
+	display:block;
+	float:left;
+	width:24px;
+	height:10px;
+	background:transparent;
+}
+
+#cadreConnexion h5{
+	margin:0 0 10px 0;
+	padding:0;
+	font-size:1.3em;
+}
+#cadreConnexion img.cartes{
+	float:right;
+	margin:0 0 10px 0;
+	padding:0;
+}
+#colonneDroiteConnexion .titreBlancFond_2{
+	width:204px !important;
+}
+#colonneDroiteConnexion {
+	float:left;
+	width:224px;
+	padding:0;
+	margin:0;
+	background-color:transparent;
+	height:auto !important;
+	height:50px;
+	min-height:50px;
+	font-size:1em !important;
+}
+
+#cadreConnexion p, #cadreConnexion2 p, #colonneDroiteConnexion p{
+	color:#333;
+	font-size:1.05em;
+}
+#cadreConnexion form p, #cadreConnexion2 form p{
+	color:#666;	
+	font-weight:bold;
+	line-height:1.2em;
+}
+#cadreConnexion form input, #cadreConnexion2 form input, #colonneDroiteConnexion form select{
+	padding:0 1px 2px;
+	margin:0 5px 0 0;
+}
+
+.alerte p{
+	color:#B52D24  !important;
+	font-weight:bold !important;
+	line-height:13px;
+}
+
+#banniere_hotline {
+    background-color: #DDDDDC;
+    background-image: url("../images/banniere_hotline.jpg");
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    height: 70px;
+    padding:3px 3px 0 70px;
+    width: 152px;
+	color:#00778A !important;
+	margin:0 0 10px 0;
+}
+#banniere_hotline  p.texte1{font-size:11px;font-weight:bold;margin:0 0 1px !important;color:#00778A !important;line-height:12px}
+#banniere_hotline  p.texte2{font-size:9px;margin:0 !important;color:#00778A !important;line-height:10px}
+#banniere_hotline h3{margin:0 0 2px;}
+#banniere_didacticiels {
+    background-color: #DDDDDC;
+    background-image: url("../images/banniere_didacticiels.jpg");
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    color: #0C419A;
+    display: block;
+    float: left;
+    height: 70px;
+    padding-bottom: 0;
+    padding-left: 70px;
+    padding-right: 0;
+    padding-top: 3px;
+    width: 152px;
+}
+
+/* FIN CONNEXION */

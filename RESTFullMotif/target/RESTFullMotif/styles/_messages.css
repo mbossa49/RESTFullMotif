@@ -1,0 +1,75 @@
+
+.message_bleu,.message_ocre,.message_rouge{
+	clear:both;
+	margin:3px 0 7px;
+	padding:2px 0 0 30px;
+	height:auto !important;
+	height:20px;
+	min-height:20px;
+}
+.message_bleu{
+	background:url(../images/exclam_bleu.gif) no-repeat;
+	color:#00778A !important;	
+}
+.message_rouge{
+	background:url(../images/exclam_rouge.gif) no-repeat;
+	color:#B52D24 !important;
+}
+.message_ocre{
+	background:url(../images/exclam_ocre.gif) no-repeat;
+	color:#AF4B00 !important;	
+}
+.message_bleu p{	color:#00778A !important}
+.message_rouge p{color:#B52D24 !important}
+.message_ocre p{color:#AF4B00 !important}
+.voirAussi{
+	background:url(../images/voirAussi.gif) no-repeat;
+	padding:0 0 5px 22px;
+	margin:0 0 5px 0;
+}
+.voirAussi a{
+	line-height:1em;
+}
+
+.savoirPlus{
+	background:url(../images/savoirPlus.gif) no-repeat;
+	height:30px;
+	padding:0 0 0 35px;
+	margin:15px 0;
+	font-weight:bold;
+	color:#666;
+}
+.savoirPlus a{
+	font-weight:normal;
+}
+.messageAlerte{
+	position : relative;
+    display: block;
+    margin: 0 0 20px !important;
+	padding:3px 6px;
+    width: 100%;
+    background-color:white;
+	-webkit-border-radius:10px 10px 10px 10px;
+	-moz-border-radius:10px 10px 10px 10px;
+	-khtml-border-radius:10px 10px 10px 10px;
+	border-radius:10px 10px 10px 10px;
+	behavior:url(PIE.htc);
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;
+}
+.banniereFixe{
+    display: block;
+    margin: 0 0 20px !important;
+    width:224px;
+	height:70px;
+    background-color:red;    
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;	
+	-webkit-border-radius:10px 10px 10px 10px;
+	-moz-border-radius:10px 10px 10px 10px;
+	-khtml-border-radius:10px 10px 10px 10px;
+	border-radius:10px 10px 10px 10px;
+	behavior:url(PIE.htc);
+}
+.message_bleu.sousChamp,.message_ocre.sousChamp,.message_rouge.sousChamp{margin:-3px 0 10px;}
+

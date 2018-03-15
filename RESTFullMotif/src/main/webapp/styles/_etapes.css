@@ -1,0 +1,103 @@
+/*PROCESSUS PAR ETAPES*/
+.etapes{
+	width:636px;
+	height:21px;
+	background-color:transparent;
+}
+.etapes2{
+	width:100%;
+	height:20px;
+	background-color:transparent;
+	border-bottom:1px solid #DDDDDC;
+	margin:0;
+}
+.etapes ul,.etapes li,.etapes2 ul,.etapes2 li  {
+	list-style-type: none;
+	display:block;
+	margin:0;
+	padding:0;
+	float:left;
+}
+.etapes ul li,.etapes2 ul li {	
+	margin:0 3px 0 0 !important;
+}
+.etapes .titreBleuEtapeEnCours,.etapes .titreBlanc,.etapes2 .titreBleuEtapeEnCours,.etapes2 .titreBlanc,.etapes2 .titreGris{
+	position:relative;
+	float:left !important;	
+	-webkit-border-radius:6px 6px 0 0;
+	-moz-border-radius:6px 6px 0 0;
+	-khtml-border-radius:6px 6px 0 0;
+	border-radius:6px 6px 0 0;
+	behavior:url(PIE.htc);
+}
+.etapes .titreBleuEtapeEnCours,.etapes2 .titreBleuEtapeEnCours {
+	height:18px;
+	font-size:0.84em !important;
+	font-weight:bold;
+	color:white;
+	margin:0 !important;
+	padding:3px 10px 0;
+	background-color:transparent;
+	overflow:hidden;
+	clear:both;
+	background:url(../images/titreBleu_fond.png) repeat-x;
+}
+.etapes .titreBlanc,.etapes2 .titreGris{
+	height:18px;
+	font-size:0.84em !important;
+	font-weight:bold;
+	color:#0C419A;
+	margin:0 !important;
+	padding:3px 10px 0;
+	background-color:transparent;
+	overflow:hidden;
+	clear:both;
+}
+.etapes .titreBlanc{
+	background:url(../images/titreBlanc_fond_ongletInactif.png) repeat-x;
+}
+.etapes2 .titreGris{
+	background:#DDDDDC;
+}
+.etapes li a,.etapes2 li a{
+	font-weight:bold !important;
+	color:#666 !important;
+	text-decoration:none;
+}
+.etapes li a:hover,.etapes2 li a:hover{
+	font-weight:bold !important;
+	color:#0C419A !important;
+	text-decoration:none;
+}
+.etapes .fleche,.etapes2 .fleche{
+	float:left;
+	width:16px;
+	height:18px;
+	background:url(../images/etapes_flecheVersDroite.png) no-repeat;
+	margin:0;
+}
+.etapes li .inactive{
+	color:#dddddc !important;
+	cursor:default;
+}
+
+.cadreEtapes{
+	display:block;
+	width:100%;
+	margin:0 0 5px 0;
+	background-color:white;
+}
+.cadreEtapes .zoneContenus .visuel {
+	float:left;
+	width:50px;	
+	margin:0 6px 0 0;
+}
+.cadreEtapes .zoneContenus .zoneTextes {
+	float:left;
+	width:500px;
+	height:auto !important;
+	height:40px;
+	min-height:40px;
+}
+.cadreEtapes p{margin:0 0 5px 0 !important;}
+

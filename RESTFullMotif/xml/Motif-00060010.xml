@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MotifXML xmlns="http://referentiels.metier.yt.cnamts.fr" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Identification/>
+	<URL/>
+	<Critere xmlns="http://referentiels.metier.yt.cnamts.fr">
+		<Text><![CDATA[Travail sédentaire]]></Text>
+		<Critere xmlns="http://referentiels.metier.yt.cnamts.fr">
+			<Text><![CDATA[Phalange : Traitement orthopédique]]></Text>
+			<DureeIndicative>
+				<Unite><![CDATA[j]]></Unite>
+				<Duree>2</Duree>
+			</DureeIndicative>
+		</Critere>
+		<Critere xmlns="http://referentiels.metier.yt.cnamts.fr">
+			<Text><![CDATA[Phalange : Traitement chirurgical]]></Text>
+			<DureeIndicative>
+				<Unite><![CDATA[j]]></Unite>
+				<Duree>7</Duree>
+			</DureeIndicative>
+		</Critere>
+		<Critere xmlns="http://referentiels.metier.yt.cnamts.fr">
+			<Text><![CDATA[Métacarpien : Traitement orthopédique]]></Text>
+			<DureeIndicative>
+				<Unite><![CDATA[j]]></Unite>
+				<Duree>3</Duree>
+			</DureeIndicative>
+		</Critere>
+		<Critere xmlns="http://referentiels.metier.yt.cnamts.fr">
+			<Text><![CDATA[Métacarpien : Traitement chirurgical]]></Text>
+			<DureeIndicative>
+				<Unite><![CDATA[j]]></Unite>
+				<Duree>7</Duree>
+			</DureeIndicative>
+		</Critere>
+	</Critere>
+	<Critere xmlns="http://referentiels.metier.yt.cnamts.fr">
+		<Text><![CDATA[Travail physique léger]]></Text>
+		<Critere xmlns="http://referentiels.metier.yt.cnamts.fr">
+			<Text><![CDATA[Sollicitation modérée de la main]]></Text>
+			<Critere xmlns="http://referentiels.metier.yt.cnamts.fr">
+				<Text><![CDATA[Charge ponctuelle < 10 kg ou Charge répétée < 5 kg]]></Text>
+		<Critere xmlns="http://referentiels.metier.yt.cnamts.fr">
+			<Text><![CDATA[Phalange : Traitement orthopédique]]></Text>
+			<DureeIndicative>
+				<Unite><![CDATA[j]]></Unite>
+				<Duree>3</Duree>
+			</DureeIndicative>
+		</Critere>
+		<Critere xmlns="http://referentiels.metier.yt.cnamts.fr">
+			<Text><![CDATA[Phalange : Traitement chirurgical]]></Text>
+			<DureeIndicative>
+				<Unite><![CDATA[j]]></Unite>
+				<Duree>7</Duree>
+			</DureeIndicative>
+		</Critere>
+		<Critere xmlns="http://referentiels.metier.yt.cnamts.fr">
+			<Text><![CDATA[Métacarpien : Traitement orthopédique]]></Text>
+			<DureeIndicative>
+				<Unite><![CDATA[j]]></Unite>
+				<Duree>7</Duree>
+			</DureeIndicative>
+		</Critere>
+		<Critere xmlns="http://referentiels.metier.yt.cnamts.fr">
+			<Text><![CDATA[Métacarpien : Traitement chirurgical]]></Text>
+			<DureeIndicative>
+				<Unite><![CDATA[j]]></Unite>
+				<Duree>14</Duree>
+			</DureeIndicative>
+		</Critere>
+			</Critere>
+		</Critere>
+	</Critere>
+	<Critere xmlns="http://referentiels.metier.yt.cnamts.fr">
+		<Text><![CDATA[Travail physique modéré]]></Text>
+		<Critere xmlns="http://referentiels.metier.yt.cnamts.fr">
+			<Text><![CDATA[Sollicitation modérée de la main]]></Text>
+			<Critere xmlns="http://referentiels.metier.yt.cnamts.fr">
+				<Text><![CDATA[Charge ponctuelle < 25 kg ou Charge répétée < 10 kg]]></Text>
+		<Critere xmlns="http://referentiels.metier.yt.cnamts.fr">
+			<Text><![CDATA[Phalange : Traitement orthopédique]]></Text>
+			<DureeIndicative>
+				<Unite><![CDATA[j]]></Unite>
+				<Duree>21</Duree>
+			</DureeIndicative>
+		</Critere>
+		<Critere xmlns="http://referentiels.metier.yt.cnamts.fr">
+			<Text><![CDATA[Phalange : Traitement chirurgical]]></Text>
+			<DureeIndicative>
+				<Unite><![CDATA[j]]></Unite>
+				<Duree>28</Duree>
+			</DureeIndicative>
+		</Critere>
+		<Critere xmlns="http://referentiels.metier.yt.cnamts.fr">
+			<Text><![CDATA[Métacarpien : Traitement orthopédique]]></Text>
+			<DureeIndicative>
+				<Unite><![CDATA[j]]></Unite>
+				<Duree>28</Duree>
+			</DureeIndicative>
+		</Critere>
+		<Critere xmlns="http://referentiels.metier.yt.cnamts.fr">
+			<Text><![CDATA[Métacarpien : Traitement chirurgical]]></Text>
+			<DureeIndicative>
+				<Unite><![CDATA[j]]></Unite>
+				<Duree>35</Duree>
+			</DureeIndicative>
+		</Critere>
+
+			</Critere>
+		</Critere>
+	</Critere>
+	<Critere xmlns="http://referentiels.metier.yt.cnamts.fr">
+		<Text><![CDATA[Travail physique lourd]]></Text>
+		<Critere xmlns="http://referentiels.metier.yt.cnamts.fr">
+			<Text><![CDATA[Forte sollicitation de la main]]></Text>
+			<Critere xmlns="http://referentiels.metier.yt.cnamts.fr">
+				<Text><![CDATA[Charge > 25 kg]]></Text>			
+		<Critere xmlns="http://referentiels.metier.yt.cnamts.fr">
+			<Text><![CDATA[Phalange : Traitement orthopédique]]></Text>
+			<DureeIndicative>
+				<Unite><![CDATA[j]]></Unite>
+				<Duree>35</Duree>
+			</DureeIndicative>
+		</Critere>
+		<Critere xmlns="http://referentiels.metier.yt.cnamts.fr">
+			<Text><![CDATA[Phalange : Traitement chirurgical]]></Text>
+			<DureeIndicative>
+				<Unite><![CDATA[j]]></Unite>
+				<Duree>35</Duree>
+			</DureeIndicative>
+		</Critere>
+		<Critere xmlns="http://referentiels.metier.yt.cnamts.fr">
+			<Text><![CDATA[Métacarpien : Traitement orthopédique]]></Text>
+			<DureeIndicative>
+				<Unite><![CDATA[j]]></Unite>
+				<Duree>42</Duree>
+			</DureeIndicative>
+		</Critere>
+		<Critere xmlns="http://referentiels.metier.yt.cnamts.fr">
+			<Text><![CDATA[Métacarpien : Traitement chirurgical]]></Text>
+			<DureeIndicative>
+				<Unite><![CDATA[j]]></Unite>
+				<Duree>42</Duree>
+			</DureeIndicative>
+		</Critere>
+			</Critere>
+		</Critere>
+	</Critere>
+</MotifXML>

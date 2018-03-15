@@ -1,0 +1,115 @@
+/*Identification patient*/
+/*éléments de l'entête*/
+#IP_entete{
+	width:218px;
+	height:30px;
+	margin:-7px -7px 10px;
+	background:url(../images/angleHD_bleu.gif) no-repeat top right;
+	background-color:#DFE8F4;
+}
+#IP_entete div{
+	display:block;
+	width:210px;
+	padding:5px 0;
+}
+#IP_entete p{
+	padding:3px 0 0 5px;
+	line-height:1em;
+	color:black;
+}
+/*zone carte vitale*/
+#carteVitale{
+	width:205px;
+	margin:0;
+}
+#carteVitale img{
+	float:left;
+	margin:0;
+}
+#carteVitale a{
+	margin:16px 0 0 0;
+	float:right;
+}
+/*zone saisie NIR*/
+.pointille{clear:both;border-bottom:1px dotted #ccc;height:10px;margin:0 0 10px 0}
+#saisieNIR{
+	width:205px;
+	margin:0 !important;
+	padding:0 !important;
+}
+#saisieNIR a.bouton{float:right;margin:0;padding:0 10px 0 0;}
+
+/*fenetre*/
+div.fond{
+	position:absolute;
+	top:0;
+	left:0;
+	overflow:hidden;
+	z-index:20;
+	width:100%;
+	height:100%;
+	display:block;
+	text-align:center;	
+	-webkit-border-radius:0 8px 8px 8px;
+	-moz-border-radius:0 8px 8px 8px;
+	-khtml-border-radius:0 8px 8px 8px;
+	-o-border-radius:0 8px 8px 8px;
+	border-radius:0 8px 8px 8px;
+	-pie-background: rgba(0,0,0,0.3);
+	background:rgba(0,0,0,0.3);	
+	behavior:url(PIE.htc);
+}
+div.fenetre{
+	width:180px;
+	margin:20px 0 0;
+	padding:10px;
+	background:#fff;
+	z-index:100;	
+	vertical-align:middle;
+	display:inline-block;
+	font-size:1em;
+	line-height:1em;
+	word-wrap: break-word;
+	-webkit-hyphens: auto;
+	-moz-hyphens: auto;
+	-ms-hyphens: auto;
+	-o-hyphens: auto;
+	hyphens: auto;
+	-webkit-border-radius:8px;
+	-moz-border-radius:8px;
+	-khtml-border-radius:8px;
+	-o-border-radius:8px;
+	border-radius:8px;
+	behavior:url(PIE.htc);
+}
+div.fenetre div{text-align:left}
+
+
+/*Page informations du patient*/
+.logosRegimes img{
+	border: 1px solid #DDDDDC;
+	padding:7px;
+	position:relative;
+	top:5px;	
+}
+.blocConsentement{
+	clear:both;
+	margin:10px 0 0;
+}
+.listeDroits{margin:0 0 -1px 0;}
+.groupeInfos,
+.listeDroits > div{
+	border-top:1px dotted #ccc;
+	border-bottom:1px dotted #ccc;
+	margin:-1px 0;
+	padding:4px 0;
+}
+.dateDroits{font-size:1.1em;}
+.identifiants{padding:8px 10px 8px 40px;}
+img.icone{position:absolute;top:12%;left:10px;max-height:40px;}
+.blocGris .separateur{border-top:1px solid #fff;margin:5px -10px;}
+
+
+
+
+

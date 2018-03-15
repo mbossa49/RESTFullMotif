@@ -1,0 +1,46 @@
+<table class="cTableauTriable" style="width:100%; margin-top:0">
+	<colgroup>
+		<col width="25%"></col>
+		<col width="25%"></col>
+		<col width="25%"></col>
+		<col width="25%"></col>	
+	</colgroup>
+	<tr>
+		<th class="cCentre hauteur30" colspan="3">Type d'emploi</th>
+		<th class="cCentre hauteur30">Dur&eacute;e indicative</th>		
+	<tr>
+	<tr>
+		<td colspan="3" class="cCentre">Travail s&eacute;dentaire</td>
+		<td class="cCentre">
+			<input type="radio" style="background: transparent;" name="radioDuree" value="42" onClick="onClicktableauDuree(this)"/>
+			<label for="duree1">42 jours</label>
+		</td>		
+	</tr>
+	<tr class="alt">
+		<td class="cCentre">Travail physique l&eacute;ger</td>
+		<td class="cCentre">Position debout non dominante</td>
+		<td class="cCentre">Charge ponctuelle &lt; 10 kg<br/>Charge r&eacute;p&eacute;t&eacute;e &lt; 5kg</td>
+		<td class="cCentre">
+			<input type="radio" style="background: transparent;" name="radioDuree" value="70" onClick="onClicktableauDuree(this)"/>
+			<label for="duree3">70 jours</label>
+		</td>
+	</tr>
+	<tr>
+		<td class="cCentre">Travail physique mod&eacute;r&eacute;</td>
+		<td rowspan="2" class="cCentre">Position debout dominante</td>
+		<td class="cCentre">Charge ponctuelle &lt; 25 kg<br/>Charge r&eacute;p&eacute;t&eacute;e &lt; 10kg</td>
+		<td class="cCentre">
+			<input type="radio" style="background: transparent;" name="radioDuree" value="90" onClick="onClicktableauDuree(this)"/>
+			<label for="duree5">90 jours</label> 
+		</td>
+	
+	</tr>
+	<tr class="alt">
+		<td class="cCentre">Travail physique lourd</td>
+		<td class="cCentre">Charge &gt; 25kg</td>		
+		<td class="cCentre">
+			<input type="radio" style="background: transparent;" name="radioDuree" value="120" onClick="onClicktableauDuree(this)"/>
+			<label for="duree5">jusqu'&agrave; 120 jours</label> 
+		</td>
+	</tr>
+</table>

@@ -1,0 +1,33 @@
+/* ACCUEIL */
+
+.cadre_visuelGauche{
+	background:url(../images/accueil_visuel_gauche.jpg) no-repeat top left;
+}
+
+.cadre_visuelDroit{
+	background:url(../images/accueil_visuel_droit.jpg) no-repeat top left;
+}
+
+.cadre .zoneContenus{
+	padding:65px 10px 12px 10px !important;
+	height:auto !important;
+	height:100px;
+	min-height:100px;
+}
+
+.cadre .zoneContenus p, .cadre .zoneContenus p a {
+	line-height:1.15em !important;
+}
+
+.cadre.liensUtiles .zoneContenus{
+	padding:10px !important;
+	height:auto !important;
+	height:30px;
+	min-height:30px;
+}
+.cadre.liensUtiles .zoneContenus img{
+	margin-bottom:10px !important;
+}
+
+
+/* FIN ACCUEIL */

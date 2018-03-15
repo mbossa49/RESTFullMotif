@@ -1,0 +1,84 @@
+
+a.bouton, a.boutonInaccessible {
+	display:inline-block;
+	height:24px;
+	margin:0;
+	padding:0 8px 0 0;
+	text-decoration:none !important;
+	color:white;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:1em;
+	font-weight:bold;
+	cursor:default;
+	width:auto !important;
+	width:50px;
+	min-width:50px;
+}
+
+a.bouton.droiteChamp{
+	display:inline-block;
+	margin:-1px 3px 0 -3px !important;
+}
+a.bouton.valider{
+	min-width:19px;
+	width:20px !important;
+	height:20px !important;
+	padding:0 !important;
+	background:url(../images/picto_valider.png) no-repeat;
+	cursor:pointer;
+}
+a.bouton span, a.boutonInaccessible span {
+    display:block;
+    line-height:24px;
+    padding:0 0 0 8px !important;
+	color:white;
+	text-align:center;
+}
+a.bouton:hover span{
+	color:white;
+	cursor:pointer !important;
+}
+a.boutonInaccessible:hover span{
+	color:white;
+	cursor:default;
+}
+
+a.bouton{
+	background: transparent url(../images/bouton_a.png) no-repeat top right; 
+}
+a.bouton span {
+    background: transparent url(../images/bouton_span.png) no-repeat;
+}
+
+a.boutonInaccessible{
+	background: transparent url(../images/bouton_a_i.png) no-repeat top right; 
+}
+a.boutonInaccessible span {
+    background: transparent url(../images/bouton_span_i.png) no-repeat;
+}
+
+
+/*Groupe boutons d'actions*/
+div.groupeBoutons{
+	clear:both;
+	min-height:28px;
+	margin:0 -10px;
+	padding:0 10px;
+}
+div.groupeBoutons .alignGauche{
+	clear:none;
+	float:left !important;
+}
+div.groupeBoutons .alignDroite{
+	clear:none;
+	float:right !important;
+}
+div.groupeBoutons .alignGauche a.bouton,div.groupeBoutons .alignGauche a.boutonInaccessible{margin:0 6px 0 0 !important}
+div.groupeBoutons .alignDroite a.bouton,div.groupeBoutons .alignDroite a.boutonInaccessible{margin:0 0 0 6px !important}
+/*btCentre pour cadre à droite*/
+.btCentre{
+	width:205px;
+	margin:0 !important;
+	padding:0 !important;
+}
+.btCentre a.bouton{margin:0 auto 0px;padding:0 10px 0 0;width:195px}

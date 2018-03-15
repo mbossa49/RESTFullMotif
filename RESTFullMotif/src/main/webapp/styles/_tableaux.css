@@ -1,0 +1,349 @@
+/*TABLEAUX*/
+table,th,td,tr{
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+}
+table{
+	margin:0 0 3px 0;  	
+    border-collapse:collapse;
+	width:100%;
+	font-family:arial;
+	font-size:1em;
+}
+table caption {
+	display:none;
+}
+
+/*lignes, cellules*/
+tr{
+    background:#F0F2F5;  
+	border-bottom:1px solid white;	
+}
+tr.even{
+    background:#DAE3EC;    
+}
+th,td{
+	
+}
+th:first-child,td:first-child{border-left:0}
+th{  
+	font-weight:bold;
+	color:#1E3366;        
+    vertical-align:middle;
+	line-height:1.05em;
+	border-left: 2px solid #fff;	
+	padding:7px;
+}
+th.h30{background:url(../images/tableau_fond30.jpg) no-repeat center left;}
+th.h45{background:url(../images/tableau_fond45.jpg) no-repeat center left;}
+th.h60{background:url(../images/tableau_fond60.jpg) no-repeat center left;}
+th.h75{background:url(../images/tableau_fond75.jpg) no-repeat center left;}
+td{
+	color:#2A2A29;
+	line-height:1.1em;
+	border-left: 2px solid #fff;
+	vertical-align:top;
+	padding:7px;
+}
+/*lien sur une ligne*/
+tr.lien:hover{background:#e8ebf1;cursor:pointer}
+tr.even.lien:hover{background:#d4dfeb;cursor:pointer}
+
+/*Tableau sans tête de colonnes*/
+table.tableau2 td{border-left: 1px solid #fff;vertical-align:middle !important}
+
+/*Alignement des données*/
+th.textes,td.textes{
+	text-align:left;	
+}
+th.chiffres,td.chiffres{
+	text-align:right;
+}
+th.autres{/*dates, images, codes, etc*/
+	text-align:center;
+	padding:5px 7px 5px !important;
+}
+td.autres{/*dates, images, codes, etc*/
+	text-align:center;
+	padding:7px 7px 7px !important;
+}
+
+/*Tri*/
+th.triInitial,th.triCroissant,th.triDecroissant{
+	padding-left:15px !important;
+}
+th.triInitial.h30{background:url(../images/tableau_fond30_tri.jpg) no-repeat center left;}
+th.triCroissant.h30{background:url(../images/tableau_fond30_bas.jpg) no-repeat center left;}
+th.triDecroissant.h30{background:url(../images/tableau_fond30_haut.jpg) no-repeat center left;}
+th.triInitial.h45{background:url(../images/tableau_fond45_tri.jpg) no-repeat center left;}
+th.triCroissant.h45{background:url(../images/tableau_fond45_bas.jpg) no-repeat center left;}
+th.triDecroissant.h45{background:url(../images/tableau_fond45_haut.jpg) no-repeat center left;}
+th.triInitial.h60{background:url(../images/tableau_fond60_tri.jpg) no-repeat center left;}
+th.triCroissant.h60{background:url(../images/tableau_fond60_bas.jpg) no-repeat center left;}
+th.triDecroissant.h60{background:url(../images/tableau_fond60_haut.jpg) no-repeat center left;}
+th.triInitial.h75{background:url(../images/tableau_fond75_tri.jpg) no-repeat center left;}
+th.triCroissant.h75{background:url(../images/tableau_fond75_bas.jpg) no-repeat center left;}
+th.triDecroissant.h75{background:url(../images/tableau_fond75_haut.jpg) no-repeat center left;}
+
+
+td.tri{padding-left:15px !important;}
+
+/*Colonne cases à cocher*/
+th.cases,td.cases{
+	width:20px;
+	text-align:center;
+}
+th.cases{padding:2px 3px 0 !important}
+td.cases{padding:6px 3px 0 !important}
+th input[type=checkbox],td input[type=checkbox],th input[type=radio],td input[type=radio]{
+	padding:0 !important;
+	margin:0 !important
+}
+
+/*colonne actions*/
+th.actions{
+	text-align:center;
+	padding:7px 10px 7px 10px !important;
+	margin:0;
+}
+td.actions{
+	text-align:center;
+	padding:4px 5px 2px !important
+}
+
+
+/*FILTRAGE*/
+tr.filtrage {
+	border:none;
+	border-top:1px solid #D8DEE6;
+}
+tr.filtrage th{
+	color:#2A2A29;
+	padding:5px;
+	margin:0;
+	font-weight:normal;
+	text-align:left;
+}
+tr.filtrage th img,tr.filtrage th div{
+	display:inline-block;
+	vertical-align:middle;
+}
+tr.filtrage th div.boutons{
+	float:right;
+}
+tr.filtrage th div.boutons a{
+	margin:0px 6px 0 0;
+	padding:0 8px 0 0;
+}
+tr.filtres{border:none !important;}
+tr.filtres th{
+	background-color:#F0F2F5;
+	border:none;
+	padding:0 3px 3px 1px !important;
+	margin:0 !important;
+	vertical-align:top;
+	text-align:center;
+}
+tr.filtres th input{
+	display:block;
+	border:1px solid #ccc !important;
+	height:20px;
+	font-family:arial !important;
+	color:#2A2A29 !important;
+	font-size:1em;
+	width:100%;
+	margin:0 0 0 1px;
+	box-sizing:border-box;
+	padding:3px 0 3px 2px;
+}
+tr.filtres th select{
+	width:100%;
+	margin:0 0 0 1px;
+	box-sizing:border-box;
+	border:1px solid #ccc;
+	font-family:arial !important;
+	font-size:1.1em !important;
+	padding:0;
+}
+@-moz-document url-prefix()	{ 
+	tr.filtres th{padding:0 9px 3px 0px !important}
+}
+
+
+/*PAGINATION*/
+#paginationBloc{
+	display:table;
+	height:30px;
+	padding:0;
+	margin:0 0 3px 0;
+	border-top:1px solid #D8DEE6;
+	background:#F0F2F5;
+	width:100%;
+	font-size:1em;
+}
+
+/*affichage du nombre de lignes trouvées*/
+#paginationBloc #nombresLignesTrouvees{
+	display:table-cell;
+	width:30%;
+	height:25px;
+	padding:0 0 0 5px;
+	margin:0;
+	text-align:left;
+	vertical-align:middle;
+	}
+#paginationBloc #nombresLignesTrouvees > div{
+	font-family:arial !important;
+	color:#2A2A29 !important;
+	margin:0;
+}
+#paginationBloc #nombresLignesTrouvees span{
+	display:inline;
+	font-weight:bold;
+}
+
+/*boutons multilignes*/
+#btMultilignes{
+	display:table-cell;
+	width:30%;
+	height:25px;
+	padding:4px 0 0 0;
+	margin:0;
+	text-align:left;
+	vertical-align:top;
+}
+#btMultilignes img{
+	display:inline-block;
+	margin:0;
+}
+#btMultilignes a{margin:0;padding:0}
+
+/*éléments de pagination*/
+#pagination{
+	display:table-cell;
+	height:25px;
+	padding:10px 0 0 0;
+	margin:0;
+	text-align:center;
+}
+#pagination img{
+	display:inline-block;
+}
+#pagination span{
+	position:relative;
+	display:inline-block;
+	text-align:center;
+	padding:0 3px;
+	margin:0;
+	font-family:arial !important;
+	color:#2A2A29 !important;
+}
+#pagination span a.enCours{text-decoration:none;font-weight:bold;cursor:default}
+#pagination span a.pasPrecedent,#pagination span a.pasSuivant{text-decoration:none;color:#666;cursor:default}
+
+/*choix du nombre de ligne*/
+#choixNbLignes{
+	display:table-cell;
+	width:30%;
+	height:25px;
+	padding:4px 5px 0 0;
+	margin:0;
+	text-align:right;
+	vertical-align:top;
+}
+#choixNbLignes label,#choixNbLignes select{
+	font-family:arial !important;
+	color:#2A2A29 !important;
+	margin:1px 0 0 0;
+	padding:0;
+}
+#choixNbLignes label{
+	text-align:right !important;	
+}
+#choixNbLignes select{
+	width:48px;
+}
+
+
+
+
+
+/*RAPPEL CRITERES*/
+#rappelCriteresBloc{
+	display:table;
+	height:30px;
+	padding:0;
+	margin:0 0 3px 0;
+	border-top:1px solid #D8DEE6;
+	background:#F0F2F5;
+	width:100%;
+	font-size:1em;
+}
+#rappelCriteresBloc > div{
+	display:table-cell;
+	font-family:arial !important;
+	color:#2A2A29 !important;
+	margin:0;
+	text-align:center;
+	vertical-align:middle;
+}
+#rappelCriteresBloc span{
+	display:inline;
+	font-weight:bold;
+}
+
+
+/*EXPAND*/
+tr.expand{
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	display:table-row;
+	height:auto !important;
+	height:30px;
+	min-height:30px;
+}
+tr.expand > td{
+	padding:8px;
+	border-top:1px solid #fff;
+	border-bottom:1px solid #fff;
+}
+tr.expand > td .groupeBoutons{padding:0 !important;margin:0 !important;}
+
+
+/*PSEUDO TABLEAU*/
+div.table{
+	display:table;
+    table-layout:fixed;
+	width:100%;
+}
+div.table > div{
+	display:table-row;
+}
+div.table > div > div{
+	display:table-cell;
+	vertical-align:middle;
+	text-align:center;
+	padding:5px;
+}
+
+
+/*champ dans un tableau*/
+td input{margin:0 3px 0 0 !important;}
+
+
+/*CALENDRIER*/
+/*champ date*/
+img.calend{
+	display:inline-block;
+	vertical-align:top;
+	width:19px;
+	height:19px;
+    cursor:pointer;
+	margin:0 0 0 -5px;
+}
+/*calendrier*/
+table.calendrier,table.calendrier table{margin:0}
+table.calendrier td{padding:0;line-height:24px;border:none}
+table.calendrier tr{background-color:transparent;border:none}
+table.jours td{padding:7px;line-height:16px;border-left:1px solid #fff;border-bottom:1px solid #fff;margin:0}
+table.jours td:first-child{border-left:none}

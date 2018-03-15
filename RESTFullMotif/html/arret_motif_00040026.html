@@ -1,0 +1,107 @@
+﻿<table class="cTableauTriable" style="width:100%; margin-top:0; border-spacing : 0; border-collapse:inherit">
+	<colgroup>
+		<col width="14%">
+		<col width="16%">
+		<col width="14%">
+		<col width="14%">
+		<col width="14%">
+		<col width="14%">
+		<col width="14%">
+	</colgroup>
+	<tr>
+		<th class="cCentre hauteur90" colspan="3" rowspan="3">Type d'emploi</th>
+		<th class="cCentre hauteur30"  colspan="4">Dur&eacute;e indicative</th>		
+	</tr>
+	<tr>
+		<th class="cCentre hauteur30 cSansMarge" colspan="2">Section partielle</th>		
+		<th class="cCentre hauteur30 cSansMarge" colspan="2">Section compl&egrave;te</th>	
+	</tr>
+	<tr>
+		<th class="cCentre hauteur30 cSansMarge">Tendon<br/>extenseur</th>		
+		<th class="cCentre hauteur30 cSansMarge">Tendon<br/>fl&eacute;chisseur</th>
+		<th class="cCentre hauteur30 cSansMarge">Tendon<br/>extenseur</th>		
+		<th class="cCentre hauteur30 cSansMarge">Tendon<br/>fl&eacute;chisseur</th>
+	</tr>
+	<tr>
+		<td colspan="3" class="cCentre">Travail s&eacute;dentaire</td>
+		<td class="cCentre">
+			<input type="radio" style="background: transparent;" name="radioDuree" value="21" onClick="onClicktableauDuree(this)"/>
+			<label for="duree1">21 jours</label>
+		</td>	
+		<td class="cCentre">
+			<input type="radio" style="background: transparent;" name="radioDuree" value="28" onClick="onClicktableauDuree(this)"/>
+			<label for="duree2">28 jours</label>
+		</td>
+		<td class="cCentre">
+			<input type="radio" style="background: transparent;" name="radioDuree" value="35" onClick="onClicktableauDuree(this)"/>
+			<label for="duree3">35 jours</label>
+		</td>	
+		<td class="cCentre">
+			<input type="radio" style="background: transparent;" name="radioDuree" value="42" onClick="onClicktableauDuree(this)"/>
+			<label for="duree4">42 jours</label>
+		</td>		
+	</tr>
+	<tr class="alt">
+		<td class="cCentre cSansMarge">Travail physique l&eacute;ger</td>
+		<td class="cCentre cSansMarge" rowspan="2">Sollicitation mod&eacute;r&eacute;e<br/>de la main</td>
+		<td class="cCentre cSansMarge">Charge ponctuelle &lt; 10 kg<br/>ou charge r&eacute;p&eacute;t&eacute;e &lt; 5kg</td>
+		<td class="cCentre cSansMarge">
+			<input type="radio" style="background: transparent;" name="radioDuree" value="28" onClick="onClicktableauDuree(this)"/>
+			<label for="duree5">28 jours</label>
+		</td>
+		<td class="cCentre cSansMarge">
+			<input type="radio" style="background: transparent;" name="radioDuree" value="42" onClick="onClicktableauDuree(this)"/>
+			<label for="duree6">42 jours</label>
+		</td>
+		<td class="cCentre">
+			<input type="radio" style="background: transparent;" name="radioDuree" value="42" onClick="onClicktableauDuree(this)"/>
+			<label for="duree7">42 jours</label>
+		</td>
+		<td class="cCentre">
+			<input type="radio" style="background: transparent;" name="radioDuree" value="56" onClick="onClicktableauDuree(this)"/>
+			<label for="duree8">56 jours</label>
+		</td>
+	</tr>
+	<tr>
+		<td class="cCentre cSansMarge">Travail physique mod&eacute;r&eacute;</td>
+		<td class="cCentre cSansMarge">Charge ponctuelle &lt; 25 kg<br/>ou charge r&eacute;p&eacute;t&eacute;e &lt; 10kg</td>
+		<td class="cCentre">
+			<input type="radio" style="background: transparent;" name="radioDuree" value="42" onClick="onClicktableauDuree(this)"/>
+			<label for="duree9">42 jours</label>
+		</td>
+		<td class="cCentre">
+			<input type="radio" style="background: transparent;" name="radioDuree" value="63" onClick="onClicktableauDuree(this)"/>
+			<label for="duree10">63 jours</label>
+		</td>
+		<td class="cCentre">
+			<input type="radio" style="background: transparent;" name="radioDuree" value="56" onClick="onClicktableauDuree(this)"/>
+			<label for="duree11">56 jours</label>
+		</td>
+		<td class="cCentre">
+			<input type="radio" style="background: transparent;" name="radioDuree" value="70" onClick="onClicktableauDuree(this)"/>
+			<label for="duree12">70 jours</label>
+		</td>		
+	</tr>
+	<tr class="alt">
+		<td class="cCentre cSansMarge">Travail physique lourd</td>
+		<td class="cCentre cSansMarge">Forte sollicitation<br/>de la main</td>
+		<td class="cCentre cSansMarge">Charge &gt; 25kg</td>
+		<td class="cCentre">
+			<input type="radio" style="background: transparent;" name="radioDuree" value="56" onClick="onClicktableauDuree(this)"/>
+			<label for="duree13">56 jours</label>
+		</td>
+		<td class="cCentre">
+			<input type="radio" style="background: transparent;" name="radioDuree" value="77" onClick="onClicktableauDuree(this)"/>
+			<label for="duree14">77 jours</label>
+		</td>
+		<td class="cCentre">
+			<input type="radio" style="background: transparent;" name="radioDuree" value="70" onClick="onClicktableauDuree(this)"/>
+			<label for="duree15">70 jours</label>
+		</td>
+		<td class="cCentre">
+			<input type="radio" style="background: transparent;" name="radioDuree" value="84" onClick="onClicktableauDuree(this)"/>
+			<label for="duree16">84 jours</label>
+		</td>		
+
+	</tr>
+</table>

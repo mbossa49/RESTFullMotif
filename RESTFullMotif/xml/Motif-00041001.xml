@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MotifXML xmlns="http://referentiels.metier.yt.cnamts.fr" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Identification></Identification>
+	<URL></URL>
+	<Critere xmlns="http://referentiels.metier.yt.cnamts.fr">
+		<Text><![CDATA[Travail sédentaire]]></Text>
+			<DureeIndicative>
+				<Unite><![CDATA[j]]></Unite>
+				<Duree>28</Duree>
+			</DureeIndicative>
+	</Critere>
+	<Critere xmlns="http://referentiels.metier.yt.cnamts.fr">
+		<Text><![CDATA[Travail physique léger ou modéré]]></Text>
+		<Critere xmlns="http://referentiels.metier.yt.cnamts.fr">
+			<Text><![CDATA[Sollicitation modérée du membre supérieur]]></Text>
+			<Critere xmlns="http://referentiels.metier.yt.cnamts.fr">
+				<Text><![CDATA[Charge ponctuelle entre 10 et 25 kg ou Charge répétée < 10 kg]]></Text>
+					<DureeIndicative>
+						<Unite><![CDATA[j]]></Unite>
+						<Duree>42</Duree>
+					</DureeIndicative>			
+			</Critere>
+		</Critere>
+	</Critere>
+	<Critere xmlns="http://referentiels.metier.yt.cnamts.fr">
+		<Text><![CDATA[Travail physique lourd]]></Text>
+		<Critere xmlns="http://referentiels.metier.yt.cnamts.fr">
+			<Text><![CDATA[Forte sollicitation du membre supérieur]]></Text>
+			<Critere xmlns="http://referentiels.metier.yt.cnamts.fr">
+				<Text><![CDATA[Charge répétée > 25kg]]></Text>
+					<DureeIndicative>
+						<Unite><![CDATA[j]]></Unite>
+						<Duree>75</Duree>
+					</DureeIndicative>
+			</Critere>
+		</Critere>
+	</Critere>
+</MotifXML>

@@ -1,0 +1,61 @@
+#corpsDePage.serveurIndispo {
+  width: 890px;
+  margin-top: 0pt;
+  margin-right: 0pt;
+  margin-bottom: 0pt;
+  margin-left: 0pt;
+  padding-top: 30px;
+  padding-right: 30px;
+  padding-bottom: 0pt;
+  padding-left: 30px;
+  background-color: white;
+  height: auto !important;
+  min-height: 250px;
+  z-index: 0;
+}
+.serveurIndispo #colonneGauche {
+  float: left;
+  width: 140px;
+  padding-top: 0pt;
+  padding-right: 0pt;
+  padding-bottom: 0pt;
+  padding-left: 0pt;
+  margin-top: 0pt;
+  margin-right: 30px;
+  margin-bottom: 0pt;
+  margin-left: 0pt;
+  height: auto !important;
+  min-height: 200px;
+}
+.serveurIndispo #colonneDroite {
+  float: left;
+  width: 465px;
+  padding-top: 0pt;
+  padding-right: 0pt;
+  padding-bottom: 0pt;
+  padding-left: 0pt;
+  margin-top: 0pt;
+  margin-right: 30px;
+  margin-bottom: 0pt;
+  margin-left: 0pt;
+  height: auto !important;
+  min-height: 200px;
+}
+.serveurIndispo #colonneGauche img {
+ width: 60px;
+ height: 60px;
+ float: right;
+}
+.serveurIndispo #colonneDroite h3 {
+ font-size: 1.6em ! important;
+}
+.serveurIndispo #colonneDroite p {
+ font-size: 1.1em ! important;
+ font-weight: bold;
+}
+.serveurIndispo #colonneDroite a {
+ font-size: 1.1em ! important;
+}
+#top {
+  color: rgb(67, 113, 150);
+}

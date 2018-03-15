@@ -1,0 +1,150 @@
+/* Basic jQuery Slider essential styles */
+/* Adaptation : Hervé Juin*/
+
+#container{
+	width:224px;
+	height:175px;
+	padding:0;
+	margin:0 auto 10px;
+	overflow:hidden;
+	background:transparent;
+}
+
+#banner{
+	height:140px;
+	width:224px;
+	margin:0;
+	position:relative;	
+}
+
+ul.bjqs{
+	list-style:none;
+	padding:0;
+	margin:0;
+	display:none;
+	border:none;
+}
+ul.bjqs img{
+	border-radius:10px;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	behavior:url(PIE.htc); 
+}
+li.bjqs-slide{display:none;position:absolute;}
+
+ul.bjqs-controls{
+	list-style:none;
+	margin:0;
+	padding:0;
+	z-index:9999;
+	width:224px;
+	height:25px;
+	background:url(../images/bannieres_fondBt.png) no-repeat;
+}
+
+ol.bjqs-markers{list-style:none;margin:0;padding:0;z-index:9999;}
+ol.bjqs-markers li{float:left;}
+
+p.bjqs-caption{display:block;width:96%;margin:0;padding:2%;position:absolute;bottom:0;}
+
+ul.bjqs-controls li a{
+	display:block;
+	padding:0;
+	width:15px;
+	height:15px;
+	position:absolute;
+	color:#fd0100;
+	text-decoration:none;
+	text-transform:uppercase;
+}
+
+
+a.bjqs-next{
+	position:absolute;
+	top:145px;
+	right:8px;
+	background:url(../images/versD1.gif) no-repeat;
+}
+a.bjqs-next:hover{
+	text-decoration:none;
+	background:url(../images/versD.gif) no-repeat;
+}
+a.bjqs-prev{
+	position:absolute;
+	top:145px;
+	right:42px;
+	background:url(../images/versG1.gif) no-repeat;
+}
+a.bjqs-prev:hover{
+	text-decoration:none;
+	background:url(../images/versG.gif) no-repeat;
+}
+a.bjqs-pause{
+	position:absolute;
+	top:145px;
+	right:24px;
+	background:url(../images/pause1.gif) no-repeat;
+}
+a.bjqs-pause:hover{
+	text-decoration:none;
+	background:url(../images/pause.gif) no-repeat;
+	cursor:pointer;
+}
+a.bjqs-pause2{
+	position:absolute;
+	top:145px;
+	right:24px;
+	background:url(../images/pause.gif) no-repeat;
+	cursor:default;
+}
+
+p.bjqs-caption{
+	width:auto;
+	height:20px;
+	position:absolute;
+	top:110px;
+	right:10px;
+	padding:0 7px;
+	text-align:center;
+	font-family:arial;
+	font-size:1em;
+	font-weight:bold;
+	line-height:20px;
+	background-color:black; 
+	opacity:.6;
+	filter:alpha(opacity=60);
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	behavior:url(PIE.htc); 
+}
+ p.bjqs-caption a{
+	display:block;
+	color:#fff;
+	text-decoration:none;
+ }
+ 
+ 
+ ol.bjqs-markers{
+	position:absolute;
+	top:147px;
+	right:70px;
+	text-align:right;
+}
+ol.bjqs-markers li{
+	position:relative;
+	z-index:2;
+	float:left;
+	margin:0 2px;
+}
+ol.bjqs-markers li a,ol.bjqs-markers li.active-marker a{
+	display:block;
+	height:10px;
+	width:10px;
+	overflow:hidden;
+	text-indent:-9999px; 
+}
+ol.bjqs-markers li a{background:url(../images/banner_pointGris.gif) no-repeat;color:#ababab;}
+ol.bjqs-markers li.active-marker a{background:url(../images/banner_pointBleu.gif) no-repeat;color:#346DBA;}

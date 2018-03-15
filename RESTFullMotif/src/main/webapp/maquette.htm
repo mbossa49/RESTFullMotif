@@ -1,0 +1,922 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+
+<head>
+    <title>Espace Pro</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	
+	<!--FEUILLES DE STYLES-->
+	<!--css communes-->
+	<link  href="styles/_actions.css" rel="stylesheet" type="text/css" media="screen"/>
+	<link  href="styles/_article.css" rel="stylesheet" type="text/css" media="screen"/>
+	<link  href="styles/_boutons.css" rel="stylesheet" type="text/css" media="screen"/>
+	<link  href="styles/_bulles.css" rel="stylesheet" type="text/css" media="screen"/>
+	<link  href="styles/_cadres.css" rel="stylesheet" type="text/css" media="screen"/>
+	<link  href="styles/_concertation.css" rel="stylesheet" type="text/css" media="screen"/>
+	<link  href="styles/_corpsDePage.css" rel="stylesheet" type="text/css" media="screen"/>	
+	<link  href="styles/_entete.css" rel="stylesheet" type="text/css" media="screen"/>
+	<link  href="styles/_entete_rubrique.css" rel="stylesheet" type="text/css" media="screen"/>
+	<link  href="styles/_etapes.css" rel="stylesheet" type="text/css" media="screen"/>
+	<link  href="styles/_fenetres.css" rel="stylesheet" type="text/css" media="screen"/>
+	<link  href="styles/_fichiersExternes.css" rel="stylesheet" type="text/css" media="screen"/>
+	<link  href="styles/_formulaires.css" rel="stylesheet" type="text/css" media="screen"/>
+	<link  href="styles/_general.css" rel="stylesheet" type="text/css" media="screen"/>	
+	<link  href="styles/_graphes.css" rel="stylesheet" type="text/css" media="screen"/>	
+	<link  href="styles/_legendes.css" rel="stylesheet" type="text/css" media="screen"/>	
+    <link  href="styles/_menus.css" rel="stylesheet" type="text/css" media="screen"/>
+	<link  href="styles/_messages.css" rel="stylesheet" type="text/css" media="screen"/>
+	<link  href="styles/_piedsDePage.css" rel="stylesheet" type="text/css" media="screen"/>
+	<link  href="styles/_popIn.css" rel="stylesheet" type="text/css" media="screen"/>
+	<link  href="styles/_popUp.css" rel="stylesheet" type="text/css" media="screen"/>
+	<link  href="styles/_tableaux.css" rel="stylesheet" type="text/css" media="screen"/>
+	
+	<!--css spécifiques-->
+	<link  href="styles/accueil.css" rel="stylesheet" type="text/css" media="screen"/>
+	<link  href="styles/basic-jquery-slider.css" rel="stylesheet" type="text/css" media="screen"/>
+	<link  href="styles/connexion.css" rel="stylesheet" type="text/css" media="screen"/>
+	<link  href="styles/serveurIndispo.css" rel="stylesheet" type="text/css" media="screen"/>
+	<link  href="styles/infosPatients.css" rel="stylesheet" type="text/css" media="screen"/>
+	<link  href="styles/aat.css" rel="stylesheet" type="text/css" media="screen"/>
+	<link  href="styles/jquery-ui.css" rel="stylesheet" type="text/css" media="screen"/>
+	
+	<!--JAVASCRIPTS-->
+	<script type="text/javascript" src="js/menus.js"></script>
+	<script type="text/javascript" src="js/menuContextuel.js"></script>
+	<script type="text/javascript" src="js/menuIndicateurs.js"></script>
+	<script type="text/javascript" src="js/menuIndicateurs_orgCab.js"></script>
+	<script type="text/javascript" src="js/plierDeplier.js"></script>
+	<script type="text/javascript" src="js/plierDeplierEchange.js"></script>
+	<script type="text/javascript" src="js/blocDepliant.js"></script>
+	<script type="text/javascript" src="js/graphes_afficherCacher.js"></script>	
+	<script type="text/javascript" src="js/openPopup.js"></script>
+
+	<script type="text/javascript" src="js/jquery-1.11.2.js"></script>
+	<script type="text/javascript" src="js/jquery-ui.js"></script>
+	<script type="text/javascript" src="js/jquery.scrollTo.min.js"></script>
+	<script type="text/javascript" src="js/jquery.accentFolding.js"></script>
+	<script type="text/javascript" src="js/jquery.localScroll.min.js"></script>
+
+	<script type="text/javascript" src="js/smoothscroll.js"></script>
+	<script type="text/javascript" src="js/tablesort.js"></script>
+	<script type="text/javascript" src="js/basic-jquery-slider.js"></script>
+	<script type="text/javascript" src="js/placeholder.js"></script>
+	<script type="text/javascript" src="js/select-placeholder.js"></script>
+	<script type="text/javascript" src="js/highcharts.js"></script>	
+	<script type="text/javascript" src="js/datetimepicker_css.js"></script>	
+	<script type="text/javascript" src="js/PIE.js"></script>
+	
+	<script type="text/javascript">	
+	
+		var indicationDuree;
+		var codeLibelle;
+		
+		<!-- Liste des motifs pour autocomplétion -->
+		var listeDesMotifs = [];
+		var motifSelectionne = ""
+		var saisiLibre = "Saisi libre";
+		
+		<!-- Gestion de l'autocomplétion -->
+		$(function(){ 
+			
+			$("#message_ocre").hide();
+			$("#listeCategorie").hide();			
+			$("#blocktableauDurees").hide();
+			$("#tableauDurees").hide();
+			$("#complementInfo").hide();
+			$("#pdf").attr("href", "");
+			document.getElementById('dureeArret').value="";
+			
+			
+			$.ui.autocomplete.prototype._renderItem = function (ul, item) {
+// 				item.label = item.label.replace(new RegExp("(?![^&;]+;)(?!<[^<>]*)(" + $.ui.autocomplete.escapeRegex(this.term) + ")(?![^<>]*>)(?![^&;]+;)", "gi"), "<strong>$1</strong>");				
+				return $("<li></li>")
+					.data("item.autocomplete", item)
+					.append("<a>" + item.value + "</a>")
+					.appendTo(ul);
+			};			
+			$('#champMotif').autocomplete({
+
+				source: function(requete, reponse){ // les deux arguments représentent les données nécessaires au plugin
+					$.ajax({
+						type: 'GET',
+						url: '/RESTFullMotif/rest/motif/motif/'+$('#champMotif').val(),
+						dataType : 'json',
+			            success: function(data) {
+			                reponse($.map(data, function(objet){
+			                    return objet;
+			                }));
+			            },
+			            error: function() {
+				              alert('La requête n\'a pas abouti'); 
+						}
+			        });
+			    },
+				minLength: 3,
+				delay : 300,
+			    select : function(event,ui){
+			    	motifSelectionne = document.getElementById('champMotif').value;
+			    	if(!(ui.item.value =="Saisi libre")){
+						motifSelectionne = ui.item.value;
+						codeLibelle = ui.item.label;
+						ui.item.value = "";
+			    	}
+			    	 validationSaisie();				
+			    },
+				<!-- gestion du no resultat -->
+				response : function(event,ui){					
+					var resultSize = ui.content.length;
+					if(resultSize == 0){
+						motifSelectionne = "";
+						ui.content.push({label:"Saisi libre", value:"Saisi libre"});
+					}
+				} 
+			});
+		});	
+		
+		function validationSaisie(){
+			
+			alert('Validation de la Saisie');
+		
+			/** 1 - Afficher la saisie en bas du champ
+				si 
+					motifSelectionne = vide => cas saisi libre.
+				Sinon
+					proposition
+			*/
+			if(motifSelectionne ==""){
+				$("#motifSelectionne").html(document.getElementById('champMotif').value);
+				//gestion saisi libre
+				gererSaisieLibre();
+			}else{
+				
+				$("#motifSelectionne").html(motifSelectionne);
+				afficherTableauDuree();
+			}
+			// 1 - Reset du champ de saisi
+			document.getElementById('champMotif').value="";
+			document.getElementById('champMotif').title="";
+			inputPlaceholder(document.getElementById('champMotif'));
+		}
+		
+		/**
+		*
+		*/
+		function afficherTableauDuree() {
+			$.ajax({
+				type: 'GET',
+				url: '/RESTFullMotif/rest/motif/htm/'+codeLibelle,
+				dataType : 'html',
+	            success: function(data) {
+	            	
+	            	$("#blocktableauDurees").show();
+	            	$("#tableauDurees").html(data);
+	           		$("#tableauDurees").show();
+	           		$("#pdf").attr("href", "/RESTFullMotif/rest/motif/pdf/"+codeLibelle);
+	            },
+	            error: function() {
+		              alert('La requête n\'a pas abouti'); 
+				}
+	        });
+		}
+		
+		function onClicktableauDuree(radio){
+			document.getElementById('dureeArret').value=radio.value;
+			calculerDateFin('6/14/2016',radio.value);
+		}
+		
+		
+		<!--  Actions si choix 'Fracture de la cheville' -->		
+		function choixMotif(){ 			
+// 			if(motifSelectionne!=document.getElementById('champMotif').value && document.getElementById('champMotif').value.length>0)
+			if(motifSelectionne == "")
+			{
+				gererSaisieLibre();
+			}else{
+				//on cache les catégories
+				document.getElementById('listeCategorie').style.display="none";
+			}
+		}
+		
+		<!-- gestion de la saisie libre -->
+		function gererSaisieLibre(){
+			// On cache le tableau des durées
+			document.getElementById('tableauDurees').style.display="none";
+			// On enleve la durée à vide
+			document.getElementById('dureeArret').value="";
+			document.getElementById('finArret').value="";
+			
+			//affichage du block catégorie
+			$("#message_ocre").show();
+			document.getElementById('listeCategorie').style.display="block";
+			
+			//
+			$("#motifSelectionne").html(document.getElementById('champMotif').value);
+		}
+		<!-- gestion du choix d'une catégorie ou CIM10  -->
+		function choisirCategorie(){
+			var categorie = document.getElementById('categorie').value;
+			document.getElementById('complementInfo').style.display="block";
+		}
+		
+		
+		<!--Ajouter des jours à une date -->
+		function calculerDateFin(dateDeb,duree){
+			var dateFin = new Date(dateDeb);
+			dateFin.setDate(dateFin.getDate()+parseInt(duree));
+			var day = dateFin.getDate();
+			var month = dateFin.getMonth() + 1;
+			var year = dateFin.getFullYear();
+			// format du jour.
+			if(day<10){ 
+				day = '0'+ day;
+			}
+			//format du mois.
+			if(month<10){ 
+				month = '0'+ month;
+			}
+			document.getElementById('finArret').value= day + "/" + month+"/"+year;
+			return dateFin;
+		}
+				
+		<!-- Actions avec le bouton Reset du champ -->		
+		function reInitChamp() {
+			document.getElementById("listeCategorie").style.display="none";
+			document.getElementById("tableauDurees").style.display="none";
+			document.getElementById("message_ocre").style.display="none";
+			document.getElementById("complementInfo").style.display="none";
+			document.getElementById('dureeArret').value="";
+			document.getElementById('finArret').value="";
+			$("#motifSelectionne").html('Nom du motif saisi');
+			document.getElementById('champMotif').value="";
+			document.getElementById('champMotif').title="";
+
+			if (navigator.userAgent.indexOf('MSIE') != -1){
+				document.getElementById('champMotif').value=document.getElementById('champMotif').placeholder;
+				document.getElementById('champMotif').style.color='#888'
+			}
+		}
+		
+		<!-- Action sur le lien "Liste des motifs" -->
+		function afficheListeMotifs(){ 
+			document.getElementById("popIn_listeMotifs").style.display="block";			
+		}
+		
+		<!-- Action sur le bouton croix de la popIn -->
+		function cacheListeMotifs(){ 
+			document.getElementById("popIn_listeMotifs").style.display="none";
+		}			
+		
+		<!-- Paramétrages du scrolling dans la liste des motifs -->
+		jQuery(function( $ ){ 
+			$.localScroll.defaults.axis = 'y';
+			$.localScroll({
+				target:'#blocMotifs',
+				queue:true,
+				duration:1200,
+				hash:true
+			});
+		});			
+		
+		<!-- Actions sur la sélection d'un motif dans la liste -->
+		function selectionMotif(valeur){ 
+			var motif = valeur.innerText;
+			var maxLength = 49;
+			if(motif.length > maxLength){
+				document.getElementById('champMotif').title=motif;
+				if (navigator.userAgent.indexOf('MSIE') != -1){					
+					motif=motif.substr(0,maxLength);				
+					motif=motif + " ..."
+				}
+			}
+			motifSelectionne=motif;
+			if(motif.trim()==="Fracture de la cheville"){
+				document.getElementById('dureeArret').value="28";
+				document.getElementById('finArret').value="11/07/2016";
+				document.getElementById('tableauDurees').style.display="block";
+			}else{
+				document.getElementById('dureeArret').value="";
+				document.getElementById('finArret').value="";
+				document.getElementById('tableauDurees').style.display="none";
+			};
+			document.getElementById('champMotif').value=motif;
+			document.getElementById('champMotif').style.color='#000'
+			cacheListeMotifs();
+			document.getElementById("listeCategorie").style.display="none";			
+		}
+		</script>
+	
+</head>
+
+
+<body id="top" name="top">
+
+<!--PAGE-->
+<div id="page">
+	<!--ZONE ACTIONS-->
+	<div id="actions">    	
+        <div id="derniereConnexion">Dernière connexion : <b>02/05/2015 - 10:00</b></div>
+        <div id="btDeconnexion"><a class="btDeconnexion" href="#"><span>Déconnexion</span></a></div>
+    </div>
+
+	<!--ENTETE-->
+	<div id="header">
+		<h1>Mon Espace Pro</h1>
+        <div id="profession"><div class="zoneTexte">Médecin</div></div>
+        <div id="identification">
+        	<form action="" method="get">
+                <p><b>Dr Pierre DUPONT</b></p>
+                <p>Cabinet, num PS</p>
+                <p>120, avenue Gambetta</p>
+                <p>75000 PARIS</p>
+			</form>
+        </div>
+	</div>
+	<!--FIN ENTETE-->
+    
+    
+    <!--MENUS-->
+	<div id="menus">
+		<h1>Menus</h1>
+       	<ul id="menu" class="menu">
+        	<li class="actif"><a href="#" class="retAccueil"></a></li>			
+			<li><a href="#" class="sousMenus">Services patient</a>
+				<!--[if lt IE 7]><iframe></iframe><![endif]-->	
+				<ul>
+					<li><a href="#">Avis d’arrêt de travail</a></li>
+					<li><a href="#">ALD / protocole de soins du patient</a></li>
+					<li><a href="#">Certificats médicaux ATMP</a></li>
+					<li><a href="#">Demande d’accord préalable</a></li>
+					<li><a href="#">Suivi patient</a></li>
+					<li><a href="#">Historique des remboursements</a></li>
+					<li><a href="#">Compteur d’actes de masso-kinésithérapie</a></li>
+				</ul>
+			</li>
+            <li><a href="#" class="sousMenus">Activités</a>
+				<!--[if lt IE 7]><iframe></iframe><![endif]-->	
+				<ul>
+                	<li class="soustitre">Paiements</li>
+					<li><a href="#">Tiers Payant : Recherche par date de paiements</a></li>
+					<li><a href="#">Tiers Payant : Recherche par date d'actes</a></li>
+					<li><a href="#">Relevés mensuels de paiements</a></li>
+					<li><a href="#">Rémunération spécifique médecin traitant ALD</a></li>
+					<li><a href="#">Aides à la télétransmission</a></li>
+					<li><a href="#">Gardes et astreintes</a></li>
+					<li><a href="#">Indus</a></li>
+					<li><a href="#">Relevé d'honoraires</a></li>	
+					
+                	<li class="soustitre">Pratiques</li>
+					<li><a href="#">Le CAPI</a></li>
+					<li><a href="#">Patientèle médecin traitant</a></li>
+					<li><a href="#">Relevé individuel d'activité et de prescriptions</a></li>
+					<li><a href="#">Déclarer un décès à l'INSERM</a></li>
+					<li><a href="#">Netgarde : Gestion des gardes et astreintes</a></li>
+				</ul>		
+			</li>
+			<li><a href="#" class="sousMenus">Gestion du compte</a>
+				<!--[if lt IE 7]><iframe></iframe><![endif]-->	
+				<ul>
+					<li><a href="#">Code d'accès</a></li>
+					<li><a href="#">Question clé</a></li>
+					<li><a href="#">Adresse électronique</a></li>
+					<li><a href="#">Informations personnelles</a></li>
+					<li><a href="#">Service info paiements</a></li>
+				</ul>
+			</li>
+			<li><a href="#" class="sousMenus">Commandes</a>
+				<!--[if lt IE 7]><iframe></iframe><![endif]-->	
+				<ul>
+					<li><a href="#">Commander des imprimés</a></li>
+					<li><a href="#">Historique des commandes</a></li>
+					<li><a href="#">Formulaires en ligne</a></li>
+					<li><a href="#">Tests de diagnostic rapide angine</a></li>
+				</ul>
+			</li>
+			<li><a href="#" class="sousMenus">Boîte à info</a>
+				<!--[if lt IE 7]><iframe></iframe><![endif]-->	
+				<ul>
+					<li><a href="#">Nomenclature des actes CCAM</a></li>
+					<li><a href="#">Référentiels HAS</a></li>					
+					<li><a href="#">ameli.fr</a></li>
+				</ul>
+			</li>
+			<li><a href="#" class="sousMenus">Échanges</a>
+				<!--[if lt IE 7]><iframe></iframe><![endif]-->	
+				<ul>
+					<li><a href="#">Trouver un interlocuteur</a></li>
+					<li><a href="#">Contacter l'Assurance Maladie par courriel</a></li>					
+					<li><a href="#">Support technique</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	<!--MENUS-->
+	
+    
+    <!--CORPS DE PAGE-->
+	<div id="corpsDePage">
+		
+    	<!--colonne de gauche-->
+		<div id="colonneGauche">
+			<h2>Avis d'arrêt de travail en 5 clics</h2>
+            <div class="lignePointille"></div>           
+            <!--cadres-->	
+					
+			<div class="titreBlanc">
+                <div class="titreBlancBordGauche"></div>
+                <div class="titreBlancFond"><h3>Création d'un avis d'arrêt de travail</h3></div>
+                <div class="titreBlancBordDroit"></div>
+            </div>			
+			<div class="cadreXL">               
+                <div class="cadreAngleHD">
+                    <div class="cadreAngleBG">
+                    	<div class="cadreAngleBD">                  
+                    		<div class="zoneContenus">
+                                <!--CONTENUS CADRE-->
+								<form action="" method="">												
+									<h4>Nature de l'arrêt</h4>									
+									<div><input type="radio" class="vertical" name="btradio" value="" id="btradio" CHECKED /><label for="btradio" class="radioV">Prescription d’un arrêt de travail à temps complet</label></div>
+									<div><input type="radio" class="vertical" name="btradio" value="" id="btradio" /><label for="btradio" class="radioV">Prescription d’un temps partiel pour raison médicale</label></div>
+									
+									<h4>éléments d'ordre médical</h4>										
+									<div class="item_reverse">
+										<label>L'arrêt <span>n'est pas en rapport</span> avec une affection L324-1 et R613-69 du code de la sécurité sociale</label>
+										<img class="lienPicto" src="images/picto_reverse.png" alt="Bouton d'options alternative" id="" onclick="" />	
+										<img class="btAide" src="images/aide.gif" alt="Bouton Aide">								
+									</div>
+									<div class="blocGris">
+										<div class="eom">
+											<p class="bold">Saisissez le motif ou recherchez dans la liste :</p>
+											<img class="btAide" src="images/aide.gif" alt="Bouton Aide">
+										</div>
+										<div>
+											<label for="" class="champ alignDroit lg28">Motif de l'arrêt de travail<span class="obligatoire"></span>:</label>
+											<div id="champSaisie" class="champSaisie inlineBlock">
+												<input id="champMotif" type="text" name="" size="40" value="" title="" class="" placeholder="Ex. : grippe, fracture, grossesse"/>
+												<script type="text/javascript" src="js/placeholder.js"></script>
+												<script type="text/javascript">
+													window.onload = function(){
+														inputPlaceholder( document.getElementById('champMotif') )
+													};
+												</script>
+												<div class="actionsSaisie">
+													<span id="btAnnulerSaisie" class="btValiderSaisie" onclick="validationSaisie()"></span>
+												</div>
+											</div>
+											<span class="lienListeMotifs">&nbsp;>&nbsp;<a href="#" title="" onclick="afficheListeMotifs()">Liste des motifs</a></span>
+											
+											<div class="motifSaisi">	
+												<span id="motifSelectionne" class="resultat">Nom du motif saisi</span><span class="btAnnulerSaisie" onclick="reInitChamp();"></span>
+												<p id ="message_ocre" class="message_ocre">Le motif saisi est inconnu, veuillez choisir dans la liste des maladies</p>
+											</div>
+											
+											<div id="listeCategorie" style="margin-left:10px;display:none">
+												<label>Catégorie<span class="obligatoire"></span>:</label>
+												<select id="categorie" class="cChamp cTaille140" onchange="choisirCategorie();">
+													<option value="0" label="Choisir dans la liste">Choisir dans la liste
+													</option>
+													<option value="maladie de l'œil ou de l'oreille" label="maladie de l'œil ou de l'oreille">maladie de l'œil ou de l'oreille
+													</option>
+													<option value="maladie du cœur et de l'appareil circulatoire" label="maladie du cœur et de l'appareil circulatoire">maladie du cœur et de l'appareil circulatoire
+													</option>
+													<option value="maladie de l'appareil respiratoire" label="maladie de l'appareil respiratoire">maladie de l'appareil respiratoire
+													</option>
+													<option value="maladie de l'appareil digestif" label="maladie de l'appareil digestif">maladie de l'appareil digestif
+													</option>
+													<option value="maladie des os, articulations, muscles et tissu conjonctif" label="maladie des os, articulations, muscles et tissu conjonctif">maladie des os, articulations, muscles et tissu conjonctif
+													</option>
+													<option value="maladie de l'appareil génital ou urinaire, grossesse" label="maladie de l'appareil génital ou urinaire, grossesse">maladie de l'appareil génital ou urinaire, grossesse
+													</option>
+													<option value="maladie endocrinienne, métabolique ou nutritionnelle" label="maladie endocrinienne, métabolique ou nutritionnelle">maladie endocrinienne, métabolique ou nutritionnelle
+													</option>
+													<option value="maladie du système nerveux et troubles mentaux" label="maladie du système nerveux et troubles mentaux">maladie du système nerveux et troubles mentaux
+													</option>
+													<option value="maladies du sang et du système immunitaire" label="maladies du sang et du système immunitaire">maladies du sang et du système immunitaire
+													</option>
+													<option value="maladies endocriniennes, nutritionnelles et métaboliques" label="maladies endocriniennes, nutritionnelles et métaboliques">maladies endocriniennes, nutritionnelles et métaboliques
+													</option>
+												</select>
+											</div>
+										</div>
+										<div id="complementInfo" style="margin-left:10px;display:none">
+											<label for="" class="champ alignDroit lg28" style="width:29%;">Complément d'information<span class="obligatoire"></span>:</label>
+											<div class="champLong lg70">
+												<textarea class="champTexteLong" name="" value="" rows="2"></textarea>
+												<div class="nbCaracteres">0/100 caractères</div>
+											</div>
+										</div>
+									</div>
+									
+									<h4>Durée de l'arrêt</h4>
+									<div class="champImportant">
+										<label for="">Durée</label>
+										<input id="dureeArret" type="text" class="champ" name="" value="" size="3" onchange ="calculerDateFin('6/14/2016',this.value);"/>
+										<p>jour(s)</p>
+									</div>	
+									<div id="blocktableauDurees" style="display: none;">
+										<h5>Tableau des durées indicatives pour le motif sélectionné</h5>
+										<p>Ces durées de référence sont indicatives et à adapter en fonction du patient.</p>
+										<div class="lienFicheDetaillee">
+											<p class="PDF">
+												<a href="" id="pdf" target="_blank" title="Ouvrir la fiche des durées indicatives">Fiche détaillée des durées indicatives</a>
+											</p>
+										</div>
+										<br>
+										<div id="tableauDurees"></div>								
+									</div>
+									<div class="datesArret">									
+										<span>	
+											<label for="">A partir du <span class="obligatoire"></span>:</label>
+											<input id="debutArret" type="text" class="champ" name="" value="14/06/2016" size="10" style=""/>
+											<img src="images/calendrier.gif" alt="Bouton calendrier" class="calend"/>
+										</span>
+										<span>	
+											<label for="" class="inlineBlock lg20 txtalignDroit">Jusqu'au (inclus) <span class="obligatoire"></span>:</label>
+											<input id="finArret" type="text" class="champ" name="" value="" size="10" style=""/>
+											<img src="images/calendrier.gif" alt="Bouton calendrier" class="calend"/>
+										</span>
+									</div>
+									<h4>Modalités de l'arrêt</h4>
+									<div class="item_blocDepliable">
+										<label>Avis d'arrêt de travail initial</label>
+										<img class="lienPicto" onclick="" src="images/picto_modifier_plus.png" id="" alt="" />												
+									</div>
+									<div class="item_blocDepliable">
+										<label>Adresse de visite habituelle</label>
+										<img class="lienPicto" onclick="" src="images/picto_modifier_plus.png" id="" alt="" />												
+									</div>
+									<div class="item_blocDepliable">
+										<label>Assuré(e) sans précision sur l'employeur</label>
+										<img class="lienPicto" onclick="" src="images/picto_modifier_plus.png" id="" alt="" />												
+									</div>
+									<div class="item_reverse">
+										<label>Sorties autorisées avec restriction d'horaire à partir du <span class="obligatoire"></span></label>
+										<input type="text" class="champ" name="" value="14/06/2016" size="10" style=""/>
+										<img src="images/calendrier.gif" alt="Bouton calendrier" class="calend"/>
+										<img class="lienPicto" src="images/picto_reverse.png" alt="Bouton d'options alternative" id="" onclick="" />	
+										<img class="btAide" src="images/aide.gif" alt="Bouton Aide">
+									</div>
+									<br />
+									<div class="item_reverse">
+										<label>L'arrêt ne fait pas suite à un accident causé par un tiers</label>										
+										<img class="lienPicto" src="images/picto_reverse.png" alt="Bouton d'options alternative" id="" onclick="" />
+									</div>
+									<div class="item_reverse">
+										<label>L'arrêt ne fait pas suite à une cure thermale</label>										
+										<img class="lienPicto" src="images/picto_reverse.png" alt="Bouton d'options alternative" id="" onclick="" />
+									</div>
+									<div class="item_reverse">
+										<label>L'arrêt n'est pas en rapport avec l'affection pour laquelle l'assuré est pensionné de guerre</label>										
+										<img class="lienPicto" src="images/picto_reverse.png" alt="Bouton d'options alternative" id="" onclick="" />
+									</div>
+									<div class="item_reverse">
+										<label>L'arrêt n'est pas suivi d'une reprise à temps partiel thérapeutique</label>										
+										<img class="lienPicto" src="images/picto_reverse.png" alt="Bouton d'options alternative" id="" onclick="" />
+									</div>
+									<br />
+									<p class="mentionObligatoire">* Champ(s) obligatoire(s)</p>
+									<div class="separateurGroupeElements636"></div>	
+									<div class="conditions">
+										<input type="checkbox" class="" name="btradio" value="" id="btradio" />
+										<label for="btradio" class="">
+											Mon patient accepte que je transmette le présent avis d'arrêt de travail pour son compte et est informé des <a href="" title="">textes applicables</a>.<br />J'accepte les <a href="" title="">conditions de la transmission</a> et j'ai pris connaissance des <a href="" title="">textes applicables</a>.
+										</label>
+									</div>
+									
+									<div class="groupeBoutons">
+										<div class="alignGauche">
+											<a class="bouton" href="#"><span>Abandonner</span></a>
+										</div>
+										<div class="alignDroite">
+											<a class="bouton" href="#"><span>Imprimer sans transmettre</span></a>
+											<a class="boutonInaccessible" href="#"><span>Transmettre</span></a>
+										</div>											
+									</div>
+								</form>
+							</div>
+						</div>
+                    </div>
+				</div>
+				<div class="fond_popIn" id="popIn_listeMotifs" style="display:none;">
+					<div class="popIn">
+						<div class="popIn_entete">
+							<h2>Espace pro</h2>
+							<img src="images/windowClose.gif" alt="Bouton fermer la fenêtre" onClick="cacheListeMotifs()"/>
+						</div>
+						<div class="popIn_contenu">
+							<div class="titreBlanc">
+								<div class="titreBlancBordGauche"></div>
+								<div class="titreBlancFond"><h3>Liste des motifs</h3></div>
+								<div class="titreBlancBordDroit"></div>
+							</div>
+							<div class="cadreFenetre">               
+								<div class="cadreAngleHD">
+									<div class="cadreAngleBG">
+										<div class="cadreAngleBD">                  
+											<div class="zoneContenus">
+												<p><b>Recherchez un motif par choix alphabétique :</b></p>
+												<ul class="alphabet">
+													<li><a href="#A">A</a></li>
+													<li><a href="#B">B</a></li>
+													<li><a href="#C">C</a></li>
+													<li class="inactive">D</li>
+													<li><a href="#E">E</a></li>
+													<li><a href="#F">F</a></li>
+													<li><a href="#G">G</a></li>
+													<li><a href="#H">H</a></li>
+													<li><a href="#I">I</a></li>
+													<li class="inactive">J</li>
+													<li><a href="#K">K</a></li>
+													<li><a href="#L">L</a></li>
+													<li><a href="#M">M</a></li>
+													<li class="inactive">N</li>
+													<li class="inactive">O</li>
+													<li><a href="#P">P</a></li>
+													<li class="inactive">Q</li>
+													<li><a href="#R">R</a></li>
+													<li><a href="#S">S</a></li>
+													<li><a href="#T">T</a></li>
+													<li><a href="#U">U</a></li>
+													<li><a href="#V">V</a></li>
+													<li class="inactive">W</li>
+													<li class="inactive">X</li>
+													<li class="inactive">Y</li>
+													<li class="inactive">Z</li>
+													<li style="width:50px"><a href="#CIM">CIM</li>
+												</ul>
+												<div class="separateurGroupeElements560"></div>
+												<div id="blocMotifs" class="blocMotifs">
+													<div id="A" class="lettre">
+														<div class="lettreSelectionnee">A</div>
+														<ul class="listeMotifs">
+															<li onClick="selectionMotif(this)">Abrasion de la <b>muqueuse utérine</b></li>
+															<li onClick="selectionMotif(this)">Amygdalectomie</li>
+															<li onClick="selectionMotif(this)">Angine</li>
+															<li onClick="selectionMotif(this)">Appendicectomie</li>
+															<li onClick="selectionMotif(this)">Artériopathie oblitérante des <b>membres inférieurs</b></li>
+															<li onClick="selectionMotif(this)">Arthroplastie de la <b>hanche</b> par prothèse totale</li>
+															<li onClick="selectionMotif(this)">Arthroplastie du <b>genou</b> par prothèse totale</li>
+															<li onClick="selectionMotif(this)">Arthrose du <b>genou</b></li>
+														</ul>
+													</div>
+													<div id="B" class="lettre">
+														<div class="lettreSelectionnee">B</div>
+														<ul class="listeMotifs">
+															<li onClick="selectionMotif(this)">Bronchite aiguë sans comorbidité</li>
+														</ul>
+													</div>
+													<div id="C" class="lettre">
+														<div class="lettreSelectionnee">C</div>
+														<ul class="listeMotifs">
+															<li onClick="selectionMotif(this)">Cervicalgie non spécifique</li>
+															<li onClick="selectionMotif(this)">Chirurgie de la <b>cataracte</b></li>
+															<li onClick="selectionMotif(this)">Chirurgie de l'obésité morbide</li>
+															<li onClick="selectionMotif(this)">Cholécystectomie</li>
+															<li onClick="selectionMotif(this)">Conisation du <b>col de l'utérus</b></li>
+															<li onClick="selectionMotif(this)"><b>Cornée</b> : ablation de corps étranger profond</li>
+															<li onClick="selectionMotif(this)">Cure de hernie de la paroi abdominale</li>
+															<li onClick="selectionMotif(this)">Cure de hernie discale par discectomie</li>
+															<li onClick="selectionMotif(this)">Cure de hernies inguinales</li>
+														</ul>
+													</div>
+													<div id="E" class="lettre">
+														<div class="lettreSelectionnee">E</div>
+														<ul class="listeMotifs">
+															<li onClick="selectionMotif(this)">Entorse de la <b>cheville</b></li>
+															<li onClick="selectionMotif(this)">Entorse du ligament collatéral médial du <b>genou</b></li>
+															<li onClick="selectionMotif(this)">Epicondylite latérale : traitement chirurgical</li>
+															<li onClick="selectionMotif(this)">Episode dépressif</li>
+															<li onClick="selectionMotif(this)">Exérèse de polype(s) colo-rectaux par coloscopie</li>
+															<li onClick="selectionMotif(this)">Exérèse d'une tumeur lipomateuse bénigne</li>
+														</ul>
+													</div>
+													<div id="F" class="lettre">
+														<div class="lettreSelectionnee">F</div>
+														<ul class="listeMotifs">
+															<li onClick="selectionMotif(this)">Fracture de la <b>cheville</b> </li>
+															<li onClick="selectionMotif(this)">Fracture de la <b>clavicule</b>  ou fracture de la <b>scapula</b></li>
+															<li onClick="selectionMotif(this)">Fracture de l'extrémité inférieure du <b>radius</b></li>
+															<li onClick="selectionMotif(this)">Fracture de l'extrémité proximale de l'<b>humérus</b></li>
+															<li onClick="selectionMotif(this)">Fracture du <b>scaphoïde carpien</b></li>
+															<li onClick="selectionMotif(this)">Fracture du <b>tibia</b> et de la <b>fibula</b></li>
+															<li onClick="selectionMotif(this)">Fracture(s) des os de la <b>main</b></li>
+															<li onClick="selectionMotif(this)">Fracture(s) du <b>coude</b></li>
+														</ul>
+													</div>
+													<div id="G" class="lettre">
+														<div class="lettreSelectionnee">G</div>
+														<ul class="listeMotifs">
+															<li onClick="selectionMotif(this)">Gastro-entérite virale</li>
+															<li onClick="selectionMotif(this)">Grippe saisonnière</li>
+															<li onClick="selectionMotif(this)">Grossesse</li>
+														</ul>
+													</div>
+													<div id="H" class="lettre">
+														<div class="lettreSelectionnee">H</div>
+														<ul class="listeMotifs">
+															<li onClick="selectionMotif(this)">Hallux valgus (ostéotomie)</li>
+															<li onClick="selectionMotif(this)">Hémorroïdes : traitement chirurgical</li>
+															<li onClick="selectionMotif(this)">Hypertrophie bénigne de prostate : traitement chirurgical</li>
+															<li onClick="selectionMotif(this)">Hystérectomie</li>
+														</ul>
+													</div>
+													<div id="I" class="lettre">
+														<div class="lettreSelectionnee">I</div>
+														<ul class="listeMotifs">
+															<li onClick="selectionMotif(this)">Incontinence urinaire chez la femme : traitement chirurgical</li>
+															<li onClick="selectionMotif(this)">Infarctus du myocarde (syndrome coronaire aigu)</li>
+														</ul>
+													</div>
+													<div id="K" class="lettre">
+														<div class="lettreSelectionnee">K</div>
+														<ul class="listeMotifs">
+															<li onClick="selectionMotif(this)">Kystectomie ovarienne/ovariectomie</li>
+														</ul>
+													</div>
+													<div id="L" class="lettre">
+														<div class="lettreSelectionnee">L</div>
+														<ul class="listeMotifs">
+															<li onClick="selectionMotif(this)">Lésions anales : traitement chirurgical</li>
+															<li onClick="selectionMotif(this)">Lésions méniscales : traitement chirurgical</li>
+															<li onClick="selectionMotif(this)">Libération du nerf ulnaire au coude</li>
+															<li onClick="selectionMotif(this)">Ligamentoplastie du croisé antérieur du genou</li>
+															<li onClick="selectionMotif(this)">Lombalgie commune</li>
+														</ul>
+													</div>
+													<div id="M" class="lettre">
+														<div class="lettreSelectionnee">M</div>
+														<ul class="listeMotifs">
+															<li onClick="selectionMotif(this)">Mastoplastie de réduction</li>
+														</ul>
+													</div>
+													<div id="P" class="lettre">
+														<div class="lettreSelectionnee">P</div>
+														<ul class="listeMotifs">
+															<li onClick="selectionMotif(this)">Plaies des tendons de la main</li>
+															<li onClick="selectionMotif(this)">Plaies profondes de la main et des doigts</li>
+														</ul>
+													</div>
+													<div id="R" class="lettre">
+														<div class="lettreSelectionnee">R</div>
+														<ul class="listeMotifs">
+															<li onClick="selectionMotif(this)">Recalibrage de la colonne vertébrale</li>
+															<li onClick="selectionMotif(this)">Revascularisation coronarienne</li>
+															<li onClick="selectionMotif(this)">Rupture des tendons de la coiffe des rotateurs</li>
+															<li onClick="selectionMotif(this)">Rupture du tendon d'Achille : traitement chirurgical</li>
+														</ul>
+													</div>
+													<div id="S" class="lettre">
+														<div class="lettreSelectionnee">S</div>
+														<ul class="listeMotifs">
+															<li onClick="selectionMotif(this)">Sciatique</li>
+															<li onClick="selectionMotif(this)">Septoplastie nasale</li>
+															<li onClick="selectionMotif(this)">Sinus pilonidal : traitement chirurgical</li>
+															<li onClick="selectionMotif(this)">Sinusite maxillaire</li>
+															<li onClick="selectionMotif(this)">Symptômes généraux (fièvre, asthénie)</li>
+															<li onClick="selectionMotif(this)">Syndrome du canal carpien</li>
+														</ul>
+													</div>
+													<div id="T" class="lettre">
+														<div class="lettreSelectionnee">T</div>
+														<ul class="listeMotifs">
+															<li onClick="selectionMotif(this)">Tendinopathie de la coiffe des rotateurs</li>
+															<li onClick="selectionMotif(this)">Ténosynovectomie des muscles de la main</li>
+															<li onClick="selectionMotif(this)">Thyroïdectomie</li>
+															<li onClick="selectionMotif(this)">Troubles anxio-dépressifs mineurs</li>
+															<li onClick="selectionMotif(this)">Tumorectomie du sein - mastectomie partielle</li>
+														</ul>
+													</div>
+													<div id="U" class="lettre">
+														<div class="lettreSelectionnee">U</div>
+														<ul class="listeMotifs">
+															<li onClick="selectionMotif(this)">Ulcère de jambe à prédominance veineuse</li>
+														</ul>
+													</div>
+													<div id="V" class="lettre">
+														<div class="lettreSelectionnee">V</div>
+														<ul class="listeMotifs">
+															<li onClick="selectionMotif(this)">Varices des membres inférieurs</li>
+														</ul>
+													</div>
+													<div id="CIM" class="lettre">
+														<div class="lettreSelectionnee" style="width:50px">CIM</div>
+														<ul class="listeMotifs">
+															<li onClick="selectionMotif(this)">maladie de l'œil ou de l'oreille </b></li>														
+															<li onClick="selectionMotif(this)">maladie du cœur et de l'appareil circulatoire</b></li>														
+															<li onClick="selectionMotif(this)">maladie de l'appareil respiratoire</b></li>														
+															<li onClick="selectionMotif(this)">maladie de l'appareil digestif</b></li>														
+															<li onClick="selectionMotif(this)">maladie des os, articulations, muscles et tissu conjonctif</b></li>														
+															<li onClick="selectionMotif(this)">maladie de l'appareil génital ou urinaire, grossesse</b></li>														
+															<li onClick="selectionMotif(this)">maladie endocrinienne, métabolique ou nutritionnelle</b></li>														
+															<li onClick="selectionMotif(this)">maladie du système nerveux et troubles mentaux</b></li>														
+															<li onClick="selectionMotif(this)">maladies du sang et du système immunitaire</b></li>														
+															<li onClick="selectionMotif(this)">maladies endocriniennes, nutritionnelles et métaboliques</b></li>
+														</ul>
+													</div>
+													<div class="basBloc"></div>
+												</div>
+												<div class="clearFloat"></div>  
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+            </div>
+			
+		</div>
+        <!--fin colonne de gauche-->        
+        <!--colonne de droite-->
+		<div id="colonneDroite">
+        	<div class="titreBleu">
+                <div class="titreBleuBordGauche"></div>
+                <div class="titreBleuFond"><h3>Identification Patient</h3></div>
+                <div class="titreBleuBordDroit"></div>
+            </div>
+			<div class="cadreDroite">               
+                <div class="cadreAngleHD">
+                    <div class="cadreAngleBG">
+                    	<div class="cadreAngleBD">                  
+                    		<div class="zoneContenus">
+                                <!--CONTENUS CADRE-->
+                                <form action="" method="">								
+									<div id="donneesPatient">	
+										<div><label for="nom" class="resultat" >Nom :</label><span id="nom" class="resultat majuscule">Dupont</span></div>
+										<div><label for="prenom" class="resultat" >Prénom :</label><span id="prenom" class="resultat ">Marie</span></div>
+										<div><label for="nir" class="resultat" >NIR :</label><span id="nir" class="resultat ">2510775110015 - 17</span></div>
+										<div><label for="dateNaissance" class="resultat" >Né(e) le :</label><span id="dateNaissance" class="resultat ">18/07/1942</span></div>
+										<div><label for="rang" class="resultat" >Rang :</label><span id="rang" class="resultat ">1</span></div>
+										<div><label for="regime" class="resultat" >Régime :</label><span id="regime" class="resultat ">Régime Général</span></div>
+										<div><label for="caisse" class="resultat" >Caisse de rattachement :</label><span id="caisse" class="resultat ">CPAM Paris</span></div>
+									</div>
+									<br />
+									<div id="droits">
+										<div><label for="centreGestion" class="resultat" >Centre de gestion :</label><span id="centreGestion" class="resultat majuscule">0000</span></div>
+										<div><label for="dateDroit" class="resultat" >Droit à la date du jour :</label><span id="dateDroit" class="resultat ">*</span></div>
+										<div><label for="exoneration" class="resultat" >Exonération :</label><span id="exoneration" class="resultat majuscule">*</span></div>
+										<div><label for="acs" class="resultat" >ACS :</label><span id="acs" class="resultat ">*</span></div>
+										<div><label for="cmuc" class="resultat" >CMUC :</label><span id="cmuc" class="resultat ">*</span></div>
+										<div><label for="ame" class="resultat" >AME :</label><span id="ame" class="resultat ">*</span></div>
+										<div><label for="mt" class="resultat" >MT :</label><span id="mt" class="resultat ">NON</span></div>
+										<div class="message_bleu">* Information non disponible pour ce régime ou ce patient.</div>
+									</div>									
+									<br />
+									<p><a href="#" title="" alt="">Insérer la carte vitale d'un autre patient</a> ou <a href="#" title="" alt="">Saisir le NIR d'un autre patient</a></p>
+																	
+									   
+									<div id="groupeBoutons" class="groupeBoutons">
+										<div class="alignDroite">
+											<a href="#" title="#"><img src="images/imprimer.gif" alt="bouton impression"/></a>
+											<a href="#" title="#"><img src="images/aide.gif" alt="bouton aide"/></a>
+										</div>
+									</div>
+								</form>
+                    		</div>
+							<div class="clearFloat"></div> 
+						</div>
+                    </div>
+				</div>
+            </div>
+            
+            <!--Gestion des float-->
+            <div class="clearFloat"></div>  
+			
+			
+        </div>
+		
+		
+			
+			
+        <!--fin colonne de droite-->
+		
+		
+        	
+	</div>
+	<!--FIN CORPS DE PAGE-->
+
+
+	<!--PIEDS DE PAGE-->
+	<div id="footer">
+		<h2>Les liens pratiques</h2>
+		<div id="liensGauches">
+			<ul>
+				<li><a href="#" title="numéro de version" accesskey="7">n° version</a></li>
+				<li><a href="#" title="informations légales" accesskey="3">informations légales</a></li>
+				<li class="vosTelechargements"><a href="#" title="vos téléchargements" accesskey="4">vos téléchargements</a></li>
+			</ul>
+		</div>
+		<div id="prerequis">
+			<a href="" title=""><img src="images/get_adobe_reader.png" alt="Bouton Acrobar Reader" /></a>
+			<a href="" title=""><img src="images/get_adobe_flash_player.png" alt="Bouton Flash Player" /></a>
+			<a href="" title="">Pré-requis</a>
+		</div>
+	</div>
+	<!--FIN PIEDS DE PAGE-->
+</div>
+<!--FIN PAGE-->
+
+</body>
+
+</html>

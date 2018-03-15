@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MotifXML xmlns="http://referentiels.metier.yt.cnamts.fr" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> >
+	<Identification></Identification>
+	<URL></URL>
+	<Critere xmlns="http://referentiels.metier.yt.cnamts.fr">
+		<Text><![CDATA[Tout type d’emploi]]></Text>
+		<DureeIndicative uri="http://referentiels.metier.yt.cnamts.fr">
+			<Unite><![CDATA[j]]></Unite>
+			<Duree>3</Duree>
+		</DureeIndicative>
+	</Critere>
+</MotifXML>
